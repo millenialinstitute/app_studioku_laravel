@@ -1,0 +1,216 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat' , 'Open Sans' , 'Helvetica' , sans-serif;
+  color: #303030;
+  padding-top: 30px;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  width: 6px;
+  background: #F9F9F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7ab6de;
+  border-radius: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  margin: 10px;
+}
+
+a.active {
+  background-color: rgb(56 75 255 / 22%);
+  color: #60b6fb;
+}
+
+a.active.logout {
+  background-color: #33376b;
+  color: white;
+}
+
+a.sidebar-menu {
+  transition: .4s;
+}
+
+a.sidebar-menu:hover {
+  background: rgba(255,255,255,.1);
+}
+
+a.collapse-item{
+  transition: .3s;
+}
+
+a.collapse-item:hover {
+  background: rgba(255,255,255,.1);
+}
+
+label {
+  display: block;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+input, textarea {
+  border: none;
+  outline: none;
+}
+
+h1 {
+  font-size: 25px;
+  margin: 12px auto;
+}
+
+h2 {
+  font-size: 20px;
+  margin: 8px auto;
+}
+
+button:hover  , select:hover {
+  cursor: pointer;
+}
+
+li {
+  list-style-type: none;
+}
+
+section {
+  margin: 80px auto;
+}
+
+i {
+  width: 20px;
+  text-align: center;
+}
+
+.container {
+  margin: 40px 80px;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.jc-c {
+  justify-content: center;
+}
+
+.jc-b {
+  justify-content: space-between;
+}
+
+.ai-c {
+  display: flex;
+  align-items: center;
+}
+
+.col {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.col-2 {
+  flex: 2;
+}
+
+.col-3 {
+  flex:3;
+}
+
+.col-4 {
+  flex: 4;
+}
+
+h1 {
+  font-size: 35px;
+  text-transform: capitalize;
+  margin: 20px auto;
+  text-align: center;
+}
+h3 {
+  font-size: 16px;
+  margin: 16px auto;
+  text-transform: capitalize;
+}
+h5 {
+    font-size: 16px;
+    margin: 10px auto;
+}
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right{
+  text-align: right;
+}
+
+.hidden {
+  display: none;
+}
+
+input , select{
+  background-color: white;
+  padding: 4px 15px;
+  margin: 8px auto;
+  font-size: 16px;
+  height: 25px;
+  display: block;
+  border: 1px solid silver;
+}
+
+input:focus {
+  background-color: white;
+}
+
+select {
+  font-size: 16px;
+  padding: 5px 10px;
+  height: fit-content;
+}
+
+option {
+  font-size: 16px;
+}
+
+textarea {
+  background-color: white;
+  padding: 4px 15px;
+  margin: 8px auto;
+  border-radius: 10px;
+  font-size: 16px;
+  display: block;
+}
