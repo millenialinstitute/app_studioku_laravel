@@ -30,7 +30,7 @@
 
 		<div class="form-group">
 			<img src="{{ asset('/assets/auth/images/password_icon.svg') }}" alt="password" class="icon" >
-			<input type="passwords/" name="password" placeholder="Password" class="form-control" @error('password') is-invalid @enderror required>
+			<input type="password" name="password" placeholder="Password" class="form-control" @error('password') is-invalid @enderror required>
 			
 			@error('password')
 	            <span class="invalid-feedback" role="alert">
@@ -41,7 +41,7 @@
 
 		<div class="form-group">
 			<img src="{{ asset('/assets/auth/images/password_icon.svg') }}" alt="password" class="icon" >
-			<input type="passwords/" name="password_confirmation" placeholder="Konfirmasi Password" class="form-control" @error('password') is-invalid @enderror required>
+			<input type="password" name="password_confirmation" placeholder="Konfirmasi Password" class="form-control" @error('password') is-invalid @enderror required>
 			
 			@error('password_confirmation')
 	            <span class="invalid-feedback" role="alert">

@@ -24,6 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $level_user = Auth::user()->level_user_id;
+        if($level_user === 1) {
+            return redirect('/admin/dashboard');
+        } else if($level_user === 2) {
+            return redirect('/contributor/dashboard'); 
+        }  else  {
+            return redirect('/member/dashboard');
+        }
     }
 }
