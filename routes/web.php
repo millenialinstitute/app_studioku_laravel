@@ -20,8 +20,11 @@ Route::get('/welcome', function () {
 Route::get('/' , 'LandingPageController@index');
 
 
-
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::name('admin')->prefix('admin')->namespace('Admin')->group(function() {
+	Route::get('/dashboard' , 'DashboardController@index');
+});
