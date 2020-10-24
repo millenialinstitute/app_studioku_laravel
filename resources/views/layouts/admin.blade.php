@@ -30,7 +30,7 @@
 				<a href="{{ url('/admin/contributor/waiting') }}">Menunggu</a>
 			</div>
 		</a>
-		<a href="" class="menu-item @yield('member') ">
+		<a href="{{ url('/admin/member') }}" class="menu-item @yield('member') ">
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/member_icon.svg') }}" alt="member">
 			<span>member</span>
 		</a>
@@ -38,11 +38,11 @@
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/item_icon.svg') }}" alt="item">
 			<span>item</span>
 		</a>
-		<a href="" class="menu-item @yield('earning') ">
+		<a href="{{ url('/admin/earning') }}" class="menu-item @yield('earning') ">
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/earning_icon.svg') }}" alt="earning">
 			<span>keuangan</span>
 		</a>
-		<a href="" class="menu-item @yield('sales') ">
+		<a href="{{ url('admin/sales') }}" class="menu-item @yield('sales') ">
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/sell_icon.svg') }}" alt="sales">
 			<span>penjualan</span>
 		</a>

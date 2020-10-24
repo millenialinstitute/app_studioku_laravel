@@ -30,4 +30,9 @@ Route::name('admin')->prefix('admin')->namespace('Admin')->group(function() {
 
 	Route::get('/contributor/all' , 'ContributorController@all');
 	Route::get('/contributor/waiting' , 'ContributorController@waiting');
+
+	Route::get('/member' , 'MemberController@index');
+
+
+	Route::get('/earning' , 'EarningController@index');
 });
