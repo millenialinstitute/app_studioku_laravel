@@ -18,50 +18,30 @@
 
 	<aside>
 		<img src="{{ asset('/assets/dashboard/icons/logo_studioku.svg') }}" alt="studioku" class="logo">
-		<a href="{{ url('/admin/dashboard') }}" class="menu-item @yield('dashboard') ">
+		<a href="{{ url('/contributor/dashboard') }}" class="menu-item @yield('dashboard') ">
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/home_icon.svg') }}" alt="dashboard">
 			<span>Dashboard</span>
-		</a>
-		<a href="#contributor" data-target="#contributor" class="menu-item btn-collapse @yield('contributor') ">
-			<img src="{{ asset('/assets/dashboard/sidebar-icon/contributor_icon.svg') }}" alt="contributor">
-			<span>Kontributor</span>
-			<div class="menu-collapse" data-height="84px" id="contributor">
-				<a href="{{ url('/admin/contributor/all') }}">Semua Kontributor</a>
-				<a href="{{ url('/admin/contributor/waiting') }}">Menunggu</a>
-			</div>
-		</a>
-		<a href="{{ url('/admin/member') }}" class="menu-item @yield('member') ">
-			<img src="{{ asset('/assets/dashboard/sidebar-icon/member_icon.svg') }}" alt="member">
-			<span>member</span>
 		</a>
 		<a href="#item" data-target="#item" class="menu-item btn-collapse @yield('item') ">
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/item_icon.svg') }}" alt="item">
 			<span>item</span>
 			<div class="menu-collapse" data-height="200px" id="item">
-				<a href="{{ url('/admin/item/all') }}">Semua Item</a>
-				<a href="{{ url('/admin/item/all') }}">Menunggu</a>
-				<a href="{{ url('/admin/item/all') }}">Tags</a>
-				<a href="{{ url('/admin/item/all') }}">Kategori</a>
-				<a href="{{ url('/admin/item/all') }}">Penolakan</a>
+				<a href="{{ url('/contributor/item/all') }}">Upload</a>
+				<a href="{{ url('/contributor/item/all') }}">Belum Terkirim</a>
+				<a href="{{ url('/contributor/item/all') }}">Menunggu</a>
+				<a href="{{ url('/contributor/item/all') }}">Ditolak</a>
+				<a href="{{ url('/contributor/item/all') }}">Diterima</a>
 			</div>
 		</a>
-		<a href="{{ url('/admin/earning') }}" class="menu-item @yield('earning') ">
-			<img src="{{ asset('/assets/dashboard/sidebar-icon/earning_icon.svg') }}" alt="earning">
-			<span>keuangan</span>
-		</a>
-		<a href="{{ url('admin/sales') }}" class="menu-item @yield('sales') ">
+		<a href="{{ url('contributor/sales') }}" class="menu-item @yield('sales') ">
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/sell_icon.svg') }}" alt="sales">
 			<span>penjualan</span>
 		</a>
-		<a href="{{ url('admin/payment') }}" class="menu-item @yield('payment') ">
-			<img src="{{ asset('/assets/dashboard/sidebar-icon/cart_icon.svg') }}" alt="payment">
-			<span>pembayaran</span>
+		<a href="{{ url('contributor/payment') }}" class="menu-item @yield('payment') ">
+			<img src="{{ asset('/assets/dashboard/sidebar-icon/earning_icon.svg') }}" alt="payment">
+			<span>Saldo</span>
 		</a>
-		<a href="{{ url('/admin/statistic') }}" class="menu-item @yield('statistic') ">
-			<img src="{{ asset('/assets/dashboard/sidebar-icon/statistic_icon.svg') }}" alt="statistik">
-			<span>statistik</span>
-		</a>
-		<a href="{{ url('/admin/guide') }}" class="menu-item @yield('guide') ">
+		<a href="{{ url('/contributor/guide') }}" class="menu-item @yield('guide') ">
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/info_icon.svg') }}" alt="guide">
 			<span>panduan</span>
 		</a>

@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign('level_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('level_user_id')->references('id')->on('level_users')->onDelete('cascade');
         });
     }
 

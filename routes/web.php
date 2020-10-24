@@ -25,6 +25,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+
+
+// ----------------------------------- Admin Dashboard --------------------------------------------------
 Route::name('admin')->prefix('admin')->namespace('Admin')->group(function() {
 	Route::get('/dashboard' , 'DashboardController@index');
 
@@ -38,3 +41,12 @@ Route::name('admin')->prefix('admin')->namespace('Admin')->group(function() {
 
 	Route::get('/sales' , 'SalesController@index');
 });
+// =============================== Admin Dashbord ========================================
+
+
+
+// --------------------------------- Contributor DaShboard ------------------------------
+Route::name('contributor')->prefix('contributor')->namespace('Contributor')->group(function() {
+	Route::get('/dashboard' , 'DashboardController@index');
+});
+// ================================ Contributor Dashboard ===============================
