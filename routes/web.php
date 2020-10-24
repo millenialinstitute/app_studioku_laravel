@@ -35,4 +35,6 @@ Route::name('admin')->prefix('admin')->namespace('Admin')->group(function() {
 
 
 	Route::get('/earning' , 'EarningController@index');
+
+	Route::get('/sales' , 'SalesController@index');
 });
