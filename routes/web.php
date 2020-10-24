@@ -27,4 +27,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::name('admin')->prefix('admin')->namespace('Admin')->group(function() {
 	Route::get('/dashboard' , 'DashboardController@index');
+
+	Route::get('/contributor/all' , 'ContributorController@all');
+	Route::get('/contributor/waiting' , 'ContributorController@waiting');
 });

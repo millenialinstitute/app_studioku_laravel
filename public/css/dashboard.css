@@ -131,12 +131,16 @@ h3.title-section {
     margin-right: 10px;
 }
 
-.card-item .preview {
+.card-item .preview , .card-item .profile {
 	border-radius: 50%;
     width: 70px;
     height: 70px;
     background: rgb(96, 182, 251);
     margin: 0px 10px;
+}
+
+.card-item .profile {
+    border-radius: 50%;
 }
 
 .card-item .content {
@@ -166,4 +170,39 @@ h3.title-section {
 .card-item .content .data div span {
 	color: rgb(96, 182, 251);
     font-size: 12px;
+}
+
+.card-item .content .data.row span , .card-item .total .value {
+    color: silver;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: 1px solid silver;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.card-item .total p {
+    margin-bottom: 5px;
+    color: silver;
+}
+
+aside .menu-collapse {
+    height: 0px;
+    overflow: hidden;
+    transition: .5s;
+}
+
+aside .menu-collapse a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 13px;
+    margin: 3px 10px;
+    text-transform: uppercase;
+    border-radius: 7px;
+    padding-left: 63px;
+    cursor: pointer;
+}
+
+aside .menu-collapse a:nth-child(1) {
+    display: none;
 }

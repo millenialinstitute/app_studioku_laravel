@@ -22,9 +22,13 @@
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/home_icon.svg') }}" alt="dashboard">
 			<span>Dashboard</span>
 		</a>
-		<a href="" class="menu-item @yield('kontributor') ">
+		<a href="#contributor" data-target="#contributor" class="menu-item btn-collapse @yield('contributor') ">
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/contributor_icon.svg') }}" alt="contributor">
 			<span>Kontributor</span>
+			<div class="menu-collapse" data-height="84px" id="contributor">
+				<a href="{{ url('/admin/contributor/all') }}">Semua Kontributor</a>
+				<a href="{{ url('/admin/contributor/waiting') }}">Menunggu</a>
+			</div>
 		</a>
 		<a href="" class="menu-item @yield('member') ">
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/member_icon.svg') }}" alt="member">
@@ -63,6 +67,9 @@
 	<div class="body">
 		@yield('body')
 	</div>
+
+
+	<script src="{{ asset('/js/dashboard.js') }}"></script>
 
 </body>
 </html>
