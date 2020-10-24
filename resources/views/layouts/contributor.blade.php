@@ -37,7 +37,7 @@
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/sell_icon.svg') }}" alt="sales">
 			<span>penjualan</span>
 		</a>
-		<a href="{{ url('contributor/payment') }}" class="menu-item @yield('payment') ">
+		<a href="{{ url('contributor/saldo') }}" class="menu-item @yield('payment') ">
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/earning_icon.svg') }}" alt="payment">
 			<span>Saldo</span>
 		</a>

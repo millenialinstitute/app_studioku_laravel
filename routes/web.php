@@ -48,5 +48,9 @@ Route::name('admin')->prefix('admin')->namespace('Admin')->group(function() {
 // --------------------------------- Contributor DaShboard ------------------------------
 Route::name('contributor')->prefix('contributor')->namespace('Contributor')->group(function() {
 	Route::get('/dashboard' , 'DashboardController@index');
+
+	Route::get('/sales' , 'SalesController@index');
+
+	Route::get('/saldo' , 'SaldoController@index');
 });
 // ================================ Contributor Dashboard ===============================
