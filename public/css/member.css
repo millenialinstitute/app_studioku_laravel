@@ -1,0 +1,90 @@
+.card-cart {
+	background: white;
+    padding: 20px;
+    text-align: center;
+    line-height: 22px;
+    border-radius: 10px;
+}
+
+.card-cart p {
+	width: 80%;
+    margin: auto;
+}
+
+.card-cart-small {
+    margin: 0px 30px;
+    background: white;
+    color: rgb(96 182 251);
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.card-cart-small p {
+	font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.card-cart-small .col:nth-child(2) {
+	display: flex;
+    justify-content: flex-end;
+    font-weight: bold;
+}
+
+.card-cart-small .col button {
+    font-size: 15px;
+    color: white;
+    background: rgb(96 182 251);
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+    display: flex;
+    width: 200px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-cart-small .col img {
+	height: 25px;
+    width: 40px;
+}
+
+.cart-list-item {
+	margin: 20px 30px;
+}
+
+.cart-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    margin: 15px auto;
+}	
+
+.cart-item img {
+    border-radius: 5px;
+    width: 15%;
+}
+
+.cart-item .description {
+	width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cart-item .description p {
+	font-size: 18px;
+}
+
+.cart-item .description .row {
+	justify-content: space-between;
+}
+
+.cart-item .description .row img {
+	width: 30px;
+    margin: 0px;
+    cursor: pointer;
+}

@@ -8,6 +8,7 @@
 	<link rel="shortcut icon" href="{{ asset('/assets/logo_studioku_blue.svg') }}">
 	<link rel="stylesheet" href="{{ asset('/css/reset.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/dashboard.css') }}">
+	<link rel="stylesheet" href="{{ asset('/css/member.css') }}">
 </head>
 <body>
 

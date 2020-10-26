@@ -38,11 +38,16 @@ aside .menu-item {
     align-items: center;
     padding: 10px 20px;
     margin: 3px 10px;
+    transition: .4s;
 }
 
 aside .menu-item.active {
 	background-color: rgb(56 75 255 / 22%);
     color: #60b6fb;
+}
+
+aside .menu-item:hover {
+    background-color: rgba(255,255,255,.1);
 }
 
 aside .menu-item img {
