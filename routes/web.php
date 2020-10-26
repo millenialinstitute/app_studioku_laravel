@@ -54,3 +54,31 @@ Route::name('contributor')->prefix('contributor')->namespace('Contributor')->gro
 	Route::get('/saldo' , 'SaldoController@index');
 });
 // ================================ Contributor Dashboard ===============================
+
+
+
+
+// --------------------------------- Member DaShboard ------------------------------
+Route::name('member')->prefix('member')->namespace('Member')->group(function() {
+	Route::get('dashboard' , 'DashboardController@index');
+		
+	Route::get('/download' , 'DownloadController@index');
+
+	Route::get('/favorite' , 'FavoriteController@index');
+		
+	Route::get('collection' , 'CollectionController@index');
+
+	Route::get('cart' , 'CartController@index');
+		
+	Route::get('/profile' , 'ProfileController@index');
+		
+						
+});
+
+
+
+
+
+
+
+// ================================ Member Dashboard ===============================
