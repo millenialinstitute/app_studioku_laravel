@@ -73,36 +73,6 @@
 		<div class="value">Rp.20.000.000</div>
 	</div>
 </div>
-<div class="card-item">
-	<p class="number">4</p>
-	<div class="profile"></div>
-	<div class="content">
-		<h4 class="title">Atika Mahmudah</h4>
-		<div class="data row">
-			<span>200 Konten</span>
-			<span>200 Terjual</span>
-		</div>
-	</div>
-	<div class="total">
-		<p>Total Pendapatan</p>
-		<div class="value">Rp.20.000.000</div>
-	</div>
-</div>
-<div class="card-item">
-	<p class="number">5</p>
-	<div class="profile"></div>
-	<div class="content">
-		<h4 class="title">Atika Mahmudah</h4>
-		<div class="data row">
-			<span>200 Konten</span>
-			<span>200 Terjual</span>
-		</div>
-	</div>
-	<div class="total">
-		<p>Total Pendapatan</p>
-		<div class="value">Rp.20.000.000</div>
-	</div>
-</div>
 
 
 <h3 class="title-section">Kontributor Menunggu</h3>	

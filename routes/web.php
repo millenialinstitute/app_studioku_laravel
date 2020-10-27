@@ -37,6 +37,15 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 
 			Route::get('/member' , 'MemberController@index');
 
+			// +++ Item +++
+			Route::name('item')->prefix('item')->group(function() {
+				Route::get('/all' , 'ItemController@all');
+				Route::get('/waiting' , 'ItemController@waiting');
+				Route::get('/tag' , 'ItemController@tag');
+				Route::get('/category' , 'ItemController@category');
+				Route::get('reject' , 'ItemController@reject');
+					
+			});
 
 			Route::get('/earning' , 'EarningController@index');
 

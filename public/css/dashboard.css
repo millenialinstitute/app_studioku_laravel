@@ -144,7 +144,7 @@ h3.title-section {
     margin-right: 20px;
 }
 
-.card-item .number {
+.card-item .number , .card-list .number {
 	color: white;
     height: 30px;
     width: 30px;
@@ -155,19 +155,24 @@ h3.title-section {
     border-radius: 50%;
     font-size: 17px;
     font-weight: bold;
-    margin-right: 10px;
+    margin: 0px 10px;
+
 }
 
-.card-item .preview , .card-item .profile {
-	border-radius: 50%;
+.card-item .preview , .card-item .profile , .card-list .profile img {
+    border-radius: 5px;
     width: 70px;
     height: 70px;
-    background: rgb(96, 182, 251);
+    background: #f5f6fa;
     margin: 0px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .card-item .profile {
     border-radius: 50%;
+    overflow: hidden;
 }
 
 .card-item .content {
@@ -176,7 +181,7 @@ h3.title-section {
 
 .card-item .content .title {
 	font-size: 15px;
-    margin-bottom: 5px;
+    margin-bottom: 12px;
 }
 
 .card-item .content .data {
@@ -266,4 +271,64 @@ h3.title-section {
 
 .card-file .item p {
     font-size: 17px;
+}
+
+
+
+.card-list {
+    display: flex;
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-list .content .data {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.card-list .content .data span , .card-item .content .data span {
+    border: 1px solid silver;
+    padding: 5px 8px;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-top: 5px;
+    color: silver;
+}
+
+.card-list .join {
+    text-align: center;
+    color: silver;
+    width: 15%;
+}
+
+.btn-icon {
+    padding: 7px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin: 0px 5px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn-icon img {
+    width: 100%;
+}
+
+.bg-warn {
+    background: rgb(255, 187, 56);
+}
+
+.bg-danger {
+    background: rgb(230, 57, 70);
+}
+
+.img {
+    width: 100%;
 }
