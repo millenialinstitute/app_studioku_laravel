@@ -25,60 +25,60 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+// ########################### Dashboard ################################
+Route::name('dashboard')->middleware(['auth'])->group(function() {
+
+		// ----------------------------------- Admin Dashboard --------------------------------------------------
+		Route::name('admin')->middleware(['admin'])->prefix('admin')->namespace('Admin')->group(function() {
+			Route::get('/dashboard' , 'DashboardController@index');
+
+			Route::get('/contributor/all' , 'ContributorController@all');
+			Route::get('/contributor/waiting' , 'ContributorController@waiting');
+
+			Route::get('/member' , 'MemberController@index');
 
 
-// ----------------------------------- Admin Dashboard --------------------------------------------------
-Route::name('admin')->prefix('admin')->namespace('Admin')->group(function() {
-	Route::get('/dashboard' , 'DashboardController@index');
+			Route::get('/earning' , 'EarningController@index');
 
-	Route::get('/contributor/all' , 'ContributorController@all');
-	Route::get('/contributor/waiting' , 'ContributorController@waiting');
-
-	Route::get('/member' , 'MemberController@index');
+			Route::get('/sales' , 'SalesController@index');
+		});
+		// =============================== Admin Dashbord ========================================
 
 
-	Route::get('/earning' , 'EarningController@index');
 
-	Route::get('/sales' , 'SalesController@index');
+		// --------------------------------- Contributor DaShboard ------------------------------
+		Route::name('contributor')->middleware(['contributor'])->prefix('contributor')->namespace('Contributor')->group(function() {
+			Route::get('/dashboard' , 'DashboardController@index');
+
+			Route::get('/sales' , 'SalesController@index');
+
+			Route::get('/saldo' , 'SaldoController@index');
+		});
+		// ================================ Contributor Dashboard ===============================
+
+
+
+
+		// --------------------------------- Member DaShboard ------------------------------
+		Route::name('member')->middleware(['member'])->prefix('member')->namespace('Member')->group(function() {
+			Route::get('dashboard' , 'DashboardController@index');
+				
+			Route::get('/download' , 'DownloadController@index');
+
+			Route::get('/favorite' , 'FavoriteController@index');
+				
+			Route::get('collection' , 'CollectionController@index');
+
+			Route::get('cart' , 'CartController@index');
+				
+			Route::get('/profile' , 'ProfileController@index');
+				
+								
+		});
+		// ================================ Member Dashboard ===============================
+
+
+
+
 });
-// =============================== Admin Dashbord ========================================
-
-
-
-// --------------------------------- Contributor DaShboard ------------------------------
-Route::name('contributor')->prefix('contributor')->namespace('Contributor')->group(function() {
-	Route::get('/dashboard' , 'DashboardController@index');
-
-	Route::get('/sales' , 'SalesController@index');
-
-	Route::get('/saldo' , 'SaldoController@index');
-});
-// ================================ Contributor Dashboard ===============================
-
-
-
-
-// --------------------------------- Member DaShboard ------------------------------
-Route::name('member')->prefix('member')->namespace('Member')->group(function() {
-	Route::get('dashboard' , 'DashboardController@index');
-		
-	Route::get('/download' , 'DownloadController@index');
-
-	Route::get('/favorite' , 'FavoriteController@index');
-		
-	Route::get('collection' , 'CollectionController@index');
-
-	Route::get('cart' , 'CartController@index');
-		
-	Route::get('/profile' , 'ProfileController@index');
-		
-						
-});
-
-
-
-
-
-
-
-// ================================ Member Dashboard ===============================
+// ########################### Dashboard ################################

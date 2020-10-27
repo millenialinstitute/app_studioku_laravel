@@ -9,7 +9,7 @@
 		<div class="row card-thumb">
 			<img src="{{ asset('/assets/dashboard/illustration/admin/contributor_illustration.svg') }}" alt="contributor">
 			<div class="content">
-				<h4 class="value">2</h4>
+				<h4 class="value">{{ $contributors }}</h4>
 				<p class="description">Kontributor</p>
 			</div>
 		</div>
@@ -18,7 +18,7 @@
 		<div class="row card-thumb">
 			<img src="{{ asset('/assets/dashboard/illustration/admin/member_illustration.svg') }}" alt="member">
 			<div class="content">
-				<h4 class="value">2</h4>
+				<h4 class="value">{{ $members }}</h4>
 				<p class="description">Member</p>
 			</div>
 		</div>
@@ -27,7 +27,7 @@
 		<div class="row card-thumb">
 			<img src="{{ asset('/assets/dashboard/illustration/collection_illustration.svg') }}" alt="collection">
 			<div class="content">
-				<h4 class="value">2</h4>
+				<h4 class="value"> {{ $itemsCount }} </h4>
 				<p class="description">Item</p>
 			</div>
 		</div>
