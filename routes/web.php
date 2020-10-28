@@ -41,6 +41,9 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 			Route::name('item')->prefix('item')->group(function() {
 				Route::get('/all' , 'ItemController@all');
 				Route::get('/waiting' , 'ItemController@waiting');
+				Route::get('/waiting/{id}' , 'ItemController@waitingDetail');
+					
+
 				Route::get('/tag' , 'ItemController@tag');
 				Route::get('/category' , 'ItemController@category');
 				Route::post('/category' , 'ItemController@categoryStore');

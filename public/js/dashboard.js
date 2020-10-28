@@ -1,7 +1,5 @@
 const btnCollapse = document.querySelectorAll('.btn-collapse');
-console.log(btnCollapse);
 btnCollapse.forEach(btn => {
-	console.log(btn);
 	btn.addEventListener('click' , ()=> {
 		let target = btn.getAttribute('data-target');
 		const collapse = document.querySelector(target);

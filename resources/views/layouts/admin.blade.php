@@ -82,6 +82,7 @@
 
 
 	<script src="{{ asset('/js/dashboard.js') }}"></script>
+	<script src="{{ asset('/js/admin.js') }}"></script>
 
 </body>
 </html>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Item;
 use App\Category;
 
@@ -44,12 +45,38 @@ class ItemController extends Controller
         $itemTotal = Item::where('status' , 'accept')->get()->count();
         $itemWait = Item::where('status' , 'waiting')->get()->count();
 
+        $items = Item::where('status' , 'waiting')->get();
+
     	return view('admin.item.waiting' , [
+                                'user'      => Auth::user(),
                                 'itemTotal' => $itemTotal,
-                                'itemWait'  => $itemWait
+                                'itemWait'  => $itemWait,
+                                'items'     => $items,
                           ]);
     }
 
+
+
+    
+    
+    /**
+      * route: /admin/waiting/{id}
+      * method: get
+      * params: id
+      * description: 
+        * this method to show detail item data
+      * return : @view
+    */
+    public function waitingDetail (Request $request , $id) 
+    {
+        $item = Item::find($id);
+
+        return view('admin.item.waiting-detail' , [
+                                        'user' => Auth::user(),
+                                        'item' => $item,
+                                    ]);
+    }
+            
 
     
     

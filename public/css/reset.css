@@ -71,6 +71,7 @@ label {
 button {
   border: none;
   cursor: pointer;
+  font-family: 'Montserrat' , 'Open Sans' , 'Helvetica' , sans-serif;
 }
 
 input, textarea {
