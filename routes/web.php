@@ -68,8 +68,10 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 				Route::get('/upload' , 'ItemController@uploadCreate');
 				Route::post('/upload' , 'ItemController@uploadStore');
 					
-
 				Route::get('/waiting' , 'ItemController@waiting');
+				Route::delete('waiting/{id}/delete' , 'ItemController@waitingDelete');
+					
+
 				Route::get('reject' , 'ItemController@reject');
 				Route::get('/accept' , 'ItemController@accept');
 			});

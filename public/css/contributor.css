@@ -65,3 +65,106 @@
     margin-right: 10px;
     margin-top: 20px;
 }
+
+
+.waiting-banner {
+    background: rgb(22, 219, 204);
+    color: white;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    margin: 10px auto;   
+}
+
+.waiting-banner p {
+    font-size: 18px;
+}
+
+.waiting-banner a {
+    display: inline-block;
+    background: white;
+    color: rgb(22, 219, 204);
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 10px 25px;
+    border-radius: 5px;
+}
+
+.waiting-item {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 20px auto;
+    display: flex;
+    align-items: flex-start;
+}
+
+.waiting-item .preview {
+    width: 25%;
+    overflow: hidden;
+    height: 150px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    background: rgb(245, 246, 250);
+}
+
+.waiting-item .content {
+    width: 70%;
+}
+
+.waiting-item .content .title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.waiting-item .content .category {
+    color: gray;
+    margin-bottom: 5px;
+}
+
+.waiting-item .content .tag {
+    background: rgb(224, 224, 224);
+    color: rgb(80, 78, 78);
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+.waiting-item .content .data {
+    display: flex;
+    margin-top: 10px;
+    justify-content: flex-start;
+}
+
+.waiting-item .content .data span {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.waiting-item .content .data img {
+    width: 20px;
+    margin-right: 7px;  
+}
+
+.waiting-item .content .data .date {
+    color: rgb(44, 94, 221);
+}
+
+.waiting-item .content .data .price {
+    color: rgb(255, 191, 68);
+}
+
+.waiting-item form button {
+    background: white;
+}
+
+.waiting-item form button img {
+    width: 30px;
+}

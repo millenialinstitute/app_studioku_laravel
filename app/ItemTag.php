@@ -12,11 +12,11 @@ class ItemTag extends Model
 
     public function item ( ) 
     {
-    	return $this->belongsTo('item_id');
+    	return $this->belongsTo(Item::class , 'item_id');
     }
 
     public function tag ( ) 
     {
-    	return $this->belongsTo('tag_id');
+    	return $this->belongsTo(Tag::class , 'tag_id');
     }
 }

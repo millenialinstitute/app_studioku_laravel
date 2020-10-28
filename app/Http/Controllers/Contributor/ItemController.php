@@ -28,6 +28,7 @@ class ItemController extends Controller
     {
         $categories = Category::get();
     	return view('contributor.item.upload' , [
+            'user' => Auth::user(),
             'categories' => $categories,
         ]);
     }
@@ -151,9 +152,37 @@ class ItemController extends Controller
     */
     public function waiting ( ) 
     {
-    	return view('contributor.item.waiting');
+        /* ---------- get item list where status waiting ------------ */
+        $contributorId = Auth::user()->contributor->id;
+        $items = Item::where('status' , 'waiting')
+                    ->where('contributor_id' , $contributorId)
+                    ->latest()->get();
+
+    	return view('contributor.item.waiting' , [
+            'user'  => Auth::user(),
+            'items' => $items,
+        ]);
     }
 
+
+
+    
+    
+    /**
+      * route: /contributor/item/waiting/{id}/delete
+      * method: delete
+      * params: id
+      * description: 
+        * this method for delete row in table item where status waiting
+      * return : @redirect
+    */
+    public function waitingDelete (Request $request , $id) 
+    {
+        Item::destroy($id);
+
+        return redirect(url()->previous())->with('delete' , 'Data berhasil dihapus');
+    }
+        
 
     
     

@@ -18,33 +18,29 @@
 {{-- thumbnail --}}
 <div class="row">
 	<div class="col">
-		<div class="row card-thumb">
-			<img src="{{ asset('/assets/dashboard/illustration/collection_illustration.svg') }}" alt="contributor">
-			<div class="content">
-				<h4 class="value">2</h4>
-				<p class="description">Total Item</p>
-			</div>
-		</div>
+		@include('subview.card-thumb' , [
+				'img' => 'collection_illustration.svg',
+				'value' => '2',
+				'caption' => 'Total Item',
+			])
 	</div>
 	<div class="col">
-		<div class="row card-thumb">
-			<img src="{{ asset('/assets/dashboard/illustration/sold_illustration.svg') }}" alt="member">
-			<div class="content">
-				<h4 class="value">2</h4>
-				<p class="description">Total Terjual</p>
-			</div>
-		</div>
+		@include('subview.card-thumb' , [
+				'img' => 'sold_illustration.svg',
+				'value' => '2',
+				'caption' => 'Total Terjual',
+			])
 	</div>
 	<div class="col">
-		<div class="row card-thumb">
-			<img src="{{ asset('/assets/dashboard/illustration/earning_illustration.svg') }}" alt="collection">
-			<div class="content">
-				<h4 class="value">2</h4>
-				<p class="description">Total Saldo</p>
-			</div>
-		</div>
+		@include('subview.card-thumb' , [
+				'img' => 'earning_illustration.svg',
+				'value' => '2',
+				'caption' => 'Total Saldo',
+			])
 	</div>
-</div>
+</div>	
+
+
 
 
 
