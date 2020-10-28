@@ -48,12 +48,13 @@
 	</div>
 	<div class="modal-body">
 		<ul>
-			<li><input type="checkbox" value="data1"> Format file salah</li>
-			<li><input type="checkbox" value="data1"> Format file salah</li>
-			<li><input type="checkbox" value="data1"> Format file salah</li>
-			<li><input type="checkbox" value="data1"> Format file salah</li>
-			<li><input type="checkbox" value="data1"> Format file salah</li>
+			@forelse($rejects as $reject)
+				<li><input type="checkbox" value="{{ $reject->id }}">{{ $reject->title }}</li>
+			@empty
+				<li>Tidak ada data!</li>
+			@endforelse
 		</ul>
+		<button>Kirim</button>
 	</div>
 </div>	
 

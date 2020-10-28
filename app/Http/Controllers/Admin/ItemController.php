@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Item;
 use App\Category;
+use App\Item;
+use App\ItemReject;
 
 class ItemController extends Controller
 {
@@ -70,10 +71,11 @@ class ItemController extends Controller
     public function waitingDetail (Request $request , $id) 
     {
         $item = Item::find($id);
-
+        $rejects = ItemReject::latest()->get();
         return view('admin.item.waiting-detail' , [
-                                        'user' => Auth::user(),
-                                        'item' => $item,
+                                        'user'    => Auth::user(),
+                                        'item'    => $item,
+                                        'rejects' => $rejects,
                                     ]);
     }
             
@@ -161,8 +163,55 @@ class ItemController extends Controller
     */
     public function reject ( ) 
     {
-    	return view('admin.item.reject');
+        $rejects = ItemReject::latest()->get();
+    	return view('admin.item.reject' , [
+                                'user' => Auth::user(),
+                                'rejects' => $rejects,
+                        ]);
     }
+
+
+    
+    
+    /**
+      * route: /admin/item/reject
+      * method: post
+      * params: title , description
+      * description: 
+        * this method to create reject item reason
+      * return : @var array
+    */
+    public function rejectStore (Request $request) 
+    {
+        $request->validate([
+            'title' => 'required|string|min:3|max:30',
+            'description' => 'required|string|min:5|max:200',
+        ]);
+
+        ItemReject::create($request->all());
+
+        return redirect(url()->previous())->with('add' , 'Data berhasil ditambahkan!');
+    }
+    
+
+
+    
+    
+    /**
+      * route: /admin/item/reject/{id}/delete
+      * method: delete
+      * params: id
+      * description: 
+        * this method to destroy row in item_rejects 
+      * return : @redirect
+    */
+    public function rejectDestroy (Request $request , $id) 
+    {
+        ItemReject::destroy($id);
+
+        return redirect(url()->previous())->with('delete', 'Data berhasil dihapus!');
+    }
+        
     	
     	
     	
