@@ -16,62 +16,34 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>1</td>
-					<td class="text-left">background</td>
-					<td>0</td>
-					<td class="action">
-						<div>
-							<button class="btn-icon bg-danger">
-								<img src="{{ asset('/assets/dashboard/icons/delete_icon_white.svg') }}" alt="delete" class="img">
-							</button>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td class="text-left">background</td>
-					<td>0</td>
-					<td class="action">
-						<div>
-							<button class="btn-icon bg-danger">
-								<img src="{{ asset('/assets/dashboard/icons/delete_icon_white.svg') }}" alt="delete" class="img">
-							</button>
-						</div>
+				@forelse($categories as $category)
+					<tr>
+						<td>{{ $loop->iteration }}</td>
+						<td class="text-left">{{ $category->name }}</td>
+						<td>0</td>
+						<td class="action">
+							<div>
+								<form action="{{ url('admin/item/category/' . $category->id . '/delete') }}" method="post">
+									@csrf
+									@method('delete')
+									<button class="btn-icon bg-danger">
+										<img src="{{ asset('/assets/dashboard/icons/delete_icon_white.svg') }}" alt="delete" class="img">
+									</button>
+								</form>
+							</div>
 						</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td class="text-left">background</td>
-					<td>0</td>
-					<td class="action">
-						<div>
-							<button class="btn-icon bg-danger">
-								<img src="{{ asset('/assets/dashboard/icons/delete_icon_white.svg') }}" alt="delete" class="img">
-							</button>
-						</div>
-						</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td class="text-left">background</td>
-					<td>0</td>
-					<td class="action">
-						<div>
-							<button class="btn-icon bg-danger">
-								<img src="{{ asset('/assets/dashboard/icons/delete_icon_white.svg') }}" alt="delete" class="img">
-							</button>
-						</div>
-						</td>
-				</tr>
-
+					</tr>
+				@empty	
+					<h1>Tidak ada data</h1>
+				@endforelse
 			</tbody>
 		</table>
 	</div>
 	<div class="col">
 		<h3 class="title-section">Buat Kategori</h3>
-		<form action="" class="card-form">
-			<input type="text" name="category" class="form-control" placeholder="Nama Kategori">
+		<form action="{{ url('/admin/item/category') }}" method="post" class="card-form">
+			@csrf
+			<input type="text" name="name" class="form-control" placeholder="Nama Kategori">
 			<button class="mt-2 ml-1">Tambah</button>
 		</form>
 	</div>

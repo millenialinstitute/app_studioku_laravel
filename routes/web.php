@@ -43,6 +43,10 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 				Route::get('/waiting' , 'ItemController@waiting');
 				Route::get('/tag' , 'ItemController@tag');
 				Route::get('/category' , 'ItemController@category');
+				Route::post('/category' , 'ItemController@categoryStore');
+				Route::delete('/category/{id}/delete' , 'ItemController@categoryDestroy');
+					
+					
 				Route::get('reject' , 'ItemController@reject');
 					
 			});
@@ -58,6 +62,17 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 		// --------------------------------- Contributor DaShboard ------------------------------
 		Route::name('contributor')->middleware(['contributor'])->prefix('contributor')->namespace('Contributor')->group(function() {
 			Route::get('/dashboard' , 'DashboardController@index');
+
+			// ++++ Item ++++
+			Route::name('item')->prefix('item')->group(function() {
+				Route::get('/upload' , 'ItemController@uploadCreate');
+				Route::post('/upload' , 'ItemController@uploadStore');
+					
+
+				Route::get('/waiting' , 'ItemController@waiting');
+				Route::get('reject' , 'ItemController@reject');
+				Route::get('/accept' , 'ItemController@accept');
+			});
 
 			Route::get('/sales' , 'SalesController@index');
 

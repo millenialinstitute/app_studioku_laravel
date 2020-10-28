@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\LevelUser;
+use App\Contributor;
 
 class User extends Authenticatable
 {
@@ -41,5 +42,10 @@ class User extends Authenticatable
     public function level ( ) 
     {
         return $this->belongsTo(LevelUser::class , 'level_user_id');
+    }
+
+    public function contributor ( ) 
+    {
+        return $this->hasOne(Contributor::class , 'user_id');
     }
 }

@@ -1,0 +1,67 @@
+.upload-banner {
+	background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.upload-banner img {
+	width: 70%;
+    margin: 15px auto;
+    display: block;
+}
+
+.upload-banner h2 {
+	font-size: 22px;
+    text-align: center;
+    margin: 10px;
+    text-transform: uppercase;
+}
+
+.upload-card {
+	background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 20px 10px;
+}
+
+.upload-card h3 {
+	font-size: 16px;
+    margin: 16px auto;
+    text-transform: capitalize;
+}
+
+.upload-card ul li {
+	list-style-type: circle;
+    margin-left: 15px;
+}
+
+
+.data-item {
+	align-items: flex-start;
+}
+
+.data-item input , .data-item select {
+	width: 90%;
+	display: inline-block;
+	border-radius: 4px;
+	align-items: flex-start;
+	margin-bottom: 20px;
+}
+
+.data-item select {
+    width: 95%;
+}
+
+.data-item button {
+	background: rgb(96, 182, 251);
+    color: white;
+    padding: 7px 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-family: Montserrat;
+    font-size: 15px;
+    margin-right: 10px;
+    margin-top: 20px;
+}

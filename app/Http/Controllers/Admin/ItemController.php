@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Item;
+use App\Category;
 
 class ItemController extends Controller
 {
@@ -78,8 +79,47 @@ class ItemController extends Controller
     */
     public function category ( ) 
     {
-    	return view('admin.item.category');
+        $categories = Category::get();
+    	return view('admin.item.category' , [ 'categories' => $categories ]);
     }
+
+
+    
+    
+    /**
+      * route: /admin/item/category
+      * method: post
+      * params: category
+      * description: 
+        * this method will create category
+      * return : @var array
+    */
+    public function categoryStore (Request $request) 
+    {
+        Category::create($request->all());
+
+        return redirect(url()->previous());
+    }
+
+
+    
+    
+    /**
+      * route: /admin/item/category/{id}/delete
+      * method: delete
+      * params: id
+      * description: 
+        * this method will destroy row category
+      * return : @bool 
+    */
+    public function categoryDestroy (Request $request , $id) 
+    {
+        Category::destroy($id);
+
+        return redirect(url()->previous());
+    }
+        
+      
 
 
     

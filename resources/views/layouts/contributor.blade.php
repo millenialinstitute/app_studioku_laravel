@@ -8,6 +8,7 @@
 	<link rel="shortcut icon" href="{{ asset('/assets/logo_studioku_blue.svg') }}">
 	<link rel="stylesheet" href="{{ asset('/css/reset.css') }}">
 	<link rel="stylesheet" href="{{ asset('/css/dashboard.css') }}">
+	<link rel="stylesheet" href="{{ asset('/css/contributor.css') }}">
 </head>
 <body>
 
@@ -25,12 +26,11 @@
 		<a href="#item" data-target="#item" class="menu-item btn-collapse @yield('item') ">
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/item_icon.svg') }}" alt="item">
 			<span>item</span>
-			<div class="menu-collapse" data-height="200px" id="item">
-				<a href="{{ url('/contributor/item/all') }}">Upload</a>
-				<a href="{{ url('/contributor/item/all') }}">Belum Terkirim</a>
-				<a href="{{ url('/contributor/item/all') }}">Menunggu</a>
-				<a href="{{ url('/contributor/item/all') }}">Ditolak</a>
-				<a href="{{ url('/contributor/item/all') }}">Diterima</a>
+			<div class="menu-collapse" data-height="160px" id="item">
+				<a href="{{ url('/contributor/item/upload') }}">Upload</a>
+				<a href="{{ url('/contributor/item/waiting') }}">Menunggu</a>
+				<a href="{{ url('/contributor/item/reject') }}">Ditolak</a>
+				<a href="{{ url('/contributor/item/accept') }}">Diterima</a>
 			</div>
 		</a>
 		<a href="{{ url('contributor/sales') }}" class="menu-item @yield('sales') ">
