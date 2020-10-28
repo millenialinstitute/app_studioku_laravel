@@ -1,3 +1,27 @@
+.card-banner {
+    background-image: url(/assets/landing/illustrations/background_contributor.svg);
+    color: white;
+    margin: 20px 10px;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.card-banner .col:nth-child(1) {text-align: center;}
+
+.card-banner .col button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 15px;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Montserrat' , 'Arial' , sans-serif;
+    background: #60b6fb;
+    color: white;
+    border-radius: 3px;
+}
+
+
 .card-cart {
 	background: white;
     padding: 20px;

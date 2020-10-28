@@ -36,4 +36,20 @@
 </div>
 
 
+
+{{-- card contributor --}}
+<div class="card-banner row" >
+	<div class="col">
+		<img src="{{ asset('/assets/landing/illustrations/contributor_illustration.svg') }}" alt="contributor">
+	</div>
+	<div class="col">
+		<h1>Yuk Dapatkan Penghasilan dari karyamu disini!</h1>
+		<form action="{{ url('/member/dashboard/contributor') }}" method="post">
+			@csrf
+			<button>Jadi Kontributor</button>
+		</form>
+	</div>
+</div>
+
+
 @endsection

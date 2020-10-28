@@ -71,7 +71,9 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 		// --------------------------------- Member DaShboard ------------------------------
 		Route::name('member')->middleware(['member'])->prefix('member')->namespace('Member')->group(function() {
 			Route::get('dashboard' , 'DashboardController@index');
-				
+			Route::post('dashboard/contributor' , 'DashboardController@becomeContributor');
+			
+
 			Route::get('/download' , 'DownloadController@index');
 
 			Route::get('/favorite' , 'FavoriteController@index');
