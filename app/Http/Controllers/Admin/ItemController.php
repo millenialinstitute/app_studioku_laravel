@@ -79,6 +79,50 @@ class ItemController extends Controller
                                         'rejects' => $rejects,
                                     ]);
     }
+
+
+
+
+    
+    
+    /**
+      * route: /admin/item/waiting/{id}/reject
+      * method: post
+      * params: item id , rejects id
+      * description: 
+        * this method to reject item with reason list
+      * return : @redirect
+    */
+    public function waitingReject (Request $request , $id) 
+    {
+        foreach($request->except('_token') as $rejectId) {
+            ManageReject::create([
+                'item_id' => $id,
+                'reject_id' => $rejectId,
+            ]);
+        }
+        Item::where('id' , $id)->update(['status' => 'reject']);
+
+        return redirect('admin/item/waiting')->with('reject' , 'Item berhasil ditolak!');
+    }
+
+
+    
+    
+    /**
+      * route: /admin/item/waiting/{id}/accept
+      * method: put
+      * params: item id
+      * description: 
+        * this method will accept item waiting
+      * return : @redirect
+    */
+    public function waitingAccept (Request $request , $id) 
+    {
+        Item::where('id' , $id)->update(['status' => 'accept']);
+        return redirect('admin/item/waiting')->with('accept' , 'Item berhasil diterima!');
+    }
+        
             
 
     
@@ -193,31 +237,7 @@ class ItemController extends Controller
 
         return redirect(url()->previous())->with('add' , 'Data berhasil ditambahkan!');
     }
-    
 
-
-    
-    
-    /**
-      * route: /admin/item/reject/{id}/reject
-      * method: post
-      * params: item id , rejects id
-      * description: 
-        * this method to reject item with reason list
-      * return : @redirect
-    */
-    public function rejectItem (Request $request , $id) 
-    {
-        foreach($request->except('_token') as $rejectId) {
-            ManageReject::create([
-                'item_id' => $id,
-                'reject_id' => $rejectId,
-            ]);
-        }
-        Item::where('id' , $id)->update(['status' => 'reject']);
-
-        return redirect('admin/item/waiting')->with('reject' , 'Item berhasil ditolak!');
-    }
       
 
     

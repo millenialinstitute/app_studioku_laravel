@@ -36,7 +36,11 @@
 		</div>
 	</div>
 	<div class="text-right mt-3">
-		<a href="" class="btn-accept">Diterima</a>
+		<form action="{{ url('admin/item/waiting/' . $item->id . '/accept') }}" style="display: inline;" method="post">
+			@csrf
+			@method('put')
+			<button class="btn-accept">Diterima</button>
+		</form>
 		<button class="btn-reject">Ditolak</button>
 	</div>
 </div>
