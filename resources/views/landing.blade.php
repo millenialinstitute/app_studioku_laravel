@@ -2,8 +2,7 @@
 @section('title' , 'Studioku')
 @section('body')
 
-@include('components.navbar')
-@include('components.banner')
+
 
 {{-- ---------- Kategori -------------- --}}
 
@@ -43,41 +42,31 @@
 
 <section class="newest list-images mx-5">
 	<h2>Item Terbaru</h2>
-	<div class="row">
-		<div class="col"><a href="{{ url('item/detail') }}" class="card-thumbnail"><div class="image"><img src="{{ asset('assets/landing/images/example.jpg') }}" alt="example"></div><div class="detail"> <p>Rp. 100.000,00</p>  </div></a></div>
-		<div class="col"><a href="{{ url('item/detail') }}" class="card-thumbnail"><div class="image"><img src="{{ asset('assets/landing/images/example2.jpg') }}" alt="example2"></div><div class="detail"> <p>Rp. 100.000,00</p>  </div></a></div>
-		<div class="col"><a href="{{ url('item/detail') }}" class="card-thumbnail"><div class="image"><img src="{{ asset('assets/landing/images/example3.jpg') }}" alt="example3"></div><div class="detail"> <p>Rp. 100.000,00</p>  </div></a></div>
-		<div class="col"><a href="{{ url('item/detail') }}" class="card-thumbnail"><div class="image"><img src="{{ asset('assets/landing/images/example2.jpg') }}" alt="example2"></div><div class="detail"> <p>Rp. 100.000,00</p>  </div></a></div>
-		<div class="col"><a href="{{ url('item/detail') }}" class="card-thumbnail"><div class="image"><img src="{{ asset('assets/landing/images/example.jpg') }}" alt="example"></div><div class="detail"> <p>Rp. 100.000,00</p>  </div></a></div>
-	</div>
-	<div class="row">
-		<div class="col"><a href="{{ url('item/detail') }}" class="card-thumbnail"><div class="image"><img src="{{ asset('assets/landing/images/example.jpg') }}" alt="example"></div><div class="detail"> <p>Rp. 100.000,00</p>  </div></a></div>
-		<div class="col"><a href="{{ url('item/detail') }}" class="card-thumbnail"><div class="image"><img src="{{ asset('assets/landing/images/example2.jpg') }}" alt="exampl2"></div><div class="detail"> <p>Rp. 100.000,00</p>  </div></a></div>
-		<div class="col"><a href="{{ url('item/detail') }}" class="card-thumbnail"><div class="image"><img src="{{ asset('assets/landing/images/example3.jpg') }}" alt="example"></div><div class="detail"> <p>Rp. 100.000,00</p>  </div></a></div>
-		<div class="col"><a href="{{ url('item/detail') }}" class="card-thumbnail"><div class="image"><img src="{{ asset('assets/landing/images/example2.jpg') }}" alt="example"></div><div class="detail"> <p>Rp. 100.000,00</p>  </div></a></div>
-		<div class="col"><a href="{{ url('item/detail') }}" class="card-thumbnail"><div class="image"><img src="{{ asset('assets/landing/images/example.jpg') }}" alt="example"></div><div class="detail"> <p>Rp. 100.000,00</p>  </div></a></div>
-	</div>
+	@forelse($itemNewest as $chunk)
+		<div class="row">
+			@foreach($chunk as $item)
+				<div class="col"><a href="{{ url('item/detail/' . $item->id) }}" class="card-thumbnail"><div class="image" style="background: white"><img src="{{ asset('storage/photos/' . $item->image) }}" alt="example"></div><div class="detail"> <p>Rp{{ number_format($item->cost , 2 ,',' , '.') }}</p>  </div></a></div>
+			@endforeach
+		</div>
+	@empty
+		<h1>Tidak ada item</h1>
+	@endforelse
 </section>
-
 
 
 <section class="newest list-images mx-5">
 	<h2>Item Terbaru</h2>
-	<div class="row">
-		<div class="col"><a href="{{ url('item/detail') }}" class="card-thumbnail"><div class="image"><img src="{{ asset('assets/landing/images/example.jpg') }}" alt="example"></div><div class="detail"> <p>Rp. 100.000,00</p>  </div></a></div>
-		<div class="col"><a href="{{ url('item/detail') }}" class="card-thumbnail"><div class="image"><img src="{{ asset('assets/landing/images/example2.jpg') }}" alt="example2"></div><div class="detail"> <p>Rp. 100.000,00</p>  </div></a></div>
-		<div class="col"><a href="{{ url('item/detail') }}" class="card-thumbnail"><div class="image"><img src="{{ asset('assets/landing/images/example3.jpg') }}" alt="example3"></div><div class="detail"> <p>Rp. 100.000,00</p>  </div></a></div>
-		<div class="col"><a href="{{ url('item/detail') }}" class="card-thumbnail"><div class="image"><img src="{{ asset('assets/landing/images/example2.jpg') }}" alt="example2"></div><div class="detail"> <p>Rp. 100.000,00</p>  </div></a></div>
-		<div class="col"><a href="{{ url('item/detail') }}" class="card-thumbnail"><div class="image"><img src="{{ asset('assets/landing/images/example.jpg') }}" alt="example"></div><div class="detail"> <p>Rp. 100.000,00</p>  </div></a></div>
-	</div>
-	<div class="row">
-		<div class="col"><a href="{{ url('item/detail') }}" class="card-thumbnail"><div class="image"><img src="{{ asset('assets/landing/images/example.jpg') }}" alt="example"></div><div class="detail"> <p>Rp. 100.000,00</p>  </div></a></div>
-		<div class="col"><a href="{{ url('item/detail') }}" class="card-thumbnail"><div class="image"><img src="{{ asset('assets/landing/images/example2.jpg') }}" alt="exampl2"></div><div class="detail"> <p>Rp. 100.000,00</p>  </div></a></div>
-		<div class="col"><a href="{{ url('item/detail') }}" class="card-thumbnail"><div class="image"><img src="{{ asset('assets/landing/images/example3.jpg') }}" alt="example"></div><div class="detail"> <p>Rp. 100.000,00</p>  </div></a></div>
-		<div class="col"><a href="{{ url('item/detail') }}" class="card-thumbnail"><div class="image"><img src="{{ asset('assets/landing/images/example2.jpg') }}" alt="example"></div><div class="detail"> <p>Rp. 100.000,00</p>  </div></a></div>
-		<div class="col"><a href="{{ url('item/detail') }}" class="card-thumbnail"><div class="image"><img src="{{ asset('assets/landing/images/example.jpg') }}" alt="example"></div><div class="detail"> <p>Rp. 100.000,00</p>  </div></a></div>
-	</div>
+	@forelse($itemNewest as $chunk)
+		<div class="row">
+			@foreach($chunk as $item)
+				<div class="col"><a href="{{ url('item/detail/' . $item->id) }}" class="card-thumbnail"><div class="image" style="background: white"><img src="{{ asset('storage/photos/' . $item->image) }}" alt="example"></div><div class="detail"> <p>Rp{{ number_format($item->cost , 2 ,',' , '.') }}</p>  </div></a></div>
+			@endforeach
+		</div>
+	@empty
+		<h1>Tidak ada item</h1>
+	@endforelse
 </section>
+
 
 
 {{-- ---------------- Divider ----------------------- --}}

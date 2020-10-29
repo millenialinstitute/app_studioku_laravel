@@ -9,7 +9,7 @@
 	<div class="row">
 		<div class="col">
 			<div class="preview">
-				<img src=" {{ asset('storage/photos/example.jpg') }} " alt="example" class="img">
+				<img src=" {{ asset('storage/photos/' . $item->image) }} " alt="example" class="img">
 			</div>
 			<a href="{{ url('admin/item/download/' . $item->id) }}" target="_blank" class="btn-download">download file</a>
 		</div>
@@ -51,7 +51,7 @@
 		<h2>Pilih Alasan Penolakan</h2>
 	</div>
 	<div class="modal-body">
-		<form action="{{ url('admin/item/reject/' . $item->id . '/reject') }}" method="post">
+		<form action="{{ url('admin/item/waiting/' . $item->id . '/reject') }}" method="post">
 			@csrf
 			<ul>
 				@forelse($rejects as $reject)

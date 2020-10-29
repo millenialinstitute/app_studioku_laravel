@@ -107,10 +107,16 @@ class ItemController extends Controller
 
 
             /* ---------- create tag and item tag ------------ */
-                Tag::create(['name' => $request->tag]);
+                $tagStatus = Tag::where('name' , $request->tag)->get();
+                if(!$tagStatus->count()) {
+                    Tag::create(['name' => $request->tag]);
+                    $tagId = Tag::get()->last()->id;
+                } else {
+                    $tagId = $tagStatus->first()->id;
+                }
                 ItemTag::create([
                     'item_id' => $itemId,
-                    'tag_id'  => Tag::get()->last()->id,
+                    'tag_id'  => $tagId,
                 ]);
             /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 

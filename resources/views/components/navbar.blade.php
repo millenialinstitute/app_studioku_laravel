@@ -6,8 +6,13 @@
 			</div>
 		</div>
 		<div class="col text-right">
-					<a href="{{ url('/login') }}">Login</a>
-					<a href="{{ url('register') }}">Daftar</a>
+
+			@if($auth)
+				<a href="{{ url('/home') }}">Dashboard</a>
+			@else
+				<a href="{{ url('/login') }}">Login</a>
+				<a href="{{ url('register') }}">Daftar</a>
+			@endif
 		</div>
 	</div>
 </header>

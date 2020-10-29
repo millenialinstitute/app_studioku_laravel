@@ -45,6 +45,10 @@
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/info_icon.svg') }}" alt="guide">
 			<span>panduan</span>
 		</a>
+		<a href="{{ url('/') }}" class="menu-item @yield('dashboard') ">
+			<img src="{{ asset('/assets/dashboard/sidebar-icon/home_icon.svg') }}" alt="dashboard">
+			<span>Homepage</span>
+		</a>
 		<a href="{{ route('logout') }}" class="menu-item" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();" >
             <img src="{{ asset('/assets/dashboard/sidebar-icon/logout_icon.svg') }}" alt="logout">

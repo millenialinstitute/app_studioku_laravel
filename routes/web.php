@@ -18,6 +18,8 @@ Route::get('/welcome', function () {
 });
 
 Route::get('/' , 'LandingPageController@index');
+Route::get('item/detail/{id} ' , 'LandingPageController@detailItem');
+
 
 
 Auth::routes();
