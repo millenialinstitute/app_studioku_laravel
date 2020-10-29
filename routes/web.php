@@ -52,6 +52,8 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 					
 				Route::get('reject' , 'ItemController@reject');
 				Route::post('/reject' , 'ItemController@rejectStore');
+				Route::post('/reject/{id}/reject' , 'ItemController@rejectItem');
+					
 				Route::delete('reject/{id}/delete' , 'ItemController@rejectDestroy');
 					
 					

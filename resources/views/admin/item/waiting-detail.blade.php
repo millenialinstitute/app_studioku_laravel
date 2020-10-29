@@ -18,19 +18,19 @@
 				@csrf
 				<div class="item-data">
 					<p class="label">Judul</p>
-					<p class="value">Flat Illustration</p>
+					<p class="value">{{ $item->title }}</p>
 				</div>
 				<div class="item-data">
 					<p class="label">Kategori</p>
-					<p class="value">Background</p>
+					<p class="value">{{ $item->category->name }}</p>
 				</div>
 				<div class="item-data">
 					<p class="label">Tag</p>
-					<p class="value">logo</p>
+					<p class="value">{{ $item->tag->first()->tag->name }}</p>
 				</div>
 				<div class="item-data">
 					<p class="label">Harga</p>
-					<p class="value">Rp.200.000,00</p>
+					<p class="value">Rp{{ number_format($item->cost , 2 ,',', '.') }}</p>
 				</div>
 			</form>
 		</div>
@@ -47,14 +47,17 @@
 		<h2>Pilih Alasan Penolakan</h2>
 	</div>
 	<div class="modal-body">
-		<ul>
-			@forelse($rejects as $reject)
-				<li><input type="checkbox" value="{{ $reject->id }}">{{ $reject->title }}</li>
-			@empty
-				<li>Tidak ada data!</li>
-			@endforelse
-		</ul>
-		<button>Kirim</button>
+		<form action="{{ url('admin/item/reject/' . $item->id . '/reject') }}" method="post">
+			@csrf
+			<ul>
+				@forelse($rejects as $reject)
+					<li><input type="checkbox" name="reason_{{ $reject->id }}" value="{{ $reject->id }}">{{ $reject->title }}</li>
+				@empty
+					<li>Tidak ada data!</li>
+				@endforelse
+			</ul>
+			<button>Kirim</button>
+		</form>
 	</div>
 </div>	
 

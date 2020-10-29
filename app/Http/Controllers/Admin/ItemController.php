@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Category;
 use App\Item;
 use App\ItemReject;
+use App\ManageReject;
 
 class ItemController extends Controller
 {
@@ -194,6 +195,30 @@ class ItemController extends Controller
     }
     
 
+
+    
+    
+    /**
+      * route: /admin/item/reject/{id}/reject
+      * method: post
+      * params: item id , rejects id
+      * description: 
+        * this method to reject item with reason list
+      * return : @redirect
+    */
+    public function rejectItem (Request $request , $id) 
+    {
+        foreach($request->except('_token') as $rejectId) {
+            ManageReject::create([
+                'item_id' => $id,
+                'reject_id' => $rejectId,
+            ]);
+        }
+        Item::where('id' , $id)->update(['status' => 'reject']);
+
+        return redirect('admin/item/waiting')->with('reject' , 'Item berhasil ditolak!');
+    }
+      
 
     
     
