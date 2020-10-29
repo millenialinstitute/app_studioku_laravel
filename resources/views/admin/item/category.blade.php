@@ -20,7 +20,7 @@
 					<tr>
 						<td>{{ $loop->iteration }}</td>
 						<td class="text-left">{{ $category->name }}</td>
-						<td>0</td>
+						<td> {{ $category->item->where('status' , 'accept')->count() }} </td>
 						<td class="action">
 							<div>
 								<form action="{{ url('admin/item/category/' . $category->id . '/delete') }}" method="post">

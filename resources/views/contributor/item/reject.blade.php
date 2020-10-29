@@ -42,7 +42,7 @@
 				@endforeach
 			</div>
 		</div>
-		<form action="{{  url('contributor/item/waiting/' . $item->id . '/delete') }}" method="post">
+		<form action="{{  url('contributor/item/destroy/' . $item->id ) }}" method="post">
 			@csrf
 			@method('delete')
 			<button>

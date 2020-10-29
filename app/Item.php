@@ -5,8 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Contributor;
 use App\Category;
-use App\ItemTag;
 use App\ManageReject;
+use App\ItemTag;
+use App\ItemFile;
 
 class Item extends Model
 {
@@ -30,5 +31,10 @@ class Item extends Model
     public function reject ( ) 
     {
         return $this->hasMany(ManageReject::class , 'item_id');
+    }
+
+    public function file ( ) 
+    {
+        return $this->hasMany(ItemFile::class , 'item_id');
     }
 }

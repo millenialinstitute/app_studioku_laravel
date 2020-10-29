@@ -73,10 +73,10 @@
 			<img src="{{ asset('storage/users/' . $item->contributor->user->image) }}" alt="user" class="img">
 		</div>
 		<div class="action">
-			<a href="{{ url('admin/item/detail' . $item->id) }}" class="btn-icon bg-warn">
+			<a href="{{ url('admin/item/detail/' . $item->id) }}" class="btn-icon bg-warn">
 				<img src="{{ asset('/assets/dashboard/icons/detail_icon.svg') }}" alt="detail">
 			</a>
-			<form action="{{ url('admin/item/delete/' . $item->id) }}" method="post" style="display: inline-block;">
+			<form action="{{ url('admin/item/destroy/' . $item->id) }}" method="post" style="display: inline-block;">
 				@csrf
 				@method('delete')
 				<button class="btn-icon bg-danger">

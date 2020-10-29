@@ -163,25 +163,6 @@ class ItemController extends Controller
             'items' => $items,
         ]);
     }
-
-
-
-    
-    
-    /**
-      * route: /contributor/item/waiting/{id}/delete
-      * method: delete
-      * params: id
-      * description: 
-        * this method for delete row in table item where status waiting
-      * return : @redirect
-    */
-    public function waitingDelete (Request $request , $id) 
-    {
-        Item::destroy($id);
-
-        return redirect(url()->previous())->with('delete' , 'Data berhasil dihapus');
-    }
         
 
     
@@ -231,6 +212,30 @@ class ItemController extends Controller
                                             'items' => $items
                                         ]);
     }
+
+
+
+    
+    
+    /**
+      * route: /contributor/item/destroy/{id}
+      * method: delete
+      * params: id
+      * description: 
+        * this method will destroy item and file item
+      * return : @redirect
+    */
+    public function destroyItem (Request $request , $id) 
+    {
+        $item = Item::find($id);
+        $file = $item->file;
+        $preview = 'public/photos/' . $file->where('type' , 'preview')->first()->name;
+        $fileItem = 'public/items/' . $file->where('type', 'file')->first()->name;
+        Storage::delete([$preview , $fileItem]);
+        Item::destroy($id);
+        return redirect(url()->previous())->with('delete' , 'Item berhasil dihapus!');
+    }
+        
     	
     	
     	

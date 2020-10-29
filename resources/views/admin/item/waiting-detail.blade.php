@@ -11,7 +11,7 @@
 			<div class="preview">
 				<img src=" {{ asset('storage/photos/example.jpg') }} " alt="example" class="img">
 			</div>
-			<a href="" class="btn-download">download file</a>
+			<a href="{{ url('admin/item/download/' . $item->id) }}" target="_blank" class="btn-download">download file</a>
 		</div>
 		<div class="col-2">
 			<form action="">

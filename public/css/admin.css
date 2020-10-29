@@ -157,11 +157,13 @@ table.list-category td.action div {
     transform: translateX(-50%) translateY(20px);
     transition: .6s;
     opacity: 0;
+    pointer-events: none;
 }
 
 .modal.active {
     transform: translateX(-50%) translateY(0px);
     opacity: 1;
+    pointer-events: all;
 }
 
 

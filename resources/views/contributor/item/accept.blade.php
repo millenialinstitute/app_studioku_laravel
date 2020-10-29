@@ -39,7 +39,7 @@
 				<span class="price"><img src="{{ asset('/assets/dashboard/icons/price_icon.svg') }}" alt="price">Rp{{ number_format($item->cost, 2 ,',' , '.') }}</span>
 			</div>
 		</div>
-		<form action="{{  url('contributor/item/waiting/' . $item->id . '/delete') }}" method="post">
+		<form action="{{  url('contributor/item/destroy/' . $item->id ) }}" method="post">
 			@csrf
 			@method('delete')
 			<button>

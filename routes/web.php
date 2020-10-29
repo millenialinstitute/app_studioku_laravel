@@ -58,6 +58,9 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 
 				Route::delete('reject/{id}/delete' , 'ItemController@rejectDestroy');
 					
+				Route::get('/download/{id}' , 'ItemController@itemDownload');
+				Route::delete('/destroy/{id}' , 'ItemController@itemDestroy');
+					
 					
 			});
 
@@ -79,11 +82,13 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 				Route::post('/upload' , 'ItemController@uploadStore');
 					
 				Route::get('/waiting' , 'ItemController@waiting');
-				Route::delete('waiting/{id}/delete' , 'ItemController@waitingDelete');
 					
 
 				Route::get('reject' , 'ItemController@reject');
 				Route::get('/accept' , 'ItemController@accept');
+
+				Route::delete('/destroy/{id}' , 'ItemController@destroyItem');
+					
 			});
 
 			Route::get('/sales' , 'SalesController@index');

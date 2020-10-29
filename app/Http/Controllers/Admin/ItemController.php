@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Category;
+use App\Tag;
 use App\Item;
 use App\ItemReject;
 use App\ManageReject;
+
 
 class ItemController extends Controller
 {
@@ -138,7 +141,11 @@ class ItemController extends Controller
     */
     public function tag ( ) 
     {
-    	return view('admin.item.tag');
+        $tags = Tag::latest()->get();
+    	return view('admin.item.tag' , [
+                                    'user' => Auth::user(),
+                                    'tags' => $tags,
+                                ]);
     }
 
 
@@ -258,8 +265,51 @@ class ItemController extends Controller
         return redirect(url()->previous())->with('delete', 'Data berhasil dihapus!');
     }
         
-    	
-    	
-    	
-    	
+    
+
+    
+    
+    /**
+      * route: /admin/item/download/{id}
+      * method: post
+      * params: id
+      * description: 
+        * this method will download item file
+      * return : @redirect
+    */
+    public function itemDownload (Request $request , $id) 
+    {
+        $item = Item::find($id);
+        $file = $item->file->where('type', 'file')->first();
+        $fileItem = 'public/items/' . $file->name;
+        $extension = $file->extension;
+
+        return Storage::download($fileItem , $item->title . '.' . $extension);
+        // return redirect(url()->previous())->with('download' , 'Item berhasil didownload!');
+    }
+
+
+
+    
+    
+    /**
+      * route: /admin/item/destroy/{id}
+      * method: delete
+      * params: id
+      * description: 
+        * this method will destroy row item with file there
+      * return : @redirect
+    */
+    public function itemDestroy (Request $request , $id) 
+    {
+        $item = Item::find($id);
+        $file = $item->file;
+        $preview = 'public/photos/' . $file->where('type' , 'preview')->first()->name;
+        $fileItem = 'public/items/' . $file->where('type', 'file')->first()->name;
+        Storage::delete([$preview , $fileItem]);
+        Item::destroy($id);
+        return redirect(url()->previous())->with('delete' , 'Item berhasil dihapus!');
+    }
+      
+        
 }

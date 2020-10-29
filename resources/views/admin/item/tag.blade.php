@@ -3,7 +3,14 @@
 @section('item' , 'active')
 @section('body')
 
-<h1>Item tag</h1>
+<h3 class="title-section">Daftar Tag</h3>
+<ul>
+	@forelse($tags as $tag)
+		<li>{{ $tag->name }}</li>
+	@empty
+		<li>Tidak ada tag</li>
+	@endforelse
+</ul>
 
 @endsection
 	
