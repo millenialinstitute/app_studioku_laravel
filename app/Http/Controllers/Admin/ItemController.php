@@ -22,10 +22,11 @@ class ItemController extends Controller
 	*/
     public function all ( ) 
     {
-        $itemTotal = Item::where('status' , 'accept')->get()->count();
+        $items = Item::where('status' , 'accept')->latest()->get();
+        $itemTotal = $items->count();
         $itemWait = Item::where('status' , 'waiting')->get()->count();
-
     	return view('admin.item.all' , [
+                                'items'     => $items,
                                 'itemTotal' => $itemTotal,
                                 'itemWait'  => $itemWait
                           ]);

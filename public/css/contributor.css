@@ -168,3 +168,21 @@
 .waiting-item form button img {
     width: 30px;
 }
+
+
+.reason-list {
+    margin-top: 15px;
+}
+
+.reason-list span {
+    margin-right: 10px;
+    color: #ea4642;
+    display: inline-block;
+    line-height: 20px;
+}
+
+.reason-list span img {
+    width: 20px;
+    transform: translateY(5px);
+    margin-right: 5px;
+}

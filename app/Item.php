@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Contributor;
 use App\Category;
 use App\ItemTag;
+use App\ManageReject;
 
 class Item extends Model
 {
@@ -24,5 +25,10 @@ class Item extends Model
     public function tag ( ) 
     {
     	return $this->hasMany(ItemTag::class , 'item_id');
+    }
+
+    public function reject ( ) 
+    {
+        return $this->hasMany(ManageReject::class , 'item_id');
     }
 }

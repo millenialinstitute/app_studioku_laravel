@@ -196,7 +196,15 @@ class ItemController extends Controller
     */
     public function reject ( ) 
     {
-    	return view('contributor.item.reject');
+        $contributorId = Auth::user()->contributor->id;
+        $items = Item::where('contributor_id' , $contributorId)
+                        ->where('status' , 'reject')
+                        ->latest()
+                        ->get();
+
+    	return view('contributor.item.reject' , [
+                                            'items' => $items,
+                                        ]);
     }
 
 
@@ -212,7 +220,16 @@ class ItemController extends Controller
     */
     public function accept ( ) 
     {
-    	return view('contributor.item.accept');
+        $contributorId = Auth::user()->contributor->id;
+        $items = Item::where('contributor_id' , $contributorId)
+                        ->where('status' , 'accept')
+                        ->latest()
+                        ->get();
+
+
+    	return view('contributor.item.accept' , [
+                                            'items' => $items
+                                        ]);
     }
     	
     	
