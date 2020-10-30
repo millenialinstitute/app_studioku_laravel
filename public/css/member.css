@@ -144,3 +144,64 @@
     background: #60b6fb;
     margin: 10px auto;
 }
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 15px 10px;
+}
+
+.card-profile .profile {
+    width: 70%;
+    margin: 10px auto;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-profile h2 {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.card-profile h3 {
+    color: #a8afcc;
+    text-align: center;
+    margin-top: -5px;
+    font-size: 14px;
+    text-transform: inherit;
+}
+
+.card.list-data h1.value {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 10px auto;
+}
+
+.card.list-data h4.key {
+    font-size: 17px;
+    color: #a8afcc;
+}
+
+.card.biodata .row {
+    margin: 10px auto;
+}
+
+.card.biodata .row .col-2 , .card.biodata .row .col {
+    font-size: 15px;
+}
+
+.card.biodata .row .col-2 {
+    color: #a8afcf;
+}
+
+.card.buy {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: #60b6fb;
+}
