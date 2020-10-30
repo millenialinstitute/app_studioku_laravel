@@ -309,7 +309,9 @@ section.blogs .row .col {
     font-size: 15px;
 }
 
-.menu-image .col:nth-child(1) {
+.menu-image .col:nth-child(1) form button {
+    background: transparent;
+    outline: none;
     color: #f67280;
 }
 

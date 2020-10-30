@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Item;
 use App\Collection;
+use App\ItemLike;
 
 class LandingPageController extends Controller
 {
@@ -52,12 +53,45 @@ class LandingPageController extends Controller
             $collections = [];
         }
 
+        $like = ItemLike::where('item_id' , $id)
+                            ->where('user_id' , $user->id)
+                            ->get()->count();
+
     	return view('item-detail'  , [
                                     'auth'        => Auth::check(),
                                     'item'        => $item,
                                     'collections' => $collections,
+                                    'like'        => $like ? true : false,
 								]);
     }
 
+
+
+    
+    
+    /**
+      * route: likeItem
+      * method: post
+      * params: id
+      * description: 
+        * this method for like item
+      * return : @redirect
+    */
+    public function likeItem (Request $request , $id) 
+    {
+        if(Auth::check()) {
+            $result = ItemLike::where('item_id' , $id)
+                            ->where('user_id' , Auth::user()->id)
+                            ->get()->count();
+            if(!$result) {
+                ItemLike::create([
+                    'item_id' => $id,
+                    'user_id' => Auth::user()->id,
+                ]);
+            }
+        } 
+        return redirect(url()->previous())->with('like' , 'Item disukai!');
+    }
+        
 
 }

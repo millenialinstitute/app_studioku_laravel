@@ -3,6 +3,8 @@
 @section('Item' , 'active')
 @section('body')
 
+
+
 <div class="title-image">
 	<h2>{{ $item->title }}</h2>
 	<h3 class="sold">50 Terjual</h3>
@@ -14,8 +16,17 @@
 		</div>
 		<div class="menu-image row">
 			<div class="col">
-				<img src="{{ asset('/assets/landing/icons/like_icon_red.svg') }}" alt="like">
-				<p>12 suka</p>
+				<form action="{{ url('/item/detail/' . $item->id .'/like') }}" method="post">
+					@csrf
+					<button>
+						@if($like)
+							<img src="{{ asset('/assets/landing/icons/liked_icon.svg') }}" alt="like">
+						@else
+							<img src="{{ asset('/assets/landing/icons/like_icon_red.svg') }}" alt="like">
+						@endif
+						<p>12 suka</p>
+					</button>
+				</form>
 			</div>
 			<div class="col">
 				<img src="{{ asset('/assets/landing/icons/share_icon.svg') }}" alt="share">
