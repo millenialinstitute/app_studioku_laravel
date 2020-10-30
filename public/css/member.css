@@ -55,7 +55,11 @@
     font-weight: bold;
 }
 
-.card-cart-small .col button , .card-cart-small .col .btn-pay {
+.card-cart-small .col button , 
+.card-cart-small .col .btn-pay , 
+.bank-item a.btn-confirm , 
+.payment-confirm button ,
+.payment-confirm .btn-back {
     font-size: 15px;
     color: white;
     background: rgb(96 182 251);
@@ -75,6 +79,25 @@
 
 .cart-list-item {
 	margin: 20px 30px;
+}
+
+.cart-list-item.payment-cart {
+    margin: 10px;
+}
+
+.cart-list-item.payment-cart .cart-item {
+    align-items: flex-start;
+}
+
+.cart-list-item.payment-cart .cart-item img {
+    width: 35%;
+    margin-right: 10px;
+}
+
+.cart-list-item.payment-cart .cart-item p.cost {
+    color: #a8afcf;
+    font-size: 15px;
+    margin-top: 5px;
 }
 
 .cart-list-item button {
@@ -204,4 +227,73 @@
     align-items: center;
     justify-content: flex-start;
     color: #60b6fb;
+}
+
+
+.data-member .row {
+    line-height: 23px;
+}
+
+.data-member .col , .data-member .col-2 , .info-profile.card p {
+    font-size: 13px;
+}
+
+.data-member .col-2{
+    color: #a8afcf;
+}
+
+.card.bank-item {
+    padding: 8px 20px;
+}
+
+.bank-item h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 5px auto;
+}
+
+.bank-item p {
+    font-size: 15px;
+}
+
+.bank-item a.btn-confirm , .payment-confirm button , .payment-confirm .btn-back {
+    width: fit-content;
+    display: inline-block;
+}
+
+.payment-confirm .form-group {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.payment-confirm .form-group label {
+    width: 25%;
+}
+
+.payment-confirm .form-group input {
+    width: 75%;
+    border: 1px solid silver;
+    width: 70%;
+    border-radius: 5px;
+    color: rgb(151, 156, 175);
+}
+
+.payment-confirm .form-group input[disabled] {
+    border: none;
+    width: 70%;
+    background: rgb(245, 246, 250);
+    border-radius: 5px;
+    color: rgb(151, 156, 175);
+}
+
+.payment-confirm .btn-back {
+    background: white;
+    border: 2px solid rgb(96 182 251);
+    color: rgb(96 182 251);
+    transition: .4s;
+}
+
+.payment-confirm .btn-back:hover {
+    background: rgb(96 182 251 / 19%);
 }

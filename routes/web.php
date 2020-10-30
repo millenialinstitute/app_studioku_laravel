@@ -127,11 +127,17 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 				
 				
 
-			Route::get('cart' , 'CartController@index');
-			Route::delete('/cart/delete' , 'CartController@removeAllItem');
-			Route::get('/cart/payment' , 'CartController@payment');
-			Route::post('/cart/item/{id}/add' , 'CartController@addItem');
-			Route::delete('/cart/item/{id}/delete' , 'CartController@removeItem');
+			// ++ cart ++
+			Route::name('cart')->prefix('cart')->group(function() {
+				Route::get('/' , 'CartController@index');
+				Route::delete('/delete' , 'CartController@removeAllItem');
+				Route::get('/payment' , 'CartController@payment');
+				Route::get('/payment/{id}' , 'CartController@paymentConfirm');
+				Route::post('/payment/{id}' , 'CartController@paymentSubmit');
+
+				Route::post('/item/{id}/add' , 'CartController@addItem');
+				Route::delete('/item/{id}/delete' , 'CartController@removeItem');
+			});
 			
 
 				
