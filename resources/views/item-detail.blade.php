@@ -54,7 +54,10 @@
 			<a href="" class="link-info">info lebih lanjut</a>
 
 			<h1 class="cost">Rp{{ number_format($item->cost , 2 ,',' ,'.') }}</h1>
-			<a href="" class="btn-cart">Masukkan Keranjang</a>
+			<form action="{{ url('member/cart/item/' . $item->id .'/add') }}" style="display: block;" method="post">
+				@csrf
+				<button style="display: block;" class="btn-cart">Masukkan Keranjang</button>
+			</form>
 			<a href="" class="btn-buy">Beli Sekarang</a>
 		</div>
 	</div>
@@ -78,7 +81,8 @@
 				</ul>
 				<div class="text-center">
 					<input type="hidden" name="collections">
-					<button>Simpan</button>
+					<button type="button">Batal</button>
+					<button type="submit">Simpan</button>
 				</div>
 			</form>
 		</div>

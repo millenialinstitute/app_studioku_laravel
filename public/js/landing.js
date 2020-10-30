@@ -2,11 +2,15 @@ const btnCollect = document.getElementById('btnCollect');
 const modalCollect = document.getElementById('modalCollect');
 const collections = modalCollect.querySelectorAll('ul li');
 const inputCollect = modalCollect.querySelector('form input[name="collections"]')
+const btnClose = modalCollect.querySelector('button[type="button"]');
 
 btnCollect.addEventListener('click' , function() {
-	modalCollect.classList.toggle('active');
+	modalCollect.classList.add('active');
 })
 
+btnClose.addEventListener('click' , ()=> {
+	modalCollect.classList.remove('active');
+})
 
 const listCollect = [];
 collections.forEach(collection => {

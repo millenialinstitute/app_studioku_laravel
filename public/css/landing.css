@@ -281,6 +281,8 @@ section.blogs .row .col {
 .data-image .btn-cart {
     background: #5ec15e;
     color: white;
+    width: 95%;
+    margin: auto;
 }
 
 .data-image .btn-buy {
@@ -390,4 +392,16 @@ section.blogs .row .col {
     color: white;
     text-transform: uppercase;
     margin-top: 20px;
+}
+
+.modal#modalCollect form button[type="button"] {
+    background: white;
+    color: #6fc6ff;
+    border: 2px solid #6fc6ff;
+    outline: #6fc6ff;
+    transition: .5s;
+}
+
+.modal#modalCollect form button[type="button"]:hover {
+    background: #6fc6ff52;
 }

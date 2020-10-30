@@ -121,6 +121,11 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 				
 
 			Route::get('cart' , 'CartController@index');
+			Route::delete('/cart/delete' , 'CartController@removeAllItem');
+			Route::post('/cart/item/{id}/add' , 'CartController@addItem');
+			Route::delete('/cart/item/{id}/delete' , 'CartController@removeItem');
+			
+
 				
 			Route::get('/profile' , 'ProfileController@index');
 				
