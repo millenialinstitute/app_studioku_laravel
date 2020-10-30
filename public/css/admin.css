@@ -184,3 +184,43 @@ table.list-category td.action div {
     display: block;
     background: #dc5353;
 }
+
+
+.card-bank {
+    background: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    position: relative;
+    margin: 20px auto;
+}
+
+.card-bank button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+    cursor: pointer;
+    background: transparent;
+    transition: .4s;
+}
+
+.card-bank button:hover {
+    transform: scale(.95);
+}
+
+.card-bank h3 {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.card-bank h3 , .card-bank h4 {
+    margin: 5px auto;
+}
+
+.card-bank h4 , .card-bank p {
+    font-size: 15px;
+}
+
+.card-bank h4 {
+    color: silver;
+}

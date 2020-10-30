@@ -16,7 +16,7 @@
 	<div class="col-3">
 		<div class="jc-b ai-c card-cart-small">
 			<div class="col">
-				<p> <img src="{{ asset('/assets/dashboard/icons/cart_icon_orange.svg') }}" alt="cart"> 3 item</p>
+				<p> <img src="{{ asset('/assets/dashboard/icons/cart_icon_orange.svg') }}" alt="cart"> {{ $items->count() }} item</p>
 			</div>
 			<div class="col">
 				<form action="{{ url('member/cart/delete/') }}" method="post">
@@ -26,9 +26,14 @@
 				</form>
 			</div>
 		</div>
-
+		@php
+			$totalPayment = 0;
+		@endphp
 		@forelse($items as $item)
-			@php $item = $item->item @endphp
+			@php 
+				$item = $item->item;
+				$totalPayment += $item->cost; 
+			@endphp
 			<div class="cart-list-item">
 				<div class="cart-item">
 					<img src="{{ asset('storage/photos/' . $item->image) }}" alt="example">
@@ -57,10 +62,10 @@
 
 		<div class="jc-b ai-c card-cart-small">
 			<div class="col">
-				<p> <img src="{{ asset('/assets/dashboard/icons/payment_icon.svg') }}" alt="cart"> 3 item</p>
+				<p> <img src="{{ asset('/assets/dashboard/icons/payment_icon.svg') }}" alt="cart">Rp{{ number_format($totalPayment , 2 ,',','.') }}</p>
 			</div>
 			<div class="col">
-				<button><img src="{{ asset('/assets/dashboard/icons/dollar_icon.svg') }}" alt="dolar">Bayar Sekarang</button>
+				<a href="{{ url('member/cart/payment') }}" class="btn-pay" style="box-sizing: border-box;"><img src="{{ asset('/assets/dashboard/icons/dollar_icon.svg') }}" alt="dolar">Bayar Sekarang</a>
 			</div>
 		</div>
 	</div>

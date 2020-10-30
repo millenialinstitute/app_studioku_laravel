@@ -70,6 +70,13 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 
 			Route::get('/earning' , 'EarningController@index');
 
+			// ++ payment ++
+			Route::name('payment')->prefix('payment')->group(function() {
+				Route::get('/method' , 'PaymentController@methodPayment');
+				Route::post('method/create' , 'PaymentController@methodStore');
+				Route::delete('method/delete/{id}' , 'PaymentController@methodDelete');
+			});
+
 			Route::get('/sales' , 'SalesController@index');
 		});
 		// =============================== Admin Dashbord ========================================
@@ -122,6 +129,7 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 
 			Route::get('cart' , 'CartController@index');
 			Route::delete('/cart/delete' , 'CartController@removeAllItem');
+			Route::get('/cart/payment' , 'CartController@payment');
 			Route::post('/cart/item/{id}/add' , 'CartController@addItem');
 			Route::delete('/cart/item/{id}/delete' , 'CartController@removeItem');
 			

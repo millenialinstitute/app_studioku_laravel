@@ -55,7 +55,7 @@
     font-weight: bold;
 }
 
-.card-cart-small .col button {
+.card-cart-small .col button , .card-cart-small .col .btn-pay {
     font-size: 15px;
     color: white;
     background: rgb(96 182 251);

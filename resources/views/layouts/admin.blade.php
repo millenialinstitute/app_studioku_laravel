@@ -54,9 +54,15 @@
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/sell_icon.svg') }}" alt="sales">
 			<span>penjualan</span>
 		</a>
-		<a href="{{ url('admin/payment') }}" class="menu-item @yield('payment') ">
-			<img src="{{ asset('/assets/dashboard/sidebar-icon/cart_icon.svg') }}" alt="payment">
+		<a href="#payment" data-target="#payment" class="menu-item btn-collapse @yield('payment') ">
+			<img src="{{ asset('/assets/dashboard/sidebar-icon/earning_icon.svg') }}" alt="payment">
 			<span>pembayaran</span>
+			<div class="menu-collapse" data-height="160px" id="payment">
+				<a href="{{ url('/admin/payment/method') }}">Metode</a>
+				<a href="{{ url('/admin/payment/confirm') }}">Konfirmasi</a>
+				<a href="{{ url('/admin/payment/accept') }}">Diterima</a>
+				<a href="{{ url('/admin/payment/reject') }}">Ditolak</a>
+			</div>
 		</a>
 		<a href="{{ url('/admin/statistic') }}" class="menu-item @yield('statistic') ">
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/statistic_icon.svg') }}" alt="statistik">

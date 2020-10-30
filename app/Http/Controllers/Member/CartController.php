@@ -105,9 +105,26 @@ class CartController extends Controller
         CartItem::where('cart_id' , $cartId)
             ->where('item_id' , $id)
             ->delete();
-            
+
         return redirect(url()->previous())->with('delete' , 'Item berhasil dihapus!');
     }
+
+
+    
+    
+    /**
+      * route: /member/cart/payment
+      * method: get
+      * params: null
+      * description: 
+        * this method for display payment method
+      * return : @redirect
+    */
+    public function payment () 
+    {
+        return 'Select Payment';
+    }
+        
         
         
     	
