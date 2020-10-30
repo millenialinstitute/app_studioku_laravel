@@ -114,6 +114,8 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 				
 			Route::get('collection' , 'CollectionController@index');
 			Route::post('collection/create' , 'CollectionController@store');
+			Route::post('collection/item/{id}/add' , 'CollectionController@additem');
+				
 				
 
 			Route::get('cart' , 'CartController@index');

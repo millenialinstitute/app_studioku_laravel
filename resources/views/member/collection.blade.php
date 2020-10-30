@@ -8,7 +8,7 @@
 		<h3 class="title-section">Daftar Koleksi</h3>
 		<ul>
 			@forelse($collections as $collect)
-				<li>{{ $collect->name }}</li>
+				<li>{{ $collect->name }} : {{ $collect->item->count() }} </li>
 			@empty
 				<li>Tidak ada koleksi</li>
 			@endforelse

@@ -22,7 +22,7 @@
 				<p>Share</p>
 			</div>
 			<div class="col-3">
-				<button class="btn-collect">
+				<button class="btn-collect" id="btnCollect">
 					<img src="{{ asset('/assets/landing/icons/collect_icon.svg') }}" alt="collect">
 					<p>Simpan ke Koleksi</p>
 				</button>
@@ -48,6 +48,31 @@
 		</div>
 	</div>
 </div>
+
+
+<div class="modal row" id="modalCollect">
+		<div class="col row" style="align-items: center">
+			<img src="{{ asset('storage/photos/' . $item->image) }}" alt="{{ $item->title }}" style="width: 100%">
+		</div>
+		<div class="col">
+			<form action="{{ url('/member/collection/item/' . $item->id . '/add') }}" method="post">
+				@csrf
+				<h2>Pilih Koleksi</h2>
+				<ul>
+					@forelse($collections as $collection)
+						<li data-id=" {{ $collection->id }} " >{{ $collection->name }}</li>
+					@empty
+						<li>Tidak ada data!</li>
+					@endforelse
+				</ul>
+				<div class="text-center">
+					<input type="hidden" name="collections">
+					<button>Simpan</button>
+				</div>
+			</form>
+		</div>
+</div>
+
 
 @endsection
 	

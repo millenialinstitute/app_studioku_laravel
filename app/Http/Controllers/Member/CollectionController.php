@@ -55,5 +55,37 @@ class CollectionController extends Controller
     	return redirect(url()->previous())->with('add' , 'Koleksi berhasil ditambahkan!');
     		
     }
+
+
+    
+    
+    /**
+      * route: /member/collection/item/{id}/add
+      * method: post
+      * params: item id
+      * description: 
+        * this method for adding item into collection
+      * return : @redirect
+    */
+    public function addItem (Request $request , $id) 
+    {
+        $collections = json_decode($request->collections);
+        foreach ($collections as $collectId) {
+            $check = CollectItem::where('collection_id' , $collectId)
+                                ->where('item_id' , $id)
+                                ->get()
+                                ->count();
+            if(!$check) {
+                CollectItem::create([
+                    'collection_id' => $collectId,
+                    'item_id'       => $id
+                ]);
+            }
+        }
+
+        return redirect(url()->previous())->with('add' , 'Item berhasil ditambahkan');
+            
+    }
+        
     	
 }

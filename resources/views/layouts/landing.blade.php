@@ -15,5 +15,8 @@
 	@include('components.banner')
 	@yield('body')
 
+
+	<script src="{{ asset('/js/landing.js') }}"></script>
+
 </body>
 </html>

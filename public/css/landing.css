@@ -154,7 +154,7 @@ section.divider {
     color: white;
     padding: 60px 20px;
 }
-section.divider a.button-style {
+section.divider a.button-style , .modal#modalCollect button{
     padding: 10px 20px;
     margin: 10px auto;
     background: #6FC6FF;
@@ -331,4 +331,61 @@ section.blogs .row .col {
 .menu-image .btn-collect p {
     font-size: 20px;
     margin-left: 10px;
+}
+
+
+
+.modal#modalCollect {
+    position: fixed;
+    overflow: hidden;
+    width: 80%;
+    top: 20%;
+    background: white;
+    box-shadow: 5px 5px 20px silver;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 60%;
+    border-radius: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50% ,30px);
+    transition: 1s;
+}
+
+.modal#modalCollect.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translate(-50% , 0px);
+}
+
+.modal#modalCollect .col:nth-child(1) {
+    background: #f7f7f7;
+}
+
+.modal form {
+    margin: 40px;
+}
+
+.modal#modalCollect form ul li {
+    border: 2px solid #6fc6ff;
+    color: #6fc6ff;
+    padding: 10px 20px;
+    font-size: 15px;
+    text-transform: capitalize;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.modal#modalCollect form ul li.active {
+    background: #6fc6ff;
+    color: white;
+}
+
+.modal#modalCollect form button {
+    font-size: 16px;
+    color: white;
+    text-transform: uppercase;
+    margin-top: 20px;
 }

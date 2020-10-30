@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Item;
+use App\Collection;
 
 class LandingPageController extends Controller
 {
@@ -43,11 +44,20 @@ class LandingPageController extends Controller
     public function detailItem (Request $request , $id) 
     {
     	$item = Item::find($id);
-    	
+        $user = Auth::user();
+        if($user) {
+            $memberId = $user->member->id;
+            $collections = Collection::where('member_id' , $memberId)->get();
+        } else {
+            $collections = [];
+        }
+
     	return view('item-detail'  , [
-    								'auth' => Auth::check(),
-    								'item' => $item,
+                                    'auth'        => Auth::check(),
+                                    'item'        => $item,
+                                    'collections' => $collections,
 								]);
     }
-    		
+
+
 }
