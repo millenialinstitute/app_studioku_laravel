@@ -102,7 +102,7 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 
 
 
-		// --------------------------------- Member DaShboard ------------------------------
+		// --------------------------------- Member Dashboard ------------------------------
 		Route::name('member')->middleware(['member'])->prefix('member')->namespace('Member')->group(function() {
 			Route::get('dashboard' , 'DashboardController@index');
 			Route::post('dashboard/contributor' , 'DashboardController@becomeContributor');
@@ -113,6 +113,8 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 			Route::get('/favorite' , 'FavoriteController@index');
 				
 			Route::get('collection' , 'CollectionController@index');
+			Route::post('collection/create' , 'CollectionController@store');
+				
 
 			Route::get('cart' , 'CartController@index');
 				

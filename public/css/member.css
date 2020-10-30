@@ -112,3 +112,30 @@
     margin: 0px;
     cursor: pointer;
 }
+
+.card-form {
+    background: white;
+    margin-right: 30px;
+    box-sizing: border-box;
+    padding: 15px 8px;
+    border-radius: 10px;
+}
+
+.card-form .form-control {
+    width: 85%;
+    border-radius: 5px;
+}
+
+.card-form button {
+    color: white;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: auto;
+}
+
+.card-form .btn-save {
+    background: #60b6fb;
+    margin: 10px auto;
+}

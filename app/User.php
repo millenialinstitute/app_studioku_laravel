@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\LevelUser;
 use App\Contributor;
+use App\Member;
 
 class User extends Authenticatable
 {
@@ -48,4 +49,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Contributor::class , 'user_id');
     }
+
+    public function member () {
+        return $this->hasOne(Member::class , 'user_id');
+    }
+        
 }
