@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Member;
 use App\Cart;
+use App\Bank;
 
 class ProofPayment extends Model
 {
@@ -18,5 +19,11 @@ class ProofPayment extends Model
     public function cart () 
     {
     	return $this->belongsTo(Cart::class , 'cart_id');
+    }
+
+    public function bankTarget () 
+    {
+    	return $this->belongsTo(Bank::class , 'bank_id');
+    		
     }
 }

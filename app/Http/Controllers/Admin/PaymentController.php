@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Bank;
+use App\ProofPayment;
 
 class PaymentController extends Controller
 {
@@ -76,6 +78,128 @@ class PaymentController extends Controller
     	
     	return redirect(url()->previous())->with('delete' , 'Data berhasil dihapus!');
     }
-    	
+
+
+    
+    
+    /**
+      * route: /admin/payment/confirm
+      * method: get
+      * params: null
+      * description: 
+        * this mehtod will display list payment to confirm
+      * return : @view
+    */
+    public function confirm () 
+    {
+        $payments = ProofPayment::where('status' , 'waiting')->get();
+        return view('admin.payment.confirm' , [
+                                    'user' => Auth::user(),
+                                    'payments' => $payments,
+                                ]);
+    }
+
+
+    
+    
+    /**
+      * route: /admin/payment/confirm/{id}
+      * method: get
+      * params: id
+      * description: 
+        * this method for display detail confirm payment member
+      * return : @view
+    */
+    public function confirmDetail (Request $request ,$id) 
+    {
+        $payment = ProofPayment::find($id);
+        return view('admin.payment.confirm-detail' , [
+                                            'user' => Auth::user(),
+                                            'payment' => $payment,
+                                        ]);
+    }
+
+
+    
+    
+    /**
+      * route: /admin/payment/confirm/{id}/reject
+      * method: put
+      * params: id
+      * description: 
+        * this method for reject confirm payment
+      * return : @redirect
+    */
+    public function confirmReject (Request $request , $id) 
+    {
+        ProofPayment::where('id' , $id)->update(['status' => 'reject']);
+
+        return redirect('admin/payment/confirm')->with('reject' , 'Data berhasil ditolak!');
+    }
+
+
+    
+    
+    /**
+      * route: /admin/payment/confirm/{id}/accept
+      * method: put
+      * params: id
+      * description: 
+        * this method for accept confirm payment
+      * return : @redirect
+    */
+    public function confirmAccept (Request $request, $id) 
+    {
+        ProofPayment::where('id' , $id)->update(['status' => 'accept']);
+        return redirect('admin/payment/confirm')->with('accept' , 'Data berhasil diterima!');
+    }
+        
+        
+
+
+    
+    
+    /**
+      * route: /admin/payment/download/proof/{id}
+      * method: get
+      * params: id
+      * description: 
+        * this method for download proof file
+      * return : @download
+    */
+    public function downloadProof (Request $request , $id) 
+    {
+        $proof = ProofPayment::find($id);
+        $file = $proof->proof_file;
+        $bank = $proof->bankTarget->name;
+        $member = str_replace(' ', '', $proof->customer);
+        $card_number = $proof->card_number;
+        $nameFile = $bank .'__' . $member . '_' . $card_number . substr($file, -4);
+
+        return Storage::download('public/proofs/' . $file , $nameFile);
+    }
+        
+                
+    
+      
+      
+      /**
+        * route: /admin/payment/reject
+        * method: get
+        * params: null
+        * description: 
+          * this method for display list payment rejected
+        * return : @view
+      */
+      public function reject () 
+      {
+          $payments = ProofPayment::where('status' , 'reject')->latest()->get();
+          return view('admin.payment.reject' , [
+                                        'user' => Auth::user(),
+                                        'payments' => $payments,
+                                  ]);
+      }
+            
+
     			
 }

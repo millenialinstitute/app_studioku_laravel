@@ -75,6 +75,15 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 				Route::get('/method' , 'PaymentController@methodPayment');
 				Route::post('method/create' , 'PaymentController@methodStore');
 				Route::delete('method/delete/{id}' , 'PaymentController@methodDelete');
+
+				Route::get('confirm' , 'PaymentController@confirm');
+				Route::get('/confirm/{id}' , 'PaymentController@confirmDetail');
+				Route::put('confirm/{id}/reject' , 'PaymentController@confirmReject');
+				Route::put('confirm/{id}/accept' , 'PaymentController@confirmAccept');
+
+				Route::get('reject' , 'PaymentController@reject');
+
+				Route::get('/download/proof/{id}' , 'PaymentController@downloadProof');
 			});
 
 			Route::get('/sales' , 'SalesController@index');

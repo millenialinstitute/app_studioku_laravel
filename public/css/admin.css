@@ -1,3 +1,10 @@
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 15px 10px;
+}
+
 .card-form {
     background: white;
     margin-right: 30px;
@@ -96,7 +103,9 @@ table.list-category td.action div {
 .item-detail .btn-download , 
 .item-detail .btn-accept , 
 .item-detail .btn-reject ,
-.modal .modal-body button {
+.modal .modal-body button ,
+
+ {
     color: white;
     text-transform: uppercase;
     padding: 10px 20px;
@@ -223,4 +232,114 @@ table.list-category td.action div {
 
 .card-bank h4 {
     color: silver;
+}
+
+
+.payment-confirm .card .row {
+    margin: 10px auto;
+}
+
+.payment-confirm .card .row .col-2,
+.payment-confirm .card .row .col-3 {
+    font-size: 15px;
+}
+
+.payment-confirm .card .row .col-3 {
+    color: #a8afcf;
+}
+
+
+.item-list-item {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 20px auto;
+    display: flex;
+    align-items: flex-start;
+}
+
+.item-list-item .preview {
+    width: 25%;
+    overflow: hidden;
+    height: 150px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    background: rgb(245, 246, 250);
+}
+
+.item-list-item .content {
+    width: 70%;
+}
+
+.item-list-item .content .title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.item-list-item .content .category {
+    color: gray;
+    margin-bottom: 5px;
+}
+
+.item-list-item .content .tag {
+    background: rgb(224, 224, 224);
+    color: rgb(80, 78, 78);
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+.item-list-item .content .data {
+    display: flex;
+    margin-top: 10px;
+    justify-content: flex-start;
+}
+
+.item-list-item .content .data span {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.item-list-item .content .data img {
+    width: 20px;
+    margin-right: 7px;  
+}
+
+.item-list-item .content .data .date {
+    color: rgb(44, 94, 221);
+}
+
+.item-list-item .content .data .price {
+    color: rgb(255, 191, 68);
+}
+
+.confirm-action {
+    justify-content: space-between;
+}
+
+.confirm-action button , .confirm-action a{
+    color: white;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: auto;
+}
+
+.confirm-action a.btn-download {
+    background: #16dbcc;
+}
+
+.confirm-action button.btn-accept {
+    background: #60b6fb;
+}
+
+.confirm-action button.btn-reject {
+    background: #ea4642;
 }

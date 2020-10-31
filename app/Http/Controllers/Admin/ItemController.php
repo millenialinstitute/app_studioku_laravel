@@ -285,7 +285,6 @@ class ItemController extends Controller
         $extension = $file->extension;
 
         return Storage::download($fileItem , $item->title . '.' . $extension);
-        // return redirect(url()->previous())->with('download' , 'Item berhasil didownload!');
     }
 
 
