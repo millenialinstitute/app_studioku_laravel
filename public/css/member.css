@@ -59,7 +59,9 @@
 .card-cart-small .col .btn-pay , 
 .bank-item a.btn-confirm , 
 .payment-confirm button ,
-.payment-confirm .btn-back {
+.payment-confirm .btn-back,
+.my-item .btn-download,
+.my-item .btn-license  {
     font-size: 15px;
     color: white;
     background: rgb(96 182 251);
@@ -296,4 +298,71 @@
 
 .payment-confirm .btn-back:hover {
     background: rgb(96 182 251 / 19%);
+}
+
+
+.item-thumbnail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    overflow: hidden;
+    background: white;
+    border-radius: 5px;
+    transition: .5s;
+    box-shadow: 2px 2px 4px silver;
+}
+
+.item-thumbnail:hover {
+    opacity: .8;
+    transform: translateY(3px);
+    box-shadow: .5px .5px 2px silver;
+}
+
+
+.my-item {
+    justify-content: space-between;
+}
+
+.my-item .data {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    justify-content: flex-start;
+}
+
+.my-item img {
+    width: 100px;
+    margin-right: 15px;
+}
+
+.my-item a.title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0px auto;
+    transition: .1s;
+}
+
+.my-item a.title:hover {
+    opacity: .7;
+}
+
+.my-item h5 {
+    font-size: 13px;
+    margin-top: 0px;
+    color: #a8afcf;
+}
+
+.my-item .price {
+    color: rgb(255, 191, 68);
+    font-size: 17px;
+}
+
+.my-item .btn {
+    width: fit-content;
+    display: inline-block;
+}
+
+.my-item .btn.btn-download {
+    background: #4bd0d0;
 }

@@ -1,9 +1,9 @@
 @extends('layouts.admin')
-@section('title'  , 'Konfirmasi pembayaran')
+@section('title'  , 'Pembayaran Diterima')
 @section('payment' , 'active')
 @section('body')
 
-<h3 class="title-section">Konfirmasi Pembayaran</h3>
+<h3 class="title-section">Pembayaran Diterima</h3>
 
 @forelse($payments as $data)
 	<div class="card-item">
@@ -20,7 +20,7 @@
 			</div>
 		</div>
 		<div class="action">
-			<a href="{{ url('admin/payment/confirm/' . $data->id) }}" class="btn-icon bg-info">
+			<a href="{{ url('admin/payment/accept/' . $data->id) }}" class="btn-icon bg-info">
 				<img src="{{ asset('/assets/dashboard/icons/detail_icon.svg') }}" alt="detail">
 			</a>
 		</div>
@@ -28,7 +28,6 @@
 @empty
 	<h1>Tidak ada data!</h1>
 @endforelse
-	
 
 @endsection
 	

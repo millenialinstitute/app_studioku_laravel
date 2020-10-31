@@ -49,13 +49,10 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 				Route::post('/waiting/{id}/reject' , 'ItemController@waitingReject');
 				Route::put('/waiting/{id}/accept ' , 'ItemController@waitingAccept');
 					
-
-
 				Route::get('/tag' , 'ItemController@tag');
 				Route::get('/category' , 'ItemController@category');
 				Route::post('/category' , 'ItemController@categoryStore');
 				Route::delete('/category/{id}/delete' , 'ItemController@categoryDestroy');
-					
 					
 				Route::get('reject' , 'ItemController@reject');
 				Route::post('/reject' , 'ItemController@rejectStore');
@@ -80,6 +77,9 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 				Route::get('/confirm/{id}' , 'PaymentController@confirmDetail');
 				Route::put('confirm/{id}/reject' , 'PaymentController@confirmReject');
 				Route::put('confirm/{id}/accept' , 'PaymentController@confirmAccept');
+
+				Route::get('/accept' , 'PaymentController@accept');
+				Route::get('/accept/{id}' , 'PaymentController@acceptDetail');
 
 				Route::get('reject' , 'PaymentController@reject');
 				Route::get('/reject/{id}' , 'PaymentController@rejectDetail');
@@ -128,6 +128,7 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 			
 
 			Route::get('/download' , 'DownloadController@index');
+			Route::get('/download/{id}' , 'DownloadController@downloadFile');
 
 			Route::get('/favorite' , 'FavoriteController@index');
 				

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Bank;
 use App\ProofPayment;
+use App\OwnedItem;
 
 class PaymentController extends Controller
 {
@@ -151,33 +152,63 @@ class PaymentController extends Controller
     public function confirmAccept (Request $request, $id) 
     {
         ProofPayment::where('id' , $id)->update(['status' => 'accept']);
+        $proof = ProofPayment::find($id);
+        $items = $proof->cart->item;
+        foreach ($proof->cart->item as $item) {
+            OwnedItem::create([
+                'member_id' => $proof->member_id,
+                'item_id'   => $item->item->id,
+            ]);
+        }
+
         return redirect('admin/payment/confirm')->with('accept' , 'Data berhasil diterima!');
     }
-        
-        
+
 
 
     
     
     /**
-      * route: /admin/payment/download/proof/{id}
+      * route: /admin/payment/accept
+      * method: get
+      * params: null
+      * description: 
+        * this method for display list payment where status accept
+      * return : @view
+    */
+    public function accept () 
+    {
+        $payments = ProofPayment::where('status' , 'accept')->latest()->get();
+
+        return view('admin.payment.accept' , [
+                                        'user'     => Auth::user(),
+                                        'payments' => $payments,
+                                ]);
+    }
+
+
+    
+    
+    /**
+      * route: /admin/payment/accept/{id}
       * method: get
       * params: id
       * description: 
-        * this method for download proof file
-      * return : @download
+        * this method for show detial payment 
+      * return : @view
     */
-    public function downloadProof (Request $request , $id) 
-    {
-        $proof = ProofPayment::find($id);
-        $file = $proof->proof_file;
-        $bank = $proof->bankTarget->name;
-        $member = str_replace(' ', '', $proof->customer);
-        $card_number = $proof->card_number;
-        $nameFile = $bank .'__' . $member . '_' . $card_number . substr($file, -4);
+    public function acceptDetail (Request $request , $id) 
+      {
+            $payment = ProofPayment::find($id);
+            return view('admin.payment.reject-detail' , [
+                                                'user' => Auth::user(),
+                                                'payment' => $payment,
+                                          ]);
+      }
 
-        return Storage::download('public/proofs/' . $file , $nameFile);
-    }
+        
+                
+
         
                 
     
@@ -219,6 +250,32 @@ class PaymentController extends Controller
                                                 'payment' => $payment,
                                           ]);
       }
+
+
+        
+
+
+    
+    
+    /**
+      * route: /admin/payment/download/proof/{id}
+      * method: get
+      * params: id
+      * description: 
+        * this method for download proof file
+      * return : @download
+    */
+    public function downloadProof (Request $request , $id) 
+    {
+        $proof = ProofPayment::find($id);
+        $file = $proof->proof_file;
+        $bank = $proof->bankTarget->name;
+        $member = str_replace(' ', '', $proof->customer);
+        $card_number = $proof->card_number;
+        $nameFile = $bank .'__' . $member . '_' . $card_number . substr($file, -4);
+
+        return Storage::download('public/proofs/' . $file , $nameFile);
+    }
             
             
 
