@@ -199,6 +199,27 @@ class PaymentController extends Controller
                                         'payments' => $payments,
                                   ]);
       }
+
+
+      
+      
+      /**
+        * route: /admin/payment/reject/{id}
+        * method: get
+        * params: id
+        * description: 
+          * this method for display detail data payment confirm where status reject
+        * return : @view
+      */
+      public function rejectDetail (Request $request , $id) 
+      {
+            $payment = ProofPayment::find($id);
+            return view('admin.payment.reject-detail' , [
+                                                'user' => Auth::user(),
+                                                'payment' => $payment,
+                                          ]);
+      }
+            
             
 
     			

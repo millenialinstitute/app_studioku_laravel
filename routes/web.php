@@ -82,6 +82,7 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 				Route::put('confirm/{id}/accept' , 'PaymentController@confirmAccept');
 
 				Route::get('reject' , 'PaymentController@reject');
+				Route::get('/reject/{id}' , 'PaymentController@rejectDetail');
 
 				Route::get('/download/proof/{id}' , 'PaymentController@downloadProof');
 			});

@@ -329,6 +329,10 @@ h3.title-section {
     background: rgb(230, 57, 70);
 }
 
+.bg-info {
+    background: rgb(96, 182, 251);
+}
+
 .img {
     width: 100%;
 }

@@ -20,7 +20,7 @@
 			</div>
 		</div>
 		<div class="action">
-			<a href="{{ url('admin/payment/confirm/' . $data->id) }}" class="btn-icon bg-warn">
+			<a href="{{ url('admin/payment/reject/' . $data->id) }}" class="btn-icon bg-info">
 				<img src="{{ asset('/assets/dashboard/icons/detail_icon.svg') }}" alt="detail">
 			</a>
 		</div>
