@@ -10,7 +10,7 @@
 		<div class="row card-thumb">
 			<img src="{{ asset('/assets/dashboard/illustration/admin/contributor_illustration.svg') }}" alt="contributor">
 			<div class="content">
-				<h4 class="value">2</h4>
+				<h4 class="value">{{ $all }}</h4>
 				<p class="description">Item Terjual</p>
 			</div>
 		</div>
@@ -19,7 +19,7 @@
 		<div class="row card-thumb">
 			<img src="{{ asset('/assets/dashboard/illustration/admin/waiting_illustration.svg') }}" alt="waiting">
 			<div class="content">
-				<h4 class="value">2</h4>
+				<h4 class="value">{{ $current }}</h4>
 				<p class="description">Bulan Ini</p>
 			</div>
 		</div>
@@ -28,7 +28,7 @@
 		<div class="row card-thumb">
 			<img src="{{ asset('/assets/dashboard/illustration/admin/waiting_illustration.svg') }}" alt="waiting">
 			<div class="content">
-				<h4 class="value">2</h4>
+				<h4 class="value">{{ $ago }}</h4>
 				<p class="description">Bulan lalu</p>
 			</div>
 		</div>
@@ -64,29 +64,20 @@
 
 
 <h3 class="title-section">Penjualan Item</h3>
-<div class="card-item">
-	<p class="number">1</p>
-	<div class="preview"></div>
-	<div class="content">
-		<h4 class="title">Flat Illustration</h4>
-		<p class="cost">Rp50.000,00</p>
+@forelse($newestSales as $item)
+	<div class="card-item">
+		<p class="number">{{ $loop->iteration }}</p>
+		<div class="preview">
+			<img src="{{ asset('storage/photos/' . $item->image) }}" alt="{{ $item->title }}" class="img">
+		</div>
+		<div class="content">
+			<h4 class="title">Flat Illustration</h4>
+			<p class="cost">Rp{{ number_format($item->cost , 2 ,',','.') }}</p>
+		</div>
 	</div>
-</div>
-<div class="card-item">
-	<p class="number">2</p>
-	<div class="preview"></div>
-	<div class="content">
-		<h4 class="title">Flat Illustration</h4>
-		<p class="cost">Rp50.000,00</p>
-	</div>
-</div>
-<div class="card-item">
-	<p class="number">3</p>
-	<div class="preview"></div>
-	<div class="content">
-		<h4 class="title">Flat Illustration</h4>
-		<p class="cost">Rp50.000,00</p>
-	</div>
-</div>
+@empty
+	<h1>Tidak ada data</h1>
+@endforelse
+	
 
 @endsection
