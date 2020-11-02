@@ -366,3 +366,60 @@
 .my-item .btn.btn-download {
     background: #4bd0d0;
 }
+
+
+.card-payment {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.card-payment .row.mr-3 {
+    width: 40%;
+    justify-content: flex-start;
+}
+
+.card-payment .number {
+    margin-right: 15px;
+}
+
+.card-payment .content h4 {
+    font-size: 17px;
+}
+
+.card-payment .content p {
+    color: #a8afcf;
+}
+
+.card-payment .total {
+    align-items: center;
+    color: #ffbb38;
+    font-size: 18px;
+    width: 30%;
+    justify-content: flex-start;
+}
+
+.card-payment .badge {
+    width: 30%;
+    text-align: right;
+}
+
+.card-payment .badge span , .card-payment .badge a {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.card-payment .badge span.waiting {
+    background: #ffbb383b;
+    border: 2px solid #ffbb38;
+    color: #ffbb38;
+}
+
+.card-payment .badge a {
+    background: #16dbcc;
+    border: 2px solid #16dbcc;
+    color: white;
+}

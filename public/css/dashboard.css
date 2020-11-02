@@ -144,7 +144,7 @@ h3.title-section {
     margin-right: 20px;
 }
 
-.card-item .number , .card-list .number {
+.card-item .number , .card-list .number , .card-payment .number {
 	color: white;
     height: 30px;
     width: 30px;

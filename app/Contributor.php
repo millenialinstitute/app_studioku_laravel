@@ -7,7 +7,7 @@ use App\User;
 
 class Contributor extends Model
 {
-    protected $fillable = ['user_id' , 'status'];
+    protected $fillable = ['user_id' ,'saldo' , 'status'];
 
     public function user ( ) 
     {

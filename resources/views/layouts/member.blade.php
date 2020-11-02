@@ -39,13 +39,17 @@
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/cart_icon.svg') }}" alt="cart">
 			<span>Keranjang</span>
 		</a>
-		<a href="{{ url('/member/info') }}" class="menu-item @yield('info') ">
-			<img src="{{ asset('/assets/dashboard/sidebar-icon/info_icon.svg') }}" alt="statistik">
-			<span>panduan</span>
+		<a href="{{ url('member/payment') }}" class="menu-item @yield('payment') ">
+			<img src="{{ asset('/assets/dashboard/sidebar-icon/sell_icon.svg') }}" alt="cart">
+			<span>Pembayaran</span>
 		</a>
 		<a href="{{ url('/member/profile') }}" class="menu-item @yield('profile') ">
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/info_icon.svg') }}" alt="profile">
 			<span>profile</span>
+		</a>
+		<a href="{{ url('/member/info') }}" class="menu-item @yield('info') ">
+			<img src="{{ asset('/assets/dashboard/sidebar-icon/info_icon.svg') }}" alt="statistik">
+			<span>panduan</span>
 		</a>
 		<a href="{{ url('/') }}" class="menu-item @yield('homepage') ">
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/home_icon.svg') }}" alt="dashboard">

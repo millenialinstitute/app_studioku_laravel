@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Storage;
 use App\Bank;
 use App\ProofPayment;
 use App\OwnedItem;
+use App\SaldoStatistic;
+use App\SaldoItem;
+use App\Contributor;
 
 class PaymentController extends Controller
 {
@@ -161,6 +164,47 @@ class PaymentController extends Controller
             ]);
         }
 
+
+        $cart = ProofPayment::where('id' , $id)->first()->cart;
+        $items = collect([]);
+        foreach($cart->item as $item) {
+            $item = $item->item;
+            $items->push([
+                'id'             => $item->id,
+                'contributor_id' => $item->contributor_id,
+                'cost'           => $item->cost,
+            ]);
+        }
+        foreach($items->groupBy('contributor_id') as $contributorId =>  $items) {
+            $totalCost = 0;
+            SaldoStatistic::create([
+                'contributor_id' => $contributorId,
+                'total'          => 0,
+                'date'           => date('d'),
+                'month'          => date('m'),
+                'year'           => date('Y'),
+            ]);
+            $saldoId = SaldoStatistic::where('contributor_id' , $contributorId)
+                            ->where('date' , date('d'))
+                            ->get()
+                            ->last()
+                            ->id;
+
+            foreach($items as $item) {
+                $totalCost+= $item['cost'];
+                SaldoItem::create([
+                    'saldo_id' => $saldoId,
+                    'item_id'  => $item['id'],
+                    'cost'     => $item['cost'], 
+                ]);
+            }
+
+            SaldoStatistic::where('id' , $saldoId)->update(['total' => $totalCost]);
+            $saldo = Contributor::where('id' , $contributorId)->first()->saldo;
+            $saldo += $totalCost;
+            Contributor::where('id' , $contributorId)->update(['saldo' => $saldo]);
+        }
+        
         return redirect('admin/payment/confirm')->with('accept' , 'Data berhasil diterima!');
     }
 

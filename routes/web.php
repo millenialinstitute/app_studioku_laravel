@@ -149,6 +149,8 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 				Route::post('/item/{id}/add' , 'CartController@addItem');
 				Route::delete('/item/{id}/delete' , 'CartController@removeItem');
 			});
+
+			Route::get('/payment' , 'PaymentController@index');
 			
 
 				

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Member;
 use App\CartItem;
+use App\ProofPayment;
 
 class Cart extends Model
 {
@@ -18,5 +19,10 @@ class Cart extends Model
     public function item () 
     {
     	return $this->hasMany(CartItem::class , 'cart_id');
+    }
+
+    public function payment () 
+    {
+    	return $this->hasMany(ProofPayment::class , 'cart_id');
     }
 }
