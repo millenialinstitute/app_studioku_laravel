@@ -11,7 +11,7 @@ use App\ItemFile;
 
 class Item extends Model
 {
-    protected $fillable = ['contributor_id' , 'title' , 'image' , 'category_id' , 'cost' , 'status'];
+    protected $fillable = ['contributor_id' , 'title' , 'image' , 'category_id' , 'cost' , 'status' , 'sold'];
 
     public function contributor ( ) 
     {

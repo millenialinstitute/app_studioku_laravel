@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Item;
 use App\SaldoItem;
 use App\SaldoStatistic;
 
@@ -33,17 +34,24 @@ class SalesController extends Controller
     	}
 
     	// get data for list item
+        # top sales
+        $topSales = Item::select(['id' , 'title' , 'image' , 'cost' , 'sold'])->get()->sortByDesc('sold')->take(3);
+        
+        # newest sales
     	$dataItem = SaldoItem::latest()->get();
     	$newestSales = collect([]);
     	foreach ($dataItem as $data) {
     		$newestSales->push($data->item);
     	}
 
+
+
     	return view('admin.sales' , [
 					'user'        => Auth::user(),
 					'all'         => $allItem,
 					'current'     => $itemCurrent,
 					'ago'         => $itemAgo,
+                    'topSales'    => $topSales,
 					'newestSales' => $newestSales,
 		    	]);
     }

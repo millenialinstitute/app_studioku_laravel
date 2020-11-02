@@ -37,30 +37,18 @@
 
 
 <h3 class="title-section">Penjualan Teratas</h3>
+@foreach($topSales as $item)
 <div class="card-item">
-	<p class="number">1</p>
-	<div class="preview"></div>
+	<p class="number">{{ $loop->iteration }}</p>
+	<div class="preview">
+		<img src="{{ asset('storage/photos/' . $item->image) }}" alt="{{ $item->title }}" class="img">
+	</div>
 	<div class="content">
-		<h4 class="title">Flat Illustration</h4>
-		<p class="cost">Rp50.000,00</p>
+		<h4 class="title">{{ $item->title }}</h4>
+		<p class="cost">Rp{{ number_format($item->cost , 2 ,',','.') }}</p>
 	</div>
 </div>
-<div class="card-item">
-	<p class="number">2</p>
-	<div class="preview"></div>
-	<div class="content">
-		<h4 class="title">Flat Illustration</h4>
-		<p class="cost">Rp50.000,00</p>
-	</div>
-</div>
-<div class="card-item">
-	<p class="number">3</p>
-	<div class="preview"></div>
-	<div class="content">
-		<h4 class="title">Flat Illustration</h4>
-		<p class="cost">Rp50.000,00</p>
-	</div>
-</div>
+@endforeach
 
 
 <h3 class="title-section">Penjualan Item</h3>
@@ -71,7 +59,7 @@
 			<img src="{{ asset('storage/photos/' . $item->image) }}" alt="{{ $item->title }}" class="img">
 		</div>
 		<div class="content">
-			<h4 class="title">Flat Illustration</h4>
+			<h4 class="title">{{ $item->title }}</h4>
 			<p class="cost">Rp{{ number_format($item->cost , 2 ,',','.') }}</p>
 		</div>
 	</div>

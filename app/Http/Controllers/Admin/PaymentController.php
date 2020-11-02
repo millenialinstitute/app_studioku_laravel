@@ -192,11 +192,14 @@ class PaymentController extends Controller
 
             foreach($items as $item) {
                 $totalCost+= $item['cost'];
+                $soldItem = Item::find($item['id'])->sold;
                 SaldoItem::create([
                     'saldo_id' => $saldoId,
                     'item_id'  => $item['id'],
                     'cost'     => $item['cost'], 
                 ]);
+
+                Item::where('id' , $item['id'])->update(['sold' => $soldItem+1]);
             }
 
             SaldoStatistic::where('id' , $saldoId)->update(['total' => $totalCost]);
