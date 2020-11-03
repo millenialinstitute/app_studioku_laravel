@@ -14,7 +14,7 @@
 					<h5 class="contributor">{{ $item->contributor->user->name }}</h5>
 				</div>
 			</div>
-			<p class="price">Rp{{ number_format($item->cost , 2 , ',' ,'.') }}</p>
+			<p class="price"><img src="{{ asset('/assets/dashboard/icons/price_icon.svg') }}" alt="icon" style="width: 30px">Rp{{ number_format($item->cost , 2 , ',' ,'.') }}</p>
 			<div class="action">
 				<a href="" class="btn btn-license">Lisensi</a>
 				<a href="{{ url('/member/download/' . $item->id ) }}" target="_blank" class="btn btn-download">Unduh</a>

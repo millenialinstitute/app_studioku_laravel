@@ -10,7 +10,7 @@
 				Yuk bayar sekarang!</p>
 			<img src="{{ asset('/assets/dashboard/illustration/cart_illustration.svg') }}" alt="cart">
 			<p>Atau masukkan lebih banyak item lagi!</p>
-			<a href="{{ url('/') }}">homepage</a>
+			<a href="{{ url('/') }}" class="btn-home">homepage</a>
 		</div>
 	</div>
 	<div class="col-3">
@@ -38,9 +38,11 @@
 				<div class="cart-item">
 					<img src="{{ asset('storage/photos/' . $item->image) }}" alt="example">
 					<div class="description">
-						<p> {{ $item->title }} </p>
+						<a href="{{ url('item/detail/' . $item->id) }}">
+							<p> {{ $item->title }} </p>
+						</a>
 						<div class="row">
-							<p>Rp{{ number_format($item->cost , 2 ,',' , '.') }} </p>
+							<p class="cost">Rp{{ number_format($item->cost , 2 ,',' , '.') }} </p>
 							<form action="{{ url('member/cart/item/' . $item->id .'/delete') }}" method="post">
 								@csrf
 								@method('delete')

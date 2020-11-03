@@ -21,6 +21,17 @@ Route::get('/' , 'LandingPageController@index');
 Route::get('item/detail/{id} ' , 'LandingPageController@detailItem');
 Route::post('item/detail/{id}/like' , 'LandingPageController@likeItem');
 
+// ++ help center ++
+Route::name('help_center , ')->prefix('help')->group(function(){
+	Route::get('/' , 'HelpCenterController@index');
+	Route::get('/account' , 'HelpCenterController@account');
+	Route::get('requirements' , 'HelpCenterController@requirements');
+	Route::get('/upload' , 'HelpCenterController@upload');
+	Route::get('/reject' , 'HelpCenterController@reject');
+	Route::get('/payment' , 'HelpCenterController@payment');
+	Route::get('contact' , 'HelpCenterController@contact');
+});
+
 
 
 
@@ -30,10 +41,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 // ########################### Dashboard ################################
-Route::name('dashboard')->middleware(['auth'])->group(function() {
+Route::name('dashboard , ')->middleware(['auth'])->group(function() {
 
 		// ----------------------------------- Admin Dashboard --------------------------------------------------
-		Route::name('admin')->middleware(['admin'])->prefix('admin')->namespace('Admin')->group(function() {
+		Route::name('admin , ')->middleware(['admin'])->prefix('admin')->namespace('Admin')->group(function() {
 			Route::get('/dashboard' , 'DashboardController@index');
 
 			Route::get('/contributor/all' , 'ContributorController@all');
@@ -42,7 +53,7 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 			Route::get('/member' , 'MemberController@index');
 
 			// +++ Item +++
-			Route::name('item')->prefix('item')->group(function() {
+			Route::name('item , ')->prefix('item')->group(function() {
 				Route::get('/all' , 'ItemController@all');
 				Route::get('/waiting' , 'ItemController@waiting');
 				Route::get('/waiting/{id}' , 'ItemController@waitingDetail');
@@ -68,7 +79,7 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 			Route::get('/earning' , 'EarningController@index');
 
 			// ++ payment ++
-			Route::name('payment')->prefix('payment')->group(function() {
+			Route::name('payment , ')->prefix('payment')->group(function() {
 				Route::get('/method' , 'PaymentController@methodPayment');
 				Route::post('method/create' , 'PaymentController@methodStore');
 				Route::delete('method/delete/{id}' , 'PaymentController@methodDelete');
@@ -94,11 +105,11 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 
 
 		// --------------------------------- Contributor DaShboard ------------------------------
-		Route::name('contributor')->middleware(['contributor'])->prefix('contributor')->namespace('Contributor')->group(function() {
+		Route::name('contributor , ')->middleware(['contributor'])->prefix('contributor')->namespace('Contributor')->group(function() {
 			Route::get('/dashboard' , 'DashboardController@index');
 
 			// ++++ Item ++++
-			Route::name('item')->prefix('item')->group(function() {
+			Route::name('item , ')->prefix('item')->group(function() {
 				Route::get('/upload' , 'ItemController@uploadCreate');
 				Route::post('/upload' , 'ItemController@uploadStore');
 					
@@ -122,7 +133,7 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 
 
 		// --------------------------------- Member Dashboard ------------------------------
-		Route::name('member')->middleware(['member'])->prefix('member')->namespace('Member')->group(function() {
+		Route::name('member , ')->middleware(['member'])->prefix('member')->namespace('Member')->group(function() {
 			Route::get('dashboard' , 'DashboardController@index');
 			Route::post('dashboard/contributor' , 'DashboardController@becomeContributor');
 			
@@ -133,7 +144,7 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 			Route::get('/favorite' , 'FavoriteController@index');
 				
 			// ++ collection ++
-			Route::name('collection')->prefix('collection')->group(function() {
+			Route::name('collection , ')->prefix('collection')->group(function() {
 				Route::get('/' , 'CollectionController@index');
 				Route::post('/create' , 'CollectionController@store');
 				Route::post('/item/{id}/add' , 'CollectionController@additem');
@@ -143,7 +154,7 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 				
 
 			// ++ cart ++
-			Route::name('cart')->prefix('cart')->group(function() {
+			Route::name('cart , ')->prefix('cart')->group(function() {
 				Route::get('/' , 'CartController@index');
 				Route::delete('/delete' , 'CartController@removeAllItem');
 				Route::get('/payment' , 'CartController@payment');

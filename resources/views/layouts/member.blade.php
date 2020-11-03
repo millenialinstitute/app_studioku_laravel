@@ -47,7 +47,7 @@
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/info_icon.svg') }}" alt="profile">
 			<span>profile</span>
 		</a>
-		<a href="{{ url('/member/info') }}" class="menu-item @yield('info') ">
+		<a href="{{ url('/help') }}" class="menu-item @yield('info') ">
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/info_icon.svg') }}" alt="statistik">
 			<span>panduan</span>
 		</a>

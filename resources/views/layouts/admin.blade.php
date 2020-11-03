@@ -68,7 +68,7 @@
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/statistic_icon.svg') }}" alt="statistik">
 			<span>statistik</span>
 		</a>
-		<a href="{{ url('/admin/guide') }}" class="menu-item @yield('guide') ">
+		<a href="{{ url('/help') }}" class="menu-item @yield('guide') ">
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/info_icon.svg') }}" alt="guide">
 			<span>panduan</span>
 		</a>

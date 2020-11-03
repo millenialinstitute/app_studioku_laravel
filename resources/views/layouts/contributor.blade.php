@@ -41,7 +41,7 @@
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/earning_icon.svg') }}" alt="payment">
 			<span>Saldo</span>
 		</a>
-		<a href="{{ url('/contributor/guide') }}" class="menu-item @yield('guide') ">
+		<a href="{{ url('/help') }}" class="menu-item @yield('guide') ">
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/info_icon.svg') }}" alt="guide">
 			<span>panduan</span>
 		</a>
