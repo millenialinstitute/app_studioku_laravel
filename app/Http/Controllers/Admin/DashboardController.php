@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use App\Item;
+use App\Contributor;
 
 class DashboardController extends Controller
 {
@@ -15,10 +16,16 @@ class DashboardController extends Controller
     	$members = User::where('level_user_id' , 3)->get()->count();
     	$itemsCount = Item::get()->count();
 
+        $topContributors = Contributor::get();
+        $topItems = Item::where('sold' , '>' , 0)->orderBy('sold' , 'desc')->limit(5)->get();
+
     	return view('admin.dashboard' , [
-								'contributors' => $contributors,
-								'members'      => $members,
-								'itemsCount'   => $itemsCount,
+                                'contributors'    => $contributors,
+                                'members'         => $members,
+                                'itemsCount'      => $itemsCount,
+                                
+                                'topContributors' => $topContributors,
+                                'topItems'        => $topItems,
 					    	]);
     }
 }

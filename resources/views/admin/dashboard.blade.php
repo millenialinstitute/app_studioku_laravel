@@ -40,179 +40,53 @@
 <div class="row">
 	<div class="col">
 		<h3 class="title-section">Kontributor Teratas</h3>	
-		<div class="card-item">
-			<p class="number">1</p>
-			<div class="preview"></div>
-			<div class="content">
-				<h4 class="title">Atika Mahmudah</h4>
-				<div class="data row">
-					<div class="item">
-						<img src="{{ asset('/assets/dashboard/sidebar-icon/item_icon.svg') }}" alt="item">
-						<span>100</span>
-					</div>
-					<div class="cart">
-						<img src="{{ asset('/assets/dashboard/sidebar-icon/cart_icon.svg') }}" alt="cart">
-						<span>100</span>
+		@forelse($topContributors as $contributor)
+			<div class="card-item">
+				<p class="number">{{ $loop->iteration }}</p>
+				<div class="preview" style="overflow: hidden;">
+					<img src="{{ asset('storage/users/' . $contributor->user->image) }}" alt="" class="img">
+				</div>
+				<div class="content">
+					<h4 class="title">{{ $contributor->user->name }}</h4>
+					<div class="data row">
+						<div class="item">
+							<img src="{{ asset('/assets/dashboard/sidebar-icon/item_icon.svg') }}" alt="item">
+							<span>{{ $contributor->item->count() }}</span>
+						</div>
+						<div class="cart">
+							<img src="{{ asset('/assets/dashboard/sidebar-icon/cart_icon.svg') }}" alt="cart">
+							<span>{{ $contributor->item->where('sold' , '>' , 0)->count() }}</span>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="card-item">
-			<p class="number">2</p>
-			<div class="preview"></div>
-			<div class="content">
-				<h4 class="title">Atika Mahmudah</h4>
-				<div class="data row">
-					<div class="item">
-						<img src="{{ asset('/assets/dashboard/sidebar-icon/item_icon.svg') }}" alt="item">
-						<span>100</span>
-					</div>
-					<div class="cart">
-						<img src="{{ asset('/assets/dashboard/sidebar-icon/cart_icon.svg') }}" alt="cart">
-						<span>100</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="card-item">
-			<p class="number">3</p>
-			<div class="preview"></div>
-			<div class="content">
-				<h4 class="title">Atika Mahmudah</h4>
-				<div class="data row">
-					<div class="item">
-						<img src="{{ asset('/assets/dashboard/sidebar-icon/item_icon.svg') }}" alt="item">
-						<span>100</span>
-					</div>
-					<div class="cart">
-						<img src="{{ asset('/assets/dashboard/sidebar-icon/cart_icon.svg') }}" alt="cart">
-						<span>100</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="card-item">
-			<p class="number">4</p>
-			<div class="preview"></div>
-			<div class="content">
-				<h4 class="title">Atika Mahmudah</h4>
-				<div class="data row">
-					<div class="item">
-						<img src="{{ asset('/assets/dashboard/sidebar-icon/item_icon.svg') }}" alt="item">
-						<span>100</span>
-					</div>
-					<div class="cart">
-						<img src="{{ asset('/assets/dashboard/sidebar-icon/cart_icon.svg') }}" alt="cart">
-						<span>100</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="card-item">
-			<p class="number">5</p>
-			<div class="preview"></div>
-			<div class="content">
-				<h4 class="title">Atika Mahmudah</h4>
-				<div class="data row">
-					<div class="item">
-						<img src="{{ asset('/assets/dashboard/sidebar-icon/item_icon.svg') }}" alt="item">
-						<span>100</span>
-					</div>
-					<div class="cart">
-						<img src="{{ asset('/assets/dashboard/sidebar-icon/cart_icon.svg') }}" alt="cart">
-						<span>100</span>
-					</div>
-				</div>
-			</div>
-		</div>
+		@empty
+			<h3>Tidak ada contributor</h3>
+		@endforelse
+			
 	</div>
 	<div class="col">
 		<h3 class="title-section">Penjualan Teratas</h3>
-		<div class="card-item">
-			<p class="number">1</p>
-			<div class="preview"></div>
-			<div class="content">
-				<h4 class="title">Atika Mahmudah</h4>
-				<div class="data row">
-					<div class="item">
-						<img src="{{ asset('/assets/dashboard/sidebar-icon/item_icon.svg') }}" alt="item">
-						<span>100</span>
-					</div>
-					<div class="cart">
-						<img src="{{ asset('/assets/dashboard/sidebar-icon/cart_icon.svg') }}" alt="cart">
-						<span>100</span>
+		@forelse($topItems as $item)
+			<div class="card-item">
+				<p class="number">{{ $loop->iteration }}</p>
+				<div class="preview">
+					<img src="{{ asset('storage/photos/' . $item->image) }}" alt="" class="img">
+				</div>
+				<div class="content">
+					<h4 class="title">{{ $item->title }}</h4>
+					<div class="data row">
+						<div class="cart">
+							<img src="{{ asset('/assets/dashboard/sidebar-icon/cart_icon.svg') }}" alt="cart">
+							<span>{{ $item->sold }}</span>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="card-item">
-			<p class="number">2</p>
-			<div class="preview"></div>
-			<div class="content">
-				<h4 class="title">Atika Mahmudah</h4>
-				<div class="data row">
-					<div class="item">
-						<img src="{{ asset('/assets/dashboard/sidebar-icon/item_icon.svg') }}" alt="item">
-						<span>100</span>
-					</div>
-					<div class="cart">
-						<img src="{{ asset('/assets/dashboard/sidebar-icon/cart_icon.svg') }}" alt="cart">
-						<span>100</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="card-item">
-			<p class="number">3</p>
-			<div class="preview"></div>
-			<div class="content">
-				<h4 class="title">Atika Mahmudah</h4>
-				<div class="data row">
-					<div class="item">
-						<img src="{{ asset('/assets/dashboard/sidebar-icon/item_icon.svg') }}" alt="item">
-						<span>100</span>
-					</div>
-					<div class="cart">
-						<img src="{{ asset('/assets/dashboard/sidebar-icon/cart_icon.svg') }}" alt="cart">
-						<span>100</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="card-item">
-			<p class="number">4</p>
-			<div class="preview"></div>
-			<div class="content">
-				<h4 class="title">Atika Mahmudah</h4>
-				<div class="data row">
-					<div class="item">
-						<img src="{{ asset('/assets/dashboard/sidebar-icon/item_icon.svg') }}" alt="item">
-						<span>100</span>
-					</div>
-					<div class="cart">
-						<img src="{{ asset('/assets/dashboard/sidebar-icon/cart_icon.svg') }}" alt="cart">
-						<span>100</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="card-item">
-			<p class="number">5</p>
-			<div class="preview"></div>
-			<div class="content">
-				<h4 class="title">Atika Mahmudah</h4>
-				<div class="data row">
-					<div class="item">
-						<img src="{{ asset('/assets/dashboard/sidebar-icon/item_icon.svg') }}" alt="item">
-						<span>100</span>
-					</div>
-					<div class="cart">
-						<img src="{{ asset('/assets/dashboard/sidebar-icon/cart_icon.svg') }}" alt="cart">
-						<span>100</span>
-					</div>
-				</div>
-			</div>
-		</div>
+		@empty
+			<h3>Tidak ada item</h3>
+		@endforelse
+			
 	</div>
 </div>
 
