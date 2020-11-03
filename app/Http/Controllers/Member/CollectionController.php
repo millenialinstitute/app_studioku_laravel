@@ -86,6 +86,27 @@ class CollectionController extends Controller
         return redirect(url()->previous())->with('add' , 'Item berhasil ditambahkan');
             
     }
+
+
+    
+    
+    /**
+      * route: /member/collection/{id}
+      * method: get
+      * params: id
+      * description: 
+        * this method for list item in collection
+      * return : @view
+    */
+    public function detailCollection (Request $request , $id) 
+    {
+        $collection = Collection::find($id);
+        return view('member.collection-detail' , [
+                                        'user'       => Auth::user(),
+                                        'collection' => $collection,
+                                ]);
+    }
+        
         
     	
 }

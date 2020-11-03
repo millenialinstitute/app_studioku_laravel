@@ -4,18 +4,28 @@
 @section('body')
 
 <div class="row">
-	<div class="col-2">
+	<div class="col-2 list-collection">
 		<h3 class="title-section">Daftar Koleksi</h3>
 		@forelse($collections->chunk(2) as $chunk)
 			<div class="row">
-				@foreach($chunk as $collect)
-					<div class="col">
+				@foreach($chunk as $key => $collect)
+					<div class="col" >
 						<div class="card card-collection">
-							@foreach($collect->item as $item)
-								<img src="{{ asset('storage/photos/' . $item->item->image) }}" alt="image" style="width: 100px">
+							@foreach($collect->item->chunk(2) as $chunk)
+								<div class="row">
+									@foreach($chunk as $item)
+										<div class="thumb">
+											<img src="{{ asset('storage/photos/' . $item->item->image) }}" alt="image" style="width: 100%">
+										</div>
+									@endforeach
+								</div>
 							@endforeach
 						</div>
-						<h3>{{ $collect->name }}</h3>
+						<h3 class="text-center">
+							<a href="{{ url('member/collection/detail/' . $collect->id) }}">
+								{{ $collect->name }}
+							</a>
+						</h3>
 					</div>	
 				@endforeach
 			</div>			

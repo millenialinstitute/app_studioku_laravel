@@ -429,3 +429,43 @@
     border: 2px solid #16dbcc;
     color: white;
 }
+
+
+.list-collection .row {
+    justify-content: flex-start;
+}
+
+.list-collection .row .col {
+    flex: .5;
+}
+
+.card-collection {
+    height: 200px;
+}
+
+.card-collection .row {
+    justify-content: flex-start;
+}
+
+.card-collection .thumb {
+    width: 45%;
+    margin: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f6fa;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.card-collection .thumb img {
+    width: 100%;
+}
+
+.list-collection h3 a {
+    font-size: 16px;
+}
+
+.list-collection h3 a:hover {
+    border-bottom: 2px solid silver;
+}

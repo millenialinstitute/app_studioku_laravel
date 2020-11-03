@@ -132,9 +132,13 @@ Route::name('dashboard')->middleware(['auth'])->group(function() {
 
 			Route::get('/favorite' , 'FavoriteController@index');
 				
-			Route::get('collection' , 'CollectionController@index');
-			Route::post('collection/create' , 'CollectionController@store');
-			Route::post('collection/item/{id}/add' , 'CollectionController@additem');
+			// ++ collection ++
+			Route::name('collection')->prefix('collection')->group(function() {
+				Route::get('/' , 'CollectionController@index');
+				Route::post('/create' , 'CollectionController@store');
+				Route::post('/item/{id}/add' , 'CollectionController@additem');
+				Route::get('/detail/{id}' , 'CollectionController@detailCollection');
+			});
 				
 				
 
