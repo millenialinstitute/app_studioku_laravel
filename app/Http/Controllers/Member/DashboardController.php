@@ -7,12 +7,25 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Contributor;
+use App\OwnedItem;
+use App\ItemLike;
+use App\Collection;
 
 class DashboardController extends Controller
 {
     public function index ( ) 
     {
-    	return view('member.dashboard');
+        $memberId = Auth::user()->member->id;
+        $owned = OwnedItem::where('member_id' , $memberId)->get()->count();
+        $likes = ItemLike::where('user_id' , Auth::id())->get()->count();
+        $collection = Collection::where('member_id' , $memberId)->get()->count();
+
+    	return view('member.dashboard', [
+                                'user' => Auth::user(),
+                                'owned' => $owned,
+                                'likes' => $likes,
+                                'collection' => $collection,
+                        ]);
     }
 
     public function becomeContributor () 

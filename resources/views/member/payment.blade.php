@@ -17,11 +17,11 @@
 		<p class="total row" style="align-items: center;"> <img src="{{ asset('/assets/dashboard/icons/price_icon.svg') }}" alt="date" class="mr-1" height="30px">Rp{{ number_format($payment->total , 2 ,',','.') }}</p>
 		<div class="badge">
 			@if($payment->status === 'waiting')
-				<span class="waiting">{{ $payment->status }}</span>
+				<span class="waiting">Menunggu</span>
 			@elseif($payment->status === 'reject')
-				<span class="reject">{{ $payment->status }}</span>
+				<span class="reject">Ditolak</span>
 			@elseif($payment->status === 'accept')
-				<span class="accept">{{ $payment->status }}</span>
+				<span class="accept">Diterima</span>
 			@endif
 			<a href="{{ asset('storage/proofs/' . $payment->proof_file) }}" target="_blank" download="payment">Unduh</a>
 		</div>

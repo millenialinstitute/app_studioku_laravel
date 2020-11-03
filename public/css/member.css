@@ -418,6 +418,12 @@
     color: #ffbb38;
 }
 
+.card-payment .badge span.accept {
+    background: #60b6fb33;
+    border: 2px solid #60b6fb;
+    color: #60b6fb;
+}
+
 .card-payment .badge a {
     background: #16dbcc;
     border: 2px solid #16dbcc;
