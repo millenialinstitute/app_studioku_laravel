@@ -20,15 +20,15 @@
 	<div class="col-2">
 		<div class="card row list-data">
 			<div class="col list-item text-center" style="border-right: 2px solid #a8afcc;">
-				<h1 class="value">20</h1>
+				<h1 class="value">{{ $owned }}</h1>
 				<h4 class="key">Unduhan</h4>
 			</div>
 			<div class="col list-item text-center">
-				<h1 class="value">20</h1>
+				<h1 class="value">{{ $likes }}</h1>
 				<h4 class="key">Favorite</h4>
 			</div>
 			<div class="col list-item text-center" style="border-left: 2px solid #a8afcc;">
-				<h1 class="value">20</h1>
+				<h1 class="value">{{ $collection }}</h1>
 				<h4 class="key">Koleksi</h4>
 			</div>
 		</div>

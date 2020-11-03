@@ -21,9 +21,9 @@ class DashboardController extends Controller
         $collection = Collection::where('member_id' , $memberId)->get()->count();
 
     	return view('member.dashboard', [
-                                'user' => Auth::user(),
-                                'owned' => $owned,
-                                'likes' => $likes,
+                                'user'       => Auth::user(),
+                                'owned'      => $owned,
+                                'likes'      => $likes,
                                 'collection' => $collection,
                         ]);
     }
