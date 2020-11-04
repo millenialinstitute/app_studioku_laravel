@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Item;
 use App\Collection;
 use App\ItemLike;
+use App\Category;
 
 class LandingPageController extends Controller
 {
@@ -92,6 +93,28 @@ class LandingPageController extends Controller
         } 
         return redirect(url()->previous())->with('like' , 'Item disukai!');
     }
+
+
+    
+    
+    /**
+      * route: /item/category/{id}
+      * method: get
+      * params: category
+      * description: 
+        * this method for display item as category
+      * return : @view
+    */
+    public function category (Request $request , $category) 
+    {
+        $items = Category::where('name' , $category)->first()->item;
+        
+        return view('item-category' , [
+                                    'auth'  => Auth::check(),
+                                    'items' => $items,
+                            ]);
+    }
+        
         
 
 }

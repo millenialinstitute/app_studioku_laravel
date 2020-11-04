@@ -245,3 +245,36 @@ textarea {
 .my-3 {margin-top: 30px ; margin-bottom: 30px }
 .my-4 {margin-top: 40px ; margin-bottom: 40px }
 .my-5 {margin-top: 50px ; margin-bottom: 50px }
+
+
+.page-item{
+  display: inline-block;
+  padding: 5px;
+  background-color: white;
+}
+
+.page-item.active {
+  background-color: skyblue;
+}
+
+.page-item:hover {
+  cursor: pointer;
+}
+
+.pagination {
+  margin: 10px auto;
+  text-align: center;
+}
+
+.pagination .page-item {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  font-weight: bold;
+  box-shadow: 1px 1px 0px #c4d7e9, -1px -1px 0px #f0f4f8;
+  background-color: #F9F9F9;
+}
+
+.pagination .page-item.active {
+  background-color: skyblue;
+}

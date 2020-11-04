@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use App\LevelUser;
 use App\Contributor;
 use App\Member;
+use App\ItemLike;
 
 class User extends Authenticatable
 {
@@ -52,6 +53,11 @@ class User extends Authenticatable
 
     public function member () {
         return $this->hasOne(Member::class , 'user_id');
+    }
+
+    public function likes () 
+    {
+        return $this->hasMany(ItemLike::class , 'user_id');
     }
         
 }

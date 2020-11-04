@@ -20,6 +20,7 @@ Route::get('/welcome', function () {
 Route::get('/' , 'LandingPageController@index');
 Route::get('item/detail/{id} ' , 'LandingPageController@detailItem');
 Route::post('item/detail/{id}/like' , 'LandingPageController@likeItem');
+Route::get('item/category/{category}' , 'LandingPageController@category');
 
 // ++ help center ++
 Route::name('help_center , ')->prefix('help')->group(function(){
@@ -51,6 +52,7 @@ Route::name('dashboard , ')->middleware(['auth'])->group(function() {
 			Route::get('/contributor/waiting' , 'ContributorController@waiting');
 
 			Route::get('/member' , 'MemberController@index');
+			Route::get('member/{id}' , 'MemberController@detail');
 
 			// +++ Item +++
 			Route::name('item , ')->prefix('item')->group(function() {
@@ -72,8 +74,6 @@ Route::name('dashboard , ')->middleware(['auth'])->group(function() {
 					
 				Route::get('/download/{id}' , 'ItemController@itemDownload');
 				Route::delete('/destroy/{id}' , 'ItemController@itemDestroy');
-					
-					
 			});
 
 			Route::get('/earning' , 'EarningController@index');

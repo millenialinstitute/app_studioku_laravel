@@ -17,9 +17,9 @@
 				<div class="content">
 					<h4 class="title">{{ $member->name }}</h4>
 					<div class="data">
-						<span>200 download</span>
-						<span>5 suka</span>
-						<span>5 koleksi</span>
+						<span>{{ $member->member->owned->count() }} download</span>
+						<span>{{ $member->likes->count() }} suka</span>
+						<span>{{ $member->member->collection->count() }} koleksi</span>
 					</div>
 				</div>
 			</div>
@@ -34,5 +34,7 @@
 			</div>
 		</div>	
 	@endforeach
+
+	{{ $members->links() }}
 
 @endsection

@@ -10,30 +10,30 @@
 	<h2>Kategori</h2>
 	<div class="row">
 		<div class="col">
-			<div class="card-category"><img src="{{ asset('/assets/landing/category/category_logo.svg') }}" alt="logo"></div>
+			<a href="{{ url('/item/category/logo') }}" class="card-category"><img src="{{ asset('/assets/landing/category/category_logo.svg') }}" alt="logo"></a>
 		</div>
 		<div class="col">
-			<div class="card-category"><img src="{{ asset('/assets/landing/category/category_icon.svg') }}" alt="icon"></div>
+			<a href="{{ url('/item/category/icon') }}" class="card-category"><img src="{{ asset('/assets/landing/category/category_icon.svg') }}" alt="icon"></a>
 		</div>
 		<div class="col">
-			<div class="card-category"><img src="{{ asset('/assets/landing/category/category_background.svg') }}" alt="background"></div>
+			<a href="{{ url('/item/category/background') }}" class="card-category"><img src="{{ asset('/assets/landing/category/category_background.svg') }}" alt="background"></a>
 		</div>
 		<div class="col">
-			<div class="card-category"><img src="{{ asset('/assets/landing/category/category_illustration.svg') }}" alt="illustrasi"></div>
+			<a href="{{ url('/item/category/illustration') }}" class="card-category"><img src="{{ asset('/assets/landing/category/category_illustration.svg') }}" alt="illustrasi"></a>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col">
-			<div class="card-category"><img src="{{ asset('/assets/landing/category/category_poster.svg') }}" alt="poster"></div>
+			<a href="{{ url('/item/category/poster') }}" class="card-category"><img src="{{ asset('/assets/landing/category/category_poster.svg') }}" alt="poster"></a>
 		</div>
 		<div class="col">
-			<div class="card-category"><img src="{{ asset('/assets/landing/category/category_brosur.svg') }}" alt="brosur"></div>
+			<a href="{{ url('/item/category/brocure') }}" class="card-category"><img src="{{ asset('/assets/landing/category/category_brosur.svg') }}" alt="brosur"></a>
 		</div>
 		<div class="col">
-			<div class="card-category"><img src="{{ asset('/assets/landing/category/category_web.svg') }}" alt="web"></div>
+			<a href="{{ url('/item/category/web') }}" class="card-category"><img src="{{ asset('/assets/landing/category/category_web.svg') }}" alt="web"></a>
 		</div>
 		<div class="col">
-			<div class="card-category"><img src="{{ asset('/assets/landing/category/category_other.svg') }}" alt="other"></div>
+			<a href="{{ url('/item/category/other') }}" class="card-category"><img src="{{ asset('/assets/landing/category/category_other.svg') }}" alt="other"></a>
 		</div>
 	</div>
 </section>

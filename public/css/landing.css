@@ -83,6 +83,12 @@ section.category .card-category {
     color: white;
     align-items: center;
     overflow: hidden;
+    transition: .2s;
+}
+
+section.category .card-category:hover {
+    opacity: .8;
+    transform: translateY(1.5px);
 }
 
 h2 {
