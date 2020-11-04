@@ -19,7 +19,7 @@
 			<a href="{{ url('/item/category/background') }}" class="card-category"><img src="{{ asset('/assets/landing/category/category_background.svg') }}" alt="background"></a>
 		</div>
 		<div class="col">
-			<a href="{{ url('/item/category/illustration') }}" class="card-category"><img src="{{ asset('/assets/landing/category/category_illustration.svg') }}" alt="illustrasi"></a>
+			<a href="{{ url('/item/category/illustrasi') }}" class="card-category"><img src="{{ asset('/assets/landing/category/category_illustration.svg') }}" alt="illustrasi"></a>
 		</div>
 	</div>
 	<div class="row">
@@ -27,7 +27,7 @@
 			<a href="{{ url('/item/category/poster') }}" class="card-category"><img src="{{ asset('/assets/landing/category/category_poster.svg') }}" alt="poster"></a>
 		</div>
 		<div class="col">
-			<a href="{{ url('/item/category/brocure') }}" class="card-category"><img src="{{ asset('/assets/landing/category/category_brosur.svg') }}" alt="brosur"></a>
+			<a href="{{ url('/item/category/brosur') }}" class="card-category"><img src="{{ asset('/assets/landing/category/category_brosur.svg') }}" alt="brosur"></a>
 		</div>
 		<div class="col">
 			<a href="{{ url('/item/category/web') }}" class="card-category"><img src="{{ asset('/assets/landing/category/category_web.svg') }}" alt="web"></a>

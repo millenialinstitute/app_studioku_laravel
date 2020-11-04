@@ -74,6 +74,10 @@ button {
   font-family: 'Montserrat' , 'Open Sans' , 'Helvetica' , sans-serif;
 }
 
+table {
+  border-collapse: collapse;
+}
+
 input, textarea {
   border: none;
   outline: none;
@@ -259,6 +263,10 @@ textarea {
 
 .page-item:hover {
   cursor: pointer;
+}
+
+.page-item a {
+  margin: auto;
 }
 
 .pagination {
