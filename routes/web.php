@@ -50,6 +50,7 @@ Route::name('dashboard , ')->middleware(['auth'])->group(function() {
 
 			Route::get('/contributor/all' , 'ContributorController@all');
 			Route::get('/contributor/waiting' , 'ContributorController@waiting');
+			Route::get('contributor/reject' , 'ContributorController@reject');
 
 			Route::get('/member' , 'MemberController@index');
 			Route::get('member/{id}' , 'MemberController@detail');

@@ -19,16 +19,17 @@ class ContributorController extends Controller
 		
 	public function all ( ) 
 	{
-		$totalContributor = Contributor::where('status' , 'confirmed')->get()->count();
+		$dataContributor    = Contributor::where('status' , 'confirmed');
+		$totalContributor   = $dataContributor->get()->count();
 		$waitingContributor = Contributor::where('status' , 'waiting')->get()->count();
+		$topContributors    = $dataContributor->orderBy('saldo' , 'desc')->limit(3)->get();
 
-		$topContributors = Contributor::orderBy('saldo' , 'desc')->limit(3)->get();
-		$contributors = Contributor::latest()->paginate(5);
+		$contributors = $dataContributor->latest()->paginate(5);
 		return view('admin.contributor-all' , [
-										'total' => $totalContributor,
-										'waiting' => $waitingContributor,
-										
+										'total'           => $totalContributor,
+										'waiting'         => $waitingContributor,
 										'topContributors' => $topContributors,
+
 										'contributors'    => $contributors,
 									]);
 	}
@@ -47,6 +48,45 @@ class ContributorController extends Controller
 		
 	public function waiting ( ) 
 	{
-		return view('admin.contributor-waiting');
+		$dataContributor    = Contributor::where('status' , 'confirmed');
+		$totalContributor   = $dataContributor->get()->count();
+		$waitingContributor = Contributor::where('status' , 'waiting')->get()->count();
+		$topContributors    = $dataContributor->orderBy('saldo' , 'desc')->limit(3)->get();
+
+		$contributors = Contributor::where('status' , 'waiting')->paginate(5);
+		return view('admin.contributor-waiting' , [
+										'total'           => $totalContributor,
+										'waiting'         => $waitingContributor,
+										'topContributors' => $topContributors,
+										'contributors'    => $contributors,
+									]);
 	}
+
+
+	
+	
+	/**
+	  * route: /admin/contributor/reject
+	  * method: get
+	  * params: null
+	  * description: 
+	    * this method for show contributor where status reject
+	  * return : @view
+	*/
+	public function reject () 
+	{
+		$dataContributor    = Contributor::where('status' , 'confirmed');
+		$totalContributor   = $dataContributor->get()->count();
+		$waitingContributor = Contributor::where('status' , 'waiting')->get()->count();
+		$topContributors    = $dataContributor->orderBy('saldo' , 'desc')->limit(3)->get();
+
+		$contributors = Contributor::where('status' , 'reject')->paginate(5);
+		return view('admin.contributor-reject' , [
+										'total'           => $totalContributor,
+										'waiting'         => $waitingContributor,
+										'topContributors' => $topContributors,
+										'contributors'    => $contributors,
+									]);
+	}
+		
 }

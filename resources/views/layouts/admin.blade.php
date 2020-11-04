@@ -26,9 +26,10 @@
 		<a href="#contributor" data-target="#contributor" class="menu-item btn-collapse @yield('contributor') ">
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/contributor_icon.svg') }}" alt="contributor">
 			<span>Kontributor</span>
-			<div class="menu-collapse" data-height="84px" id="contributor">
+			<div class="menu-collapse" data-height="126px" id="contributor">
 				<a href="{{ url('/admin/contributor/all') }}">Semua Kontributor</a>
 				<a href="{{ url('/admin/contributor/waiting') }}">Menunggu</a>
+				<a href="{{ url('admin/contributor/reject') }}">Ditolak</a>
 			</div>
 		</a>
 		<a href="{{ url('/admin/member') }}" class="menu-item @yield('member') ">

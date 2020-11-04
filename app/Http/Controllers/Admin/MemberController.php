@@ -21,7 +21,7 @@ class MemberController extends Controller
 		
     public function index ( ) 
     {
-    	$members = User::where('level_user_id' , 3)->paginate(10);
+    	$members = User::where('level_user_id' , 3)->paginate(5);
     	
     	return view('admin.member' , [
 									'user'    => Auth::user(),

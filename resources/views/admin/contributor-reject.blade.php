@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title' , 'Semua Kontributor')
+@section('title' , 'Kontributor Ditolak')
 @section('contributor' , 'active')
 @section('body')
 
@@ -48,35 +48,29 @@
 @empty
 	<h3>Tidak ada kontributor</h3>
 @endforelse
-	
 
 
-<h3 class="title-section">Semua Kontributor</h3>	
+<h3 class="title-section">Kontributor Menunggu</h3>	
 
 @forelse($contributors as $contributor)
 	<div class="card-item">
-		<p class="number">{{ $loop->iteration }}</p>
+		<p class="number">@include('components.iteration' , ['paginate' => 5])</p>
 		<div class="profile">
-			<img src="{{ asset('storage/users/' . $contributor->user->image) }}" alt="{{ $contributor->user->name }}" class="img">
+			<img src="{{ asset('storage/users/' . $contributor->user->image) }}" alt="photos" class="img">
 		</div>
 		<div class="content">
 			<h4 class="title">{{ $contributor->user->name }}</h4>
-			<div class="data row">
-				<span>{{ $contributor->item->count() }} Konten</span>
-				<span>{{ $contributor->item->where('sold' , '>' , 0)->count() }} Terjual</span>
-			</div>
 		</div>
 		<div class="total">
 			<p>Total Pendapatan</p>
-			<div class="value">Rp{{ number_format($contributor->saldo , 2,',','.') }}</div>
+			<div class="value">Rp0,00</div>
 		</div>
 	</div>
 @empty
-	<h3>Tidak ada Kontributor</h3>
+	<h1>Tidak ada kontributor</h1>
 @endforelse
-
-   {{ $contributors->links() }}
 	
+{{ $contributors->links() }}
 
 
 @endsection

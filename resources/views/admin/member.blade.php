@@ -10,7 +10,7 @@
 	@foreach($members as $member)
 		<div class="card-list">
 			<div class="row" style="align-items: center;width: 50%;justify-content: flex-start;">
-				<p class="number">{{ $loop->iteration }}</p>
+				<p class="number">@include('components.iteration' , ['paginate' => 5])</p>
 				<div class="profile mr-2">
 					<img src="{{ asset('/storage/users/user.jpg') }}" alt="user">
 				</div>
