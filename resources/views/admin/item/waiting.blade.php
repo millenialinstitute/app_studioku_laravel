@@ -29,7 +29,7 @@
 @forelse($items as $item)
 	<div class="card-item">
 		<div class="row"  style="align-items: center;width: 70%;justify-content: flex-start;">
-			<p class="number">{{ $loop->iteration }}</p>
+			<p class="number">@include('components.iteration' , ['paginate' => 5])</p>
 			<div class="preview">
 				<img src="{{ asset('storage/photos/' . $item->image) }}" alt="" class="img">
 			</div>
@@ -52,6 +52,9 @@
 @empty
 	<h1>Tidak ada data!</h1>
 @endforelse
+
+{{ $items->links() }}
+
 {{-- ############## Item Waiting List ################# --}}
 
 @endsection

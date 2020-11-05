@@ -96,9 +96,9 @@ class PaymentController extends Controller
     */
     public function confirm () 
     {
-        $payments = ProofPayment::where('status' , 'waiting')->get();
+        $payments = ProofPayment::where('status' , 'waiting')->paginate(5);
         return view('admin.payment.confirm' , [
-                                    'user' => Auth::user(),
+                                    'user'     => Auth::user(),
                                     'payments' => $payments,
                                 ]);
     }
@@ -225,7 +225,7 @@ class PaymentController extends Controller
     */
     public function accept () 
     {
-        $payments = ProofPayment::where('status' , 'accept')->latest()->get();
+        $payments = ProofPayment::where('status' , 'accept')->latest()->paginate(5);
 
         return view('admin.payment.accept' , [
                                         'user'     => Auth::user(),
@@ -271,9 +271,9 @@ class PaymentController extends Controller
       */
       public function reject () 
       {
-          $payments = ProofPayment::where('status' , 'reject')->latest()->get();
+          $payments = ProofPayment::where('status' , 'reject')->latest()->paginate(5);
           return view('admin.payment.reject' , [
-                                        'user' => Auth::user(),
+                                        'user'     => Auth::user(),
                                         'payments' => $payments,
                                   ]);
       }
@@ -293,7 +293,7 @@ class PaymentController extends Controller
       {
             $payment = ProofPayment::find($id);
             return view('admin.payment.reject-detail' , [
-                                                'user' => Auth::user(),
+                                                'user'    => Auth::user(),
                                                 'payment' => $payment,
                                           ]);
       }

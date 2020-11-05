@@ -53,7 +53,7 @@ class ItemController extends Controller
         $itemTotal = Item::where('status' , 'accept')->get()->count();
         $itemWait = Item::where('status' , 'waiting')->get()->count();
 
-        $items = Item::where('status' , 'waiting')->get();
+        $items = Item::where('status' , 'waiting')->paginate(5);
 
     	return view('admin.item.waiting' , [
                                 'user'      => Auth::user(),

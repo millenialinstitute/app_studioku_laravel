@@ -44,15 +44,23 @@ class SalesController extends Controller
     		$newestSales->push($data->item);
     	}
 
-
-
+        $pagination = collect([]);
+        $limitpage = ceil($newestSales->count()/5);
+        for ($i=1; $i <= $limitpage; $i++) { 
+            $pagination->push([
+                'text' => $i,
+                'link' => url('/admin/sales/?page=' . $i),
+            ]);
+        }
+        
     	return view('admin.sales' , [
-					'user'        => Auth::user(),
-					'all'         => $allItem,
-					'current'     => $itemCurrent,
-					'ago'         => $itemAgo,
+                    'user'        => Auth::user(),
+                    'all'         => $allItem,
+                    'current'     => $itemCurrent,
+                    'ago'         => $itemAgo,
                     'topSales'    => $topSales,
-					'newestSales' => $newestSales,
+                    'newestSales' => $newestSales,
+                    'pagination'  => $pagination,
 		    	]);
     }
 }

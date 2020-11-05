@@ -8,7 +8,7 @@
 @forelse($payments as $data)
 	<div class="card-item">
 		<div class="row ai-c" style="width: 70%">
-			<p class="number">{{ $loop->iteration }}</p>
+			<p class="number"> @include('components.iteration' , ['paginate' => 5])  </p>
 			<div class="profile">
 				<img src="{{ asset('storage/users/' . $data->member->user->image) }}" alt="{{ $data->customer }}" class="img">
 			</div>
@@ -28,6 +28,10 @@
 @empty
 	<h1>Tidak ada data!</h1>
 @endforelse
+
+
+  {{ $payments->links() }}
+
 
 @endsection
 	

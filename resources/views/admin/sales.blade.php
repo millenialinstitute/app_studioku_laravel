@@ -4,6 +4,13 @@
 @section('body')
 
 
+
+@php
+	if(!isset($_GET['page'])) {
+		$_GET['page'] = 1;
+	}
+@endphp
+
 {{-- thumbnail --}}
 <div class="row">
 	<div class="col">
@@ -52,9 +59,9 @@
 
 
 <h3 class="title-section">Penjualan Item</h3>
-@forelse($newestSales as $item)
+@forelse($newestSales->forPage($_GET['page'], 5) as $item)
 	<div class="card-item">
-		<p class="number">{{ $loop->iteration }}</p>
+		<p class="number">@include('components.iteration' , ['paginate' => 5])</p>
 		<div class="preview">
 			<img src="{{ asset('storage/photos/' . $item->image) }}" alt="{{ $item->title }}" class="img">
 		</div>
@@ -66,6 +73,9 @@
 @empty
 	<h1>Tidak ada data</h1>
 @endforelse
-	
+
+{{-- pagenation --}}
+@include('components.pagination' , ['pagination' => $pagination])
+  
 
 @endsection
