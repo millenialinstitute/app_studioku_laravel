@@ -56,7 +56,17 @@ class ItemController extends Controller
                 'category' => 'required|numeric',
             ]);
         /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
-
+        $contributor = Auth::user()->contributor;
+        $status = $contributor->status;
+        if($status === 'waiting') {
+            $item = $contributor->item->where('status' , 'waiting');
+            if($item->count() === 5) {
+                return redirect(url()->previous())->with('limit' , 'Item yang Anda upload sudah mencapai 5 item!');
+            }
+        } else if($status === 'reject') {
+            Auth::user()->contributor->update(['status' => 'waiting']);
+        }
+        
         /* ---------- function get data item file ------------ */
             $name = Str::random(3) . '_' . date('Y-m-d_H-i-s_') . Str::random(30) . '.';
             function getData($file , $option) {

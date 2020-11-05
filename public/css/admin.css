@@ -103,8 +103,7 @@ table.list-category td.action div {
 .item-detail .btn-download , 
 .item-detail .btn-accept , 
 .item-detail .btn-reject ,
-.modal .modal-body button ,
-
+.modal .modal-body button 
  {
     color: white;
     text-transform: uppercase;
@@ -346,7 +345,7 @@ table.list-category td.action div {
 
 
 
-.card-profile .profile {
+.card-profile .profile , .card-contributor .profile {
     width: 70%;
     margin: 10px auto;
     border-radius: 50%;
@@ -392,4 +391,20 @@ table.list-category td.action div {
 
 .card.biodata .row .col-2 {
     color: #a8afcf;
+}
+
+.card.card-contributor {
+    width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0px;
+}
+
+.card.card-contributor .profile {
+    width: 30%;
+}
+
+.card.card-contributor h3 {
+    font-size: 23px;
 }

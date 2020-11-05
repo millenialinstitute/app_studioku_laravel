@@ -36,7 +36,7 @@
 		<div class="content">
 			<h4 class="title">{{ $contributor->user->name }}</h4>
 			<div class="data row">
-				<span>{{ $contributor->item->count() }} Konten</span>
+				<span>{{ $contributor->item->where('status' , 'accept')->count() }} Konten</span>
 				<span>{{ $contributor->item->where('sold' , '>' , 0)->count() }} Terjual</span>
 			</div>
 		</div>
@@ -61,9 +61,10 @@
 		<div class="content">
 			<h4 class="title">{{ $contributor->user->name }}</h4>
 		</div>
-		<div class="total">
-			<p>Total Pendapatan</p>
-			<div class="value">Rp0,00</div>
+		<div class="action">
+			<a href="{{ url('admin/contributor/waiting/' . $contributor->id) }}" class="btn-icon bg-warn">
+				<img src="{{ asset('/assets/dashboard/icons/detail_icon.svg') }}" alt="detail">
+			</a>
 		</div>
 	</div>
 @empty

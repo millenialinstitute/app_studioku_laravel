@@ -25,13 +25,15 @@ class ItemController extends Controller
 	*/
     public function all ( ) 
     {
-        $items = Item::where('status' , 'accept')->latest()->get();
-        $itemTotal = $items->count();
+        $items = Item::where('status' , 'accept')->latest()->paginate(5);
+        $topItems = Item::where('status' , 'accept')->orderBy('sold' , 'desc')->limit(3)->get();
+        $itemTotal = Item::where('status' , 'accept')->count();
         $itemWait = Item::where('status' , 'waiting')->get()->count();
     	return view('admin.item.all' , [
-                                'items'     => $items,
                                 'itemTotal' => $itemTotal,
-                                'itemWait'  => $itemWait
+                                'itemWait'  => $itemWait,
+                                'topItems'  => $topItems,
+                                'items'     => $items,
                           ]);
     }
 

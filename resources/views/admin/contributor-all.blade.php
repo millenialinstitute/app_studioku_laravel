@@ -36,8 +36,16 @@
 		<div class="content">
 			<h4 class="title">{{ $contributor->user->name }}</h4>
 			<div class="data row">
-				<span>{{ $contributor->item->count() }} Konten</span>
-				<span>{{ $contributor->item->where('sold' , '>' , 0)->count() }} Terjual</span>
+				<span>{{ $contributor->item->where('status' , 'accept')->count() }} Konten</span>
+				<span>
+					@php
+						$soldItem = 0;
+						foreach($contributor->item->where('sold' , '>' , 0) as $item) {
+							$soldItem+=$item->sold;
+						}
+					@endphp
+					{{ $soldItem }} Terjual
+				</span>
 			</div>
 		</div>
 		<div class="total">
@@ -62,8 +70,16 @@
 		<div class="content">
 			<h4 class="title">{{ $contributor->user->name }}</h4>
 			<div class="data row">
-				<span>{{ $contributor->item->count() }} Konten</span>
-				<span>{{ $contributor->item->where('sold' , '>' , 0)->count() }} Terjual</span>
+				<span>{{ $contributor->item->where('status' , 'accept')->count() }} Konten</span>
+				<span>
+					@php
+						$soldItem = 0;
+						foreach($contributor->item->where('sold' , '>' , 0) as $item) {
+							$soldItem+=$item->sold;
+						}
+					@endphp
+					{{ $soldItem }} Terjual
+				</span>
 			</div>
 		</div>
 		<div class="total">

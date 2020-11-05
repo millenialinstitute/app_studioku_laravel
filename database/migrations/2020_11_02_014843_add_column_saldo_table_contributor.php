@@ -14,7 +14,7 @@ class AddColumnSaldoTableContributor extends Migration
     public function up()
     {
         Schema::table('contributors', function (Blueprint $table) {
-            $table->integer('saldo');
+            $table->integer('saldo')->default(0);
         });
     }
 

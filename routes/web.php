@@ -48,9 +48,15 @@ Route::name('dashboard , ')->middleware(['auth'])->group(function() {
 		Route::name('admin , ')->middleware(['admin'])->prefix('admin')->namespace('Admin')->group(function() {
 			Route::get('/dashboard' , 'DashboardController@index');
 
-			Route::get('/contributor/all' , 'ContributorController@all');
-			Route::get('/contributor/waiting' , 'ContributorController@waiting');
-			Route::get('contributor/reject' , 'ContributorController@reject');
+			Route::name('contributor , ')->prefix('contributor')->group(function() {
+				Route::get('/all' , 'ContributorController@all');
+				Route::get('/waiting' , 'ContributorController@waiting');
+				Route::get('/waiting/{id}' , 'ContributorController@waitingDetail');
+				Route::get('/waiting/{id}/item/{item}' , 'ContributorController@waitingItem');
+				Route::put('/waiting/{id}/item/{item}/accept' , 'ContributorController@waitingAccept');
+				Route::put('/waiting/{id}/item/{item}/reject' , 'ContributorController@waitingReject');
+				Route::get('/reject' , 'ContributorController@reject');
+			});
 
 			Route::get('/member' , 'MemberController@index');
 			Route::get('member/{id}' , 'MemberController@detail');

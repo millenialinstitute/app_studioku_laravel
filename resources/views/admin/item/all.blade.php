@@ -28,25 +28,29 @@
 
 {{-- =========== Top Item ============ --}}
 <h3 class="title-section">Item Teratas</h3>
-<div class="card-item">
-	<div class="row" style="align-items: center;width: 70%;justify-content: flex-start;">
-		<p class="number">1</p>
-		<div class="preview">
-			<img src="{{ asset('storage/photos/example.jpg') }}" alt="photo" class="img">
-		</div>
-		<div class="content ml-2">
-			<h4 class="title">Judul Item</h4>
-			<div class="data">
-				<span>200 Terjual</span>
-				<span>200 Terjual</span>
-				<span>200 Terjual</span>
+@forelse($topItems as $item)
+	<div class="card-item">
+		<div class="row" style="align-items: center;width: 70%;justify-content: flex-start;">
+			<p class="number">{{ $loop->iteration }}</p>
+			<div class="preview">
+				<img src="{{ asset('storage/photos/' . $item->image) }}" alt="photo" class="img">
+			</div>
+			<div class="content ml-2">
+				<h4 class="title">{{ $item->title }}</h4>
+				<div class="data">
+					<span>{{ $item->sold }} Terjual</span>
+					<span>{{ $item->like->count() }} Disukai</span>
+					<span>{{ $item->collection->count() }} Dikoleksi</span>
+				</div>
 			</div>
 		</div>
+		<div class="profile">
+			<img src="{{ asset('storage/users/user.jpg') }}" alt="user" class="img">
+		</div>
 	</div>
-	<div class="profile">
-		<img src="{{ asset('storage/users/user.jpg') }}" alt="user" class="img">
-	</div>
-</div>
+@empty
+	<h1>Tidak ada item</h1>
+@endforelse
 {{-- ################ Top Item ##################### --}}
 
 
@@ -56,16 +60,16 @@
 @forelse($items as $item)
 	<div class="card-item">
 		<div class="row" style="align-items: center;width: 70%;justify-content: flex-start;">
-			<p class="number">{{ $loop->iteration }}</p>
+			<p class="number">@include('components.iteration' , ['paginate' => 5])</p>
 			<div class="preview">
 				<img src="{{ asset('storage/photos/' . $item->image) }}" alt="photo" class="img">
 			</div>
 			<div class="content ml-2">
 				<h4 class="title"> {{ $item->title }} </h4>
 				<div class="data">
-					<span>50 Terjual </span>
-					<span>50 Disukai </span>
-					<span>50 Dikoleksi</span>
+					<span>{{ $item->sold }} Terjual </span>
+					<span>{{ $item->like->count() }} Disukai </span>
+					<span>{{ $item->collection->count() }} Dikoleksi</span>
 				</div>
 			</div>
 		</div>
@@ -88,6 +92,7 @@
 @empty
 	<h1>Tidak ada Item!</h1>
 @endforelse
+{{ $items->links() }}
 {{-- ############ All Item ################ --}}
 
 

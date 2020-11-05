@@ -8,6 +8,8 @@ use App\Category;
 use App\ManageReject;
 use App\ItemTag;
 use App\ItemFile;
+use App\CollectItem;
+use App\ItemLike;
 
 class Item extends Model
 {
@@ -36,5 +38,15 @@ class Item extends Model
     public function file ( ) 
     {
         return $this->hasMany(ItemFile::class , 'item_id');
+    }
+
+    public function collection () 
+    {
+        return $this->hasMany(CollectItem::class , 'item_id');
+    }
+
+    public function like () 
+    {
+        return $this->hasMany(ItemLike::class , 'item_id');
     }
 }

@@ -14,7 +14,7 @@ class AddColumnSoldTableItem extends Migration
     public function up()
     {
         Schema::table('items', function (Blueprint $table) {
-            $table->integer('sold');
+            $table->integer('sold')->default(0);
         });
     }
 
