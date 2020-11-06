@@ -9,7 +9,7 @@ use App\Bank;
 
 class ProofPayment extends Model
 {
-    protected $fillable = [ 'bank_id' , 'member_id' , 'cart_id' , 'total' , 'bank' , 'customer' , 'card_number' , 'proof_file'];
+    protected $fillable = [ 'bank_id' , 'member_id' , 'cart_id' , 'total' , 'bank' , 'customer' , 'card_number' , 'proof_file' , 'status'];
 
     public function member () 
     {

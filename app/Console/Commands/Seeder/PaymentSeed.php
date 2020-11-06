@@ -73,14 +73,13 @@ class PaymentSeed extends Command
         $this->info('2. Confirm All Payment');
         $this->info('Choose your option to executed');
         $option = $this->ask('Option :');
-
+        dump($option==='1');
         if($option === '1') {
             $faker = Faker::create('id_ID');
 
 
             // get data member id
             $dataContributor = Contributor::get();
-            $contributorsId = collect([]);
             $mc = collect([]);
             foreach ($dataContributor as $data) {
                 $mc->push($data->user->member->id);
@@ -113,20 +112,29 @@ class PaymentSeed extends Command
                 $memberId = $faker->randomElement($membersId);
                 $user = Member::find($memberId)->user;
 
-                $cart = [
-                    'member_id' => $memberId,
-                ];
-                Cart::create($cart);
+                $getCart = Cart::where('member_id' , $memberId);
+                if(!$getCart->count()) {
+                    Cart::create(['member_id' => $memberId]);
+                }
+
                 $this->info('********** Payment By : ' . $user->name . ' *************');
-                $cartId = Cart::get()->last()->id;
+                $cartId = Cart::where('member_id' , $memberId)->first()->id;
+
+                $ownedItems = collect([]);
+                foreach(Member::find($memberId)->owned as $item) {
+                    $ownedItems->push($item->item->id);
+                } 
 
                 for ($j=1; $j <= $faker->numberBetween($min= 3 , $max = 15); $j++) { 
-                    $cartItem = [
-                        'cart_id' => $cartId,
-                        'item_id' => $faker->randomElement($itemsId),
-                    ];
-                    CartItem::create($cartItem);
-                    showInfo($cartItem , '+++++++++ Item ' . $j .' +++++++++++');
+                    $itemId = $faker->randomElement($itemsId);
+                    if(!$ownedItems->contains($itemId)) {
+                        $cartItem = [
+                            'cart_id' => $cartId,
+                            'item_id' => $itemId,
+                        ];
+                        // CartItem::create($cartItem);
+                        showInfo($cartItem , '+++++++++ Item ' . $j .' +++++++++++');
+                    }
                 }
 
                 $proof = [
@@ -140,7 +148,7 @@ class PaymentSeed extends Command
                     'proof_file'  => 'proof.jpg',
                     'status'      => 'accept',
                 ];
-                ProofPayment::create($proof);
+                // ProofPayment::create($proof);
                 showInfo($proof , " ++++++++ Proof Array +++++++++ ");
             }
             echo "\n\n";

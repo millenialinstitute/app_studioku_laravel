@@ -10,7 +10,10 @@ use App\ProofPayment;
 use App\OwnedItem;
 use App\SaldoStatistic;
 use App\SaldoItem;
+use App\Item;
 use App\Contributor;
+use App\EarningStatistic;
+use App\EarningItem;
 
 class PaymentController extends Controller
 {
@@ -117,9 +120,18 @@ class PaymentController extends Controller
     public function confirmDetail (Request $request ,$id) 
     {
         $payment = ProofPayment::find($id);
+        $items = collect([]);
+        $dataItems = $payment->cart->item;
+        foreach ($dataItems as $item) {
+            if(!$item->item->owned->where('member_id' , $payment->member_id)->count()) {
+              $items->push($item);
+            }
+        }
+
         return view('admin.payment.confirm-detail' , [
                                             'user' => Auth::user(),
                                             'payment' => $payment,
+                                            'items' => $items,
                                         ]);
     }
 
@@ -155,26 +167,70 @@ class PaymentController extends Controller
     public function confirmAccept (Request $request, $id) 
     {
         ProofPayment::where('id' , $id)->update(['status' => 'accept']);
-        $proof = ProofPayment::find($id);
-        $items = $proof->cart->item;
+        $proof    = ProofPayment::find($id);
+        $items    = collect([]);
+        $itemsId  = collect([]);
+        $income = [
+            'total'       => 0,
+            'studioku'    => 0,
+            'contributor' => 0,
+        ];
+        $incomeTotal = 0;
+
         foreach ($proof->cart->item as $item) {
-            OwnedItem::create([
-                'member_id' => $proof->member_id,
-                'item_id'   => $item->item->id,
+            if(!$item->item->owned->where('member_id' , $proof->member_id)->count()) {
+                $item = $item->item;
+                $items->push([
+                    'id'             => $item->id,
+                    'contributor_id' => $item->contributor_id,
+                    'cost'           => $item->cost,
+                ]);
+                $itemsId->push($item->id);
+                OwnedItem::create([
+                    'member_id' => $proof->member_id,
+                    'item_id'   => $item->id,
+                ]);
+                $income['total']       += $item->cost;
+                $income['studioku']    += (30/100 * $item->cost);
+                $income['contributor'] += (70/100 * $item->cost);
+            }
+        }
+
+        // insert into statistic earning
+        $earningStatistic = EarningStatistic::where('date' , date('d'))
+                            ->where('month' , date('m'))
+                            ->where('year' , date('Y'));
+
+        if(!$earningStatistic->get()->count()) {
+            EarningStatistic::create([
+                'income'      => 0,
+                'studioku'    => 0,
+                'contributor' => 0,
+                'date'        => date('d'),
+                'month'       => date('m'),
+                'year'        => date('Y'),
+            ]);
+        }
+
+        $earning = $earningStatistic->first();
+
+        $earningStatistic->update([
+            'income'      => (int)$earning->income + $income['total'],
+            'studioku'    => (int)$earning->studioku + $income['studioku'],
+            'contributor' => (int)$earning->contributor +  $income['contributor'],
+        ]);
+
+        $earningId = $earningStatistic->first()->id;
+        foreach ($itemsId as $itemId) {
+            EarningItem::create([
+                'statistic_id' => $earningId,
+                'item_id'      => $itemId,
             ]);
         }
 
 
-        $cart = ProofPayment::where('id' , $id)->first()->cart;
-        $items = collect([]);
-        foreach($cart->item as $item) {
-            $item = $item->item;
-            $items->push([
-                'id'             => $item->id,
-                'contributor_id' => $item->contributor_id,
-                'cost'           => $item->cost,
-            ]);
-        }
+
+        // insert into statistic contributor
         foreach($items->groupBy('contributor_id') as $contributorId =>  $items) {
             $totalCost = 0;
             SaldoStatistic::create([

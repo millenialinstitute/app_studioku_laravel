@@ -30,30 +30,30 @@
 			$totalPayment = 0;
 		@endphp
 		@forelse($items as $item)
-			@php 
-				$item = $item->item;
-				$totalPayment += $item->cost; 
-			@endphp
-			<div class="cart-list-item">
-				<div class="cart-item">
-					<img src="{{ asset('storage/photos/' . $item->image) }}" alt="example">
-					<div class="description">
-						<a href="{{ url('item/detail/' . $item->id) }}">
-							<p> {{ $item->title }} </p>
-						</a>
-						<div class="row">
-							<p class="cost">Rp{{ number_format($item->cost , 2 ,',' , '.') }} </p>
-							<form action="{{ url('member/cart/item/' . $item->id .'/delete') }}" method="post">
-								@csrf
-								@method('delete')
-								<button>
-									<img src="{{ asset('/assets/dashboard/icons/delete_icon_red.svg') }}" alt="delete">
-								</button>
-							</form>
+				@php 
+					$item = $item->item;
+					$totalPayment += $item->cost; 
+				@endphp
+				<div class="cart-list-item">
+					<div class="cart-item">
+						<img src="{{ asset('storage/photos/' . $item->image) }}" alt="example">
+						<div class="description">
+							<a href="{{ url('item/detail/' . $item->id) }}">
+								<p> {{ $item->title }} </p>
+							</a>
+							<div class="row">
+								<p class="cost">Rp{{ number_format($item->cost , 2 ,',' , '.') }} </p>
+								<form action="{{ url('member/cart/item/' . $item->id .'/delete') }}" method="post">
+									@csrf
+									@method('delete')
+									<button>
+										<img src="{{ asset('/assets/dashboard/icons/delete_icon_red.svg') }}" alt="delete">
+									</button>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 		@empty
 			<div class="text-center card-item" style="width: 84%;margin: 20px auto;" >
 				<h2>Tidak ada item</h2>

@@ -27,13 +27,19 @@ class CartController extends Controller
     {
         $memberId = Auth::user()->member->id;
         $cart = Cart::where('member_id' , $memberId)->get();
+        $items = collect([]);
         if($cart->count()) {
-          $items = $cart->first()->item;
+          $dataItems = $cart->first()->item;
+          foreach ($dataItems as $item) {
+              if(!$item->item->owned->where('member_id' , $memberId)->count()) {
+                $items->push($item);
+              }
+          }
         } else {
           $items = collect([]);
         }
 
-    	return view('member.cart' , [
+    	 return view('member.cart' , [
                                 'user' => Auth::user(),
                                 'items' => $items,
                             ]);
@@ -64,10 +70,10 @@ class CartController extends Controller
     						->get()
     						->count();
     	if(!$check2) {
-			CartItem::create([
-				'cart_id' => $cartId,
-				'item_id' => $id,
-			]);
+  			CartItem::create([
+  				'cart_id' => $cartId,
+  				'item_id' => $id,
+  			]);
     	}
 
     	return redirect(url()->previous())->with('add' , 'Item berhasil dimasukkan keranjang!');
@@ -87,8 +93,13 @@ class CartController extends Controller
     public function removeAllItem (Request $request) 
     {
         $memberId = Auth::user()->member->id;
-        $cartId = Cart::where('member_id' , $memberId)->get()->first()->id;
-        CartItem::where('cart_id' , $cartId)->delete();
+        $cart = Cart::where('member_id' , $memberId)->get()->first();
+
+        foreach ($cart->item as $item) {
+              if(!$item->item->owned->where('member_id' , $memberId)->count()) {
+                CartItem::destroy($item->id);
+            }
+        }
 
         return redirect(url()->previous())->with('delete' , 'Semua item berhasil dihapus dari keranjang!');
     }
@@ -129,7 +140,19 @@ class CartController extends Controller
     public function payment () 
     {
         $memberId = Auth::user()->member->id;
-        $items = Cart::where('member_id' , $memberId)->get()->first()->item;
+        $memberId = Auth::user()->member->id;
+        $cart = Cart::where('member_id' , $memberId)->get();
+        $items = collect([]);
+        if($cart->count()) {
+          $dataItems = $cart->first()->item;
+          foreach ($dataItems as $item) {
+              if(!$item->item->owned->where('member_id' , $memberId)->count()) {
+                $items->push($item);
+              }
+          }
+        } else {
+          $items = collect([]);
+        }
 
         $banks = Bank::get();
 
@@ -157,7 +180,19 @@ class CartController extends Controller
 
         // get total payment
         $memberId = Auth::user()->member->id;
-        $items = Cart::where('member_id' , $memberId)->get()->first()->item;
+        $memberId = Auth::user()->member->id;
+        $cart = Cart::where('member_id' , $memberId)->get();
+        $items = collect([]);
+        if($cart->count()) {
+          $dataItems = $cart->first()->item;
+          foreach ($dataItems as $item) {
+              if(!$item->item->owned->where('member_id' , $memberId)->count()) {
+                $items->push($item);
+              }
+          }
+        } else {
+          $items = collect([]);
+        }
         $payment = 0;
         foreach($items as $item) {
             $payment += $item->item->cost;
@@ -196,6 +231,7 @@ class CartController extends Controller
         $memberId = Auth::user()->member->id;
         $cartId = Cart::where('member_id' , $memberId)->get()->first()->id;
         $bankId = $id;
+
         
         ProofPayment::create([
             'bank_id'     => $bankId,
@@ -208,7 +244,7 @@ class CartController extends Controller
             'proof_file'  => $nameProof,
         ]);
 
-        return redirect('member/cart')->with('send' , 'Data berhasil dikirimkan!');
+        return redirect('member/payment')->with('send' , 'Data berhasil dikirimkan!');
     }
         
                     

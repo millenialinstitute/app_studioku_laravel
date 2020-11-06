@@ -67,7 +67,7 @@
 
 <div class="list-item">
 	<h3 class="title-section">Daftar Item</h3>
-	@foreach($payment->cart->item as $item)
+	@foreach($items as $item)
 		@php
 			$item = $item->item
 		@endphp

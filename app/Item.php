@@ -10,6 +10,8 @@ use App\ItemTag;
 use App\ItemFile;
 use App\CollectItem;
 use App\ItemLike;
+use App\CartItem;
+use App\OwnedItem;
 
 class Item extends Model
 {
@@ -48,5 +50,15 @@ class Item extends Model
     public function like () 
     {
         return $this->hasMany(ItemLike::class , 'item_id');
+    }
+
+    public function cart () 
+    {
+        return $this->hasMany(CartItem::class , 'item_id');
+    }
+
+    public function owned () 
+    {
+        return $this->hasMany(OwnedItem::class , 'item_id');
     }
 }
