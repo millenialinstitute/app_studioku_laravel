@@ -45,7 +45,7 @@
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/info_icon.svg') }}" alt="guide">
 			<span>panduan</span>
 		</a>
-		<a href="{{ url('/') }}" class="menu-item @yield('dashboard') ">
+		<a href="{{ url('/') }}" class="menu-item ">
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/home_icon.svg') }}" alt="dashboard">
 			<span>Homepage</span>
 		</a>

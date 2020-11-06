@@ -20,7 +20,9 @@ class EarningController extends Controller
    		if(strlen($totalSaldo) > 6) {
    			$totalSaldo = (int)substr($totalSaldo, 0, -5) / 10;
    			$totalScope = 'Jt';
-   		}
+   		} else {
+            $totalScope = '';
+         }
 
    		return view('admin.earning' , [
 								'user'       => Auth::user(),

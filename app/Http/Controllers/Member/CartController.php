@@ -26,7 +26,12 @@ class CartController extends Controller
     public function index ( ) 
     {
         $memberId = Auth::user()->member->id;
-        $items = Cart::where('member_id' , $memberId)->get()->first()->item;
+        $cart = Cart::where('member_id' , $memberId)->get();
+        if($cart->count()) {
+          $items = $cart->first()->item;
+        } else {
+          $items = collect([]);
+        }
 
     	return view('member.cart' , [
                                 'user' => Auth::user(),
