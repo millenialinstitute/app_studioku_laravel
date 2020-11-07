@@ -4,7 +4,13 @@
 @section('body')
 
 
-@forelse($items as $item)
+@php
+	if(!isset($_GET['page'])) {
+		$_GET['page'] = 1;
+	}
+@endphp
+
+@forelse($items->forPage($_GET['page'], 5) as $item)
 	<div class="cart-list-item">
 		<div class="cart-item my-item">
 			<div class="data">
@@ -26,6 +32,10 @@
 		<h2>Tidak ada item</h2>
 	</div>
 @endforelse
+
+
+{{-- pagenation --}}
+@include('components.pagination' , ['pagination' => $pagination])
 
 
 @endsection

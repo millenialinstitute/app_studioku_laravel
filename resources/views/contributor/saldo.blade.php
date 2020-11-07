@@ -15,14 +15,14 @@
 	<div class="col">
 		@include('subview.card-thumb' , [
 				'img'     => 'collection_illustration.svg',
-				'value'   => 0,
+				'value'   => $currentMonth,
 				'caption' => 'Bulan Ini'
  			])
 	</div>
 	<div class="col">
 		@include('subview.card-thumb' , [
 				'img'     => 'collection_illustration.svg',
-				'value'   => 0,
+				'value'   => $monthAgo,
 				'caption' => 'Bulan Lalu'
  			])
 	</div>

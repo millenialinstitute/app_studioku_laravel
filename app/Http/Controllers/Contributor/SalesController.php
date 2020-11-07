@@ -45,6 +45,15 @@ class SalesController extends Controller
     		}
     	}
 
+        $pagination = collect([]);
+        $limitpage = ceil($staticLast->count()/5);
+        for ($i=1; $i <= $limitpage; $i++) { 
+            $pagination->push([
+                'text' => $i,
+                'link' => url('/contributor/sales/?page=' . $i),
+            ]);
+        }
+
     	// top sold item
     	$topSold = Item::where('contributor_id' , $contributorId)->orderBy('sold' , 'desc')
     					->where('sold' , '>' , 0)
@@ -52,12 +61,13 @@ class SalesController extends Controller
     					->get();
 
     	return view('contributor.sales' , [
-								'user'     => Auth::user(),
-								'total'    => $totalItems,
-								'current'  => $currentItems,
-								'ago'      => $agoItems,
-								'lastSold' => $lastSold,
-								'topSold'  => $topSold,
+                                'user'       => Auth::user(),
+                                'total'      => $totalItems,
+                                'current'    => $currentItems,
+                                'ago'        => $agoItems,
+                                'lastSold'   => $lastSold,
+                                'topSold'    => $topSold,
+                                'pagination' => $pagination,
 					    	]);
     }
 }

@@ -172,7 +172,7 @@ class ItemController extends Controller
         $contributorId = Auth::user()->contributor->id;
         $items = Item::where('status' , 'waiting')
                     ->where('contributor_id' , $contributorId)
-                    ->latest()->get();
+                    ->latest()->paginate(5);
 
     	return view('contributor.item.waiting' , [
             'user'  => Auth::user(),
@@ -197,7 +197,7 @@ class ItemController extends Controller
         $items = Item::where('contributor_id' , $contributorId)
                         ->where('status' , 'reject')
                         ->latest()
-                        ->get();
+                        ->paginate(5);
 
     	return view('contributor.item.reject' , [
                                             'items' => $items,
@@ -221,7 +221,7 @@ class ItemController extends Controller
         $items = Item::where('contributor_id' , $contributorId)
                         ->where('status' , 'accept')
                         ->latest()
-                        ->get();
+                        ->paginate(5);
 
 
     	return view('contributor.item.accept' , [

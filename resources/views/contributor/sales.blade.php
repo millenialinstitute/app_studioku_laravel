@@ -3,6 +3,13 @@
 @section('sales' , 'active')
 @section('body')
 
+
+@php
+	if(!isset($_GET['page'])) {
+		$_GET['page'] = 1;
+	}
+@endphp
+
 {{-- thumbnail --}}
 <div class="row">
 	<div class="col">
@@ -55,9 +62,9 @@
 	</div>
 	<div class="col">
 		<h3 class="title-section">Penjualan Terakhir</h3>
-		@forelse($lastSold as $item)
+		@forelse($lastSold->forPage($_GET['page'], 5) as $item)
 			<div class="card-item">
-				<p class="number">{{ $loop->iteration }}</p>
+				<p class="number">@include('components.iteration' ,['paginate' => 5])</p>
 				<div class="preview">
 					<img src="{{ asset('storage/photos/' . $item->image) }}" alt="{{ $item->title }}" class="img">
 				</div>
@@ -71,6 +78,9 @@
 				<h3>Tidak ada item</h3>
 			</div>
 		@endforelse
+
+{{-- pagenation --}}
+@include('components.pagination' , ['pagination' => $pagination])
 			
 	</div>
 </div>

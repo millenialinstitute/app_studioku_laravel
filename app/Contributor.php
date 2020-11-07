@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Item;
+use App\SaldoStatistic;
 
 class Contributor extends Model
 {
@@ -18,6 +19,10 @@ class Contributor extends Model
     public function item () 
     {
     	return $this->hasMany(Item::class , 'contributor_id');
-    		
+    }
+
+    public function statistic () 
+    {
+        return $this->hasMany(SaldoStatistic::class , 'contributor_id');
     }
 }

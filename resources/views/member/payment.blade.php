@@ -3,12 +3,18 @@
 @section('payment' , 'active')
 @section('body')
 
+@php
+	if(!isset($_GET['page'])) {
+		$_GET['page'] = 1;
+	}
+@endphp
+
 <h3 class="title-section">Daftar Pembayaran</h3>
 
-@forelse($payments as $payment)
+@forelse($payments->forPage($_GET['page'], 5) as $payment)
 	<div class="card card-payment">
 		<div class="row mr-3" style="align-items: center;">
-			<p class="number">{{ $loop->iteration }}</p>
+			<p class="number">@include('components.iteration' , ['paginate' => 5])</p>
 			<div class="content">
 				<h4>{{ $payment->bank }}</h4>
 				<p>{{ $payment->card_number }}</p>
@@ -29,6 +35,11 @@
 @empty
 	<h1>Tidak ada data!</h1>
 @endforelse
+
+
+
+{{-- pagenation --}}
+@include('components.pagination' , ['pagination' => $pagination])
 	
 
 @endsection

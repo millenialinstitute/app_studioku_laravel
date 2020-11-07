@@ -38,7 +38,7 @@ class DashboardController extends Controller
 
 
     	// last sold item
-    	$statistic = SaldoStatistic::where('contributor_id' , $contributorId)->latest()->get();
+    	$statistic = SaldoStatistic::where('contributor_id' , $contributorId)->latest()->limit(5)->get();
     	$itemsLast = collect([]);
     	foreach ($statistic as $data) {
     		foreach ($data->item->sortByDesc('created_at') as $item) {

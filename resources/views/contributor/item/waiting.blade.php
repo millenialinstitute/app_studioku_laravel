@@ -54,6 +54,8 @@
 	</div>
 @endforelse
 
+{{ $items->links() }}
+
 
 @endsection
 	

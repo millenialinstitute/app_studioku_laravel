@@ -12,10 +12,6 @@ use App\ItemFile;
 
 class DownloadController extends Controller
 {
-
-
-	
-	
 	/**
 	  * route: /member/donwload
 	  * method: get
@@ -34,10 +30,20 @@ class DownloadController extends Controller
     		$item = $item->item;
     		$items->push($item);
     	}
+
+        $pagination = collect([]);
+        $limitpage = ceil($items->count()/5);
+        for ($i=1; $i <= $limitpage; $i++) { 
+            $pagination->push([
+                'text' => $i,
+                'link' => url('/member/download/?page=' . $i),
+            ]);
+        }
     	
     	return view('member.download' , [
-    								'user' => Auth::user(),
-    								'items' => $items,
+                                    'user'       => Auth::user(),
+                                    'items'      => $items,
+                                    'pagination' => $pagination,
 						    	]);
     }
 
