@@ -80,6 +80,43 @@ class CartController extends Controller
     }
 
 
+
+    
+    
+    /**
+      * route: /memebr/cart/item/{id}/buy
+      * method: get
+      * params: id
+      * description: 
+        * this method for buy item
+      * return : @redirect
+    */
+
+    public function buyItem (Request $request , $id) 
+    {
+      $memberId = Auth::user()->member->id;
+      $check = Cart::where('member_id' , $memberId)->get()->count();
+      if(!$check) {
+        Cart::create([ 'member_id' => $memberId ]);
+      }
+
+    $cartId = Cart::where('member_id' , $memberId)->get()->first()->id;
+      $check2 = CartItem::where('cart_id' , $cartId)
+                ->where('item_id' ,$id)
+                ->get()
+                ->count();
+      if(!$check2) {
+        CartItem::create([
+          'cart_id' => $cartId,
+          'item_id' => $id,
+        ]);
+      }
+
+      return redirect(url('member/cart/payment'));
+    }
+      
+
+
     
     
     /**

@@ -4,11 +4,13 @@
 @section('body')
 
 
+<div id="dataGraphic" data-json="{{ $graphic }}" ></div>
+
 <div class="row">
 	<div class="col">
 		<div class="card-earning mb-3">
 			<img src="{{ asset('/assets/dashboard/illustration/earning_illustration.svg') }}" alt="earning">
-			<h2>{{ $total }} {{ $totalScope }}</h2>
+			<h2>{{ $total }}</h2>
 			<p>Total Pendapatan (Total yang didapat dari penjualan item)</p>
 		</div>
 	</div>
@@ -23,7 +25,7 @@
 	<div class="col">
 		<div class="card-earning mb-3">
 			<img src="{{ asset('/assets/dashboard/illustration/earning_illustration.svg') }}" alt="earning">
-			<h2>10 Jt</h2>
+			<h2>{{ $studiokuSaldo }}</h2>
 			<p>Pendapatan Studioku (30% dari pendapatan total)</p>
 		</div>
 	</div>
@@ -38,7 +40,7 @@
 	<div class="col">
 		<div class="card-earning mb-3">
 			<img src="{{ asset('/assets/dashboard/illustration/earning_illustration.svg') }}" alt="earning">
-			<h2>20 Jt</h2>
+			<h2>{{ $contributorSaldo }}</h2>
 			<p>Pendapatan Kontributor (Pendapatan setelah dikurangi 30% komisi studioku)</p>
 		</div>
 	</div>
@@ -53,32 +55,46 @@
 <script src="{{ asset('vendor/chartjs/Chart.js') }}"></script>
 
 <script type="text/javascript">
-	let totalIncomeValue = [1000000,1500000,1400000,1800000 , 1640000 , 1850500 , 2010000, 2100000 , 2230000 , 2140000 , 2210000 , 2420000];
-	let month = ['Januari' , 'Februari' , 'Maret' , 'April' , 'Juni' , 'Juli' , 'Agustus' , 'September' ,'Oktober' , 'November' , 'Desember'];
+
+	let dataGraphic = document.getElementById('dataGraphic').getAttribute('data-json');
+	dataGraphic = JSON.parse(dataGraphic);
+	let months = [];
+	let total = [];
+	let studioku = [];
+	let contributor = [];
+
+	dataGraphic.forEach(data => {
+		months.push(data['month']);
+		total.push(data['total']);
+		studioku.push(data['studioku']);
+		contributor.push(data['contributor']);
+	})
+
 	var ctx = document.getElementById('totalIncome').getContext('2d');
 	var chart = new Chart(ctx , {
 		type: 'line',
 		data: {
-			labels: month,
+			labels: months,
 			datasets: [{
-				label: 'Total Pendapatan',
+				label: 'Pendapatan',
 				backgroundColor: 'rgb(51, 55, 107)',
-                data: totalIncomeValue,
+                data: total,
                 fill :false,
                 borderWitdh : 10,
                 borderColor: 'skyblue',
+                lineTension: 0,
 			}],
 		},
 
 		options: {
 			responsive:true,
 			scales: {
-              yAxes: [{
+              /*yAxes: [{
                   ticks: {
-                      min: totalIncomeValue[0],
-                      max: totalIncomeValue[12],
+                      min: total[0],
+                      max: total[total.length],
                   }
-              }]
+              }]*/
 	        }
 		}
 	})
@@ -90,26 +106,27 @@
 	var chart2 = new Chart(ctx2 , {
 		type: 'line',
 		data: {
-			labels: month,
+			labels: months,
 			datasets: [{
-				label: 'Pendapatan Studioku',
+				label: 'Studioku',
 				backgroundColor: 'rgb(51, 55, 107)',
-                data: totalIncomeValue,
+                data: studioku,
                 fill :false,
                 borderWitdh : 10,
                 borderColor: 'skyblue',
+                lineTension: 0,
 			}],
 		},
 
 		options: {
 			responsive:true,
 			scales: {
-              yAxes: [{
+              /*yAxes: [{
                   ticks: {
-                      min: totalIncomeValue[0],
-                      max: totalIncomeValue[12],
+                      min: studioku[0],
+                      max: studioku[studioku.length],
                   }
-              }]
+              }]*/
 	        }
 		}
 	})
@@ -120,26 +137,26 @@
 	var chart3 = new Chart(ctx3, {
 		type: 'line',
 		data: {
-			labels: month,
+			labels: months,
 			datasets: [{
-				label: 'Pendapatan Kontributor',
+				label: 'Kontributor',
 				backgroundColor: 'rgb(51, 55, 107)',
-                data: totalIncomeValue,
+                data: contributor,
                 fill :false,
                 borderWitdh : 10,
                 borderColor: 'skyblue',
+                lineTension: 0,
 			}],
 		},
 
 		options: {
 			responsive:true,
 			scales: {
-              yAxes: [{
+             /* yAxes: [{
                   ticks: {
-                      min: totalIncomeValue[0],
-                      max: totalIncomeValue[12],
+                      min: contributor[0],
                   }
-              }]
+              }]*/
 	        }
 		}
 	})

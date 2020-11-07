@@ -169,7 +169,9 @@ Route::name('dashboard , ')->middleware(['auth'])->group(function() {
 				Route::post('/payment/{id}' , 'CartController@paymentSubmit');
 
 				Route::post('/item/{id}/add' , 'CartController@addItem');
+				Route::get('/item/{id}/buy' , 'CartController@buyItem');
 				Route::delete('/item/{id}/delete' , 'CartController@removeItem');
+
 			});
 
 			Route::get('/payment' , 'PaymentController@index');

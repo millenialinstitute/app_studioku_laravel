@@ -58,7 +58,7 @@
 				@csrf
 				<button style="display: block;" class="btn-cart">Masukkan Keranjang</button>
 			</form>
-			<a href="" class="btn-buy">Beli Sekarang</a>
+			<a href="{{ url('member/cart/item/' . $item->id .'/buy') }}" class="btn-buy">Beli Sekarang</a>
 		</div>
 	</div>
 </div>

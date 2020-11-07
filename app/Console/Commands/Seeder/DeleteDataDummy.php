@@ -15,6 +15,7 @@ use App\ItemReject;
 use App\OwnedItem;
 use App\ProofPayment;
 use App\SaldoStatistic;
+use App\EarningStatistic;
 
 class DeleteDataDummy extends Command
 {
@@ -61,6 +62,7 @@ class DeleteDataDummy extends Command
         OwnedItem::where('id' , '>' , 0)->delete();
         ProofPayment::where('id' , '>' , 0)->delete();
         SaldoStatistic::where('id' , '>' , 0)->delete();
+        EarningStatistic::where('id' , '>' , 0)->delete();
 
 
         // Delete storage
