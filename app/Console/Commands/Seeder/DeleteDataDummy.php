@@ -16,6 +16,7 @@ use App\OwnedItem;
 use App\ProofPayment;
 use App\SaldoStatistic;
 use App\EarningStatistic;
+use App\Blog;
 
 class DeleteDataDummy extends Command
 {
@@ -63,6 +64,7 @@ class DeleteDataDummy extends Command
         ProofPayment::where('id' , '>' , 0)->delete();
         SaldoStatistic::where('id' , '>' , 0)->delete();
         EarningStatistic::where('id' , '>' , 0)->delete();
+        Blog::where('id' , '>' , 0)->delete();
 
 
         // Delete storage
@@ -91,6 +93,8 @@ class DeleteDataDummy extends Command
         deleteFiles($proofs , 'public/proofs/');
         $usersImage = Storage::allFiles('public/users');
         deleteFiles($usersImage , 'public/users/' , collect(['user.jpg']));
+        $blogsThumbnail = Storage::allFiles('public/blogs');
+        deleteFiles($blogsThumbnail , 'public/blogs/' , collect(['thumbnail.jpg']));
 
         // reset data
         Contributor::where('id' , 1)->update(['saldo' => 0]);
