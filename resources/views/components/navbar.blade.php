@@ -1,12 +1,12 @@
 <header class="navbarLanding">
 	<div class="row">
 		<div class="col">
-			<div class="brand">
+			<a href="{{ url('/') }}" class="brand">
 				<img src="/assets/landing/icons/logo_studioku.svg" alt="logo studioku">
-			</div>
+			</a>
 		</div>
 		<div class="col text-right">
-
+			<a href="">UMKM</a>
 			@if($auth)
 				<a href="{{ url('/home') }}">Dashboard</a>
 			@else

@@ -47,6 +47,14 @@
 				<a href="{{ url('/admin/item/reject') }}">Penolakan</a>
 			</div>
 		</a>
+		<a href="#item" data-target="#blog" class="menu-item btn-collapse @yield('blog') ">
+			<img src="{{ asset('/assets/dashboard/sidebar-icon/item_icon.svg') }}" alt="item">
+			<span>Blog</span>
+			<div class="menu-collapse" data-height="83px" id="blog">
+				<a href="{{ url('/admin/blog/create') }}">Buat</a>
+				<a href="{{ url('/admin/blog/list') }}">Daftar</a>
+			</div>
+		</a>
 		<a href="{{ url('/admin/earning') }}" class="menu-item @yield('earning') ">
 			<img src="{{ asset('/assets/dashboard/sidebar-icon/earning_icon.svg') }}" alt="earning">
 			<span>keuangan</span>
@@ -94,6 +102,7 @@
 
 	<script src="{{ asset('/js/dashboard.js') }}"></script>
 	<script src="{{ asset('/js/admin.js') }}"></script>
-
+	@yield('script')
+	
 </body>
 </html>

@@ -103,7 +103,8 @@ table.list-category td.action div {
 .item-detail .btn-download , 
 .item-detail .btn-accept , 
 .item-detail .btn-reject ,
-.modal .modal-body button 
+.modal .modal-body button ,
+.btn
  {
     color: white;
     text-transform: uppercase;
@@ -407,4 +408,19 @@ table.list-category td.action div {
 
 .card.card-contributor h3 {
     font-size: 23px;
+}
+
+
+.content-blog .paragraph textarea {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    height: 120px;
+}
+
+.content-blog .heading input {
+    width: 80%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
 }

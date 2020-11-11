@@ -1,6 +1,7 @@
 @extends('layouts.landing')
 @section('title'  , 'Item')
 @section('body')
+	@include('components.banner')
 
 <section class="newest list-images mx-5">
 	@forelse($items->chunk(5) as $chunk)

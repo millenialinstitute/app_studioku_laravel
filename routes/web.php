@@ -22,6 +22,8 @@ Route::get('item/detail/{id} ' , 'LandingPageController@detailItem');
 Route::post('item/detail/{id}/like' , 'LandingPageController@likeItem');
 Route::get('item/category/{category}' , 'LandingPageController@category');
 
+Route::get('/blog/detail/{id}' , 'LandingPageController@blogDetail');
+
 // ++ help center ++
 Route::name('help_center , ')->prefix('help')->group(function(){
 	Route::get('/' , 'HelpCenterController@index');
@@ -82,6 +84,16 @@ Route::name('dashboard , ')->middleware(['auth'])->group(function() {
 				Route::get('/download/{id}' , 'ItemController@itemDownload');
 				Route::delete('/destroy/{id}' , 'ItemController@itemDestroy');
 			});
+
+
+			// ++ blog ++
+			Route::name('blog , ')->prefix('blog')->group(function() {
+				Route::get('/create' , 'BlogController@create');
+				Route::post('store' , 'BlogController@store');
+				Route::get('/list' , 'BlogController@list');
+				Route::delete('destroy/{id}' , 'BlogController@destroy');
+			});
+
 
 			Route::get('/earning' , 'EarningController@index');
 

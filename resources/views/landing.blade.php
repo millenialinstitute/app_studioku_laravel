@@ -2,6 +2,7 @@
 @section('title' , 'Studioku')
 @section('body')
 
+	@include('components.banner')
 
 
 {{-- ---------- Kategori -------------- --}}
@@ -92,51 +93,24 @@
 <section class="blogs mx-5">
 	<h2>Blog</h2>
 	<div class="row">
-		<div class="col">
-			<div class="card-style">
-				<div class="card-img">
-					<img src="{{ asset('/assets/landing/images/example.jpg') }}" alt="example">
-				</div>
-				<div class="card-body">
-					<h5>Lorem ipsum dolor sit amet consectetur, adipisicing.</h5>
-					<p>Lorem ipsum dolor, sit amet, consectetur adipisicing elit. Itaque explicabo eveniet ex earum, ipsum.</p>
-				</div>
-				<div class="card-footer row">
-					<p>Studioku</p>
-					<p class="text-right">2 hari yang lalu</p>
-				</div>
+		@forelse($blogs as $blog)
+			<div class="col">
+				<a href=" {{ url('/blog/detail/' . $blog->id) }} " style="display: block;background: white" class="card-style">
+					<div class="card-img">
+						<img src="{{ asset('storage/blogs/' . $blog->thumbnail) }}" alt="example">
+					</div>
+					<div class="card-body">
+						<h5>{{ $blog->title }}</h5>
+					</div>
+					<div class="card-footer row">
+						<p>Studioku</p>
+						<p class="text-right">{{ $blog->created_at->diffForHumans() }}</p>
+					</div>
+				</a>
 			</div>
-		</div>
-		<div class="col">
-			<div class="card-style">
-				<div class="card-img">
-					<img src="{{ asset('/assets/landing/images/example.jpg') }}" alt="example">
-				</div>
-				<div class="card-body">
-					<h5>Lorem ipsum dolor sit amet, consectetur adipisicing.</h5>
-					<p>Lorem ipsum, dolor sit amet consectetur adipisicing, elit. Eaque commodi praesentium voluptatibus?</p>
-				</div>
-				<div class="card-footer row">
-					<p>Studioku</p>
-					<p>2 hari yang lalu</p>
-				</div>
-			</div>
-		</div>
-		<div class="col">
-			<div class="card-style">
-				<div class="card-img">
-					<img src="{{ asset('/assets/landing/images/example.jpg') }}" alt="example">
-				</div>
-				<div class="card-body">
-					<h5>Lorem ipsum dolor sit amet consectetur adipisicing.</h5>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste enim rem cum?</p>
-				</div>
-				<div class="card-footer row">
-					<p>Studioku</p>
-					<p>2 hari yang lalu</p>
-				</div>
-			</div>
-		</div>
+		@empty
+			<h2>Tidak ada blog</h2>
+		@endforelse
 	</div>
 </section>
 {{-- -------------- end blogs ------------------------- --}}

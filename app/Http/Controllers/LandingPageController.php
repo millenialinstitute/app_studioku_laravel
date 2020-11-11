@@ -8,6 +8,7 @@ use App\Item;
 use App\Collection;
 use App\ItemLike;
 use App\Category;
+use App\Blog;
 
 class LandingPageController extends Controller
 {
@@ -25,9 +26,12 @@ class LandingPageController extends Controller
     						->latest()
     						->limit(10)
     						->get();
+        $blogs = Blog::latest()->limit(3)->get();
+
     	return view('landing' , [
     							'auth' => Auth::check(),
     							'itemNewest' => $itemNewest->chunk(5),
+                                'blogs' => $blogs,
 					    	]);
     }
 
@@ -114,6 +118,32 @@ class LandingPageController extends Controller
                                     'items' => $items,
                             ]);
     }
+
+
+
+    
+    
+    /**
+      * route: /blog/detail
+      * method: get
+      * params: id
+      * description: 
+        * this method for show detail blog
+      * return : @view
+    */
+    public function blogDetail (Request $request , $id) 
+    {
+        $blogs = Blog::latest()->limit(3)->get();
+
+        $blog = Blog::find($id);
+
+        return view('blog-detail' , [
+                        'auth'  => Auth::check(),
+                        'blog'  => $blog,
+                        'blogs' => $blogs,
+                    ]);
+    }
+        
         
         
 
