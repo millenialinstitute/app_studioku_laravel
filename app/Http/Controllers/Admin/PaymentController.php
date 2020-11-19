@@ -404,11 +404,11 @@ class PaymentController extends Controller
                 }
             }
 
-            return view('admin.payment.invoice' , [
+            /*return view('admin.payment.invoice' , [
                                                 'user'    => Auth::user(),
                                                 'payment' => $payment,
                                                 'items'   => $items,
-                                            ]);
+                                            ]);*/
             $pdf =  PDF::loadView('admin.payment.invoice' , [
                                                 'user'    => Auth::user(),
                                                 'payment' => $payment,
