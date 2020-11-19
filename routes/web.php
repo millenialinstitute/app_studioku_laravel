@@ -17,10 +17,14 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
+Route::get('/zip' , 'ZipController@zipCreateAndDownload');
+
+
 Route::get('/' , 'LandingPageController@index');
 Route::get('item/detail/{id} ' , 'LandingPageController@detailItem');
 Route::post('item/detail/{id}/like' , 'LandingPageController@likeItem');
 Route::get('item/category/{category}' , 'LandingPageController@category');
+Route::get('contributor/portofolio/{id}' , 'LandingPageController@portofolio');
 
 Route::get('/blog/detail/{id}' , 'LandingPageController@blogDetail');
 
@@ -38,13 +42,20 @@ Route::name('help_center , ')->prefix('help')->group(function(){
 
 
 
-Auth::routes();
+Auth::routes(['verify' => 'true']);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 
 // ########################### Dashboard ################################
-Route::name('dashboard , ')->middleware(['auth'])->group(function() {
+Route::name('dashboard , ')->middleware(['auth' , 'verified'])->group(function() {
+
+
+
+
+
+
+
 
 		// ----------------------------------- Admin Dashboard --------------------------------------------------
 		Route::name('admin , ')->middleware(['admin'])->prefix('admin')->namespace('Admin')->group(function() {
@@ -61,6 +72,7 @@ Route::name('dashboard , ')->middleware(['auth'])->group(function() {
 			});
 
 			Route::get('/member' , 'MemberController@index');
+			Route::get('member/export' , 'MemberController@export');
 			Route::get('member/{id}' , 'MemberController@detail');
 
 			// +++ Item +++
@@ -115,11 +127,22 @@ Route::name('dashboard , ')->middleware(['auth'])->group(function() {
 				Route::get('/reject/{id}' , 'PaymentController@rejectDetail');
 
 				Route::get('/download/proof/{id}' , 'PaymentController@downloadProof');
+				Route::get('/download/invoice/{id}' , 'PaymentController@printInvoice');
 			});
 
 			Route::get('/sales' , 'SalesController@index');
 		});
 		// =============================== Admin Dashbord ========================================
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -147,6 +170,14 @@ Route::name('dashboard , ')->middleware(['auth'])->group(function() {
 			Route::get('/saldo' , 'SaldoController@index');
 		});
 		// ================================ Contributor Dashboard ===============================
+
+
+
+
+
+
+
+
 
 
 
@@ -195,6 +226,11 @@ Route::name('dashboard , ')->middleware(['auth'])->group(function() {
 								
 		});
 		// ================================ Member Dashboard ===============================
+
+
+
+
+
 
 
 

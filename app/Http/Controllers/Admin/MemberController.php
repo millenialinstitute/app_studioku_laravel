@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\User;
 use Illuminate\Support\Carbon;
+use App\User;
+use App\Exports\UserExport;
+
+use Excel;
 
 class MemberController extends Controller
 {
@@ -48,5 +51,10 @@ class MemberController extends Controller
 									'user'   => Auth::user(),
 									'member' => $member,
 					    	]);
+    }
+
+    public function export() 
+    {
+        return Excel::download(new UserExport, 'members.xlsx');
     }
 }

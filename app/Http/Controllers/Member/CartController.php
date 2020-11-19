@@ -12,6 +12,7 @@ use App\Cart;
 use App\CartItem;
 use App\Bank;
 use App\ProofPayment;
+use App\Notifications\NewPaymentNotification;
 
 class CartController extends Controller
 {
@@ -280,6 +281,8 @@ class CartController extends Controller
             'card_number' => $request->card_number,
             'proof_file'  => $nameProof,
         ]);
+
+        Auth::user()->notify(new NewPaymentNotification());
 
         return redirect('member/payment')->with('send' , 'Data berhasil dikirimkan!');
     }

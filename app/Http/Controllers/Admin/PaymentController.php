@@ -14,6 +14,7 @@ use App\Item;
 use App\Contributor;
 use App\EarningStatistic;
 use App\EarningItem;
+use PDF;
 
 class PaymentController extends Controller
 {
@@ -379,7 +380,43 @@ class PaymentController extends Controller
 
         return Storage::download('public/proofs/' . $file , $nameFile);
     }
-            
+          
+
+
+      
+      
+      /**
+        * route: /admin/payment/download/invoice/{id}
+        * method: get
+        * params: id
+        * description: 
+          * this method for downloading invoice file
+        * return : @download
+      */
+      public function printInvoice (Request $request , $id) 
+      {
+            $payment = ProofPayment::find($id);
+            $items = collect([]);
+            $dataItems = $payment->cart->item;
+            foreach ($dataItems as $item) {
+                if(!$item->item->owned->where('member_id' , $payment->member_id)->count()) {
+                  $items->push($item);
+                }
+            }
+
+            return view('admin.payment.invoice' , [
+                                                'user'    => Auth::user(),
+                                                'payment' => $payment,
+                                                'items'   => $items,
+                                            ]);
+            $pdf =  PDF::loadView('admin.payment.invoice' , [
+                                                'user'    => Auth::user(),
+                                                'payment' => $payment,
+                                                'items'   => $items,
+                                            ]);
+            return $pdf->download('data_pembayaran.pdf');
+      }
+          
             
 
     			

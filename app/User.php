@@ -10,7 +10,7 @@ use App\Contributor;
 use App\Member;
 use App\ItemLike;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 

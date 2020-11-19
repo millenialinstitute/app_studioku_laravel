@@ -11,9 +11,9 @@
 			<img src="{{ asset('storage/photos/' . $item->image) }}" alt="{{ $item->title }}">
 		</div>
 		<div class="menu-image row">
-			<form action="{{ url('/item/detail/' . $item->id .'/like') }}" method="post">
+			<form action="{{ url('/item/detail/' . $item->id .'/like') }}" method="post" class="col">
 				@csrf
-				<button class="btn-like">
+				<button class="btn-like text-center" style="width: 100%">
 					@if($like)
 						<img src="{{ asset('/assets/landing/icons/liked_icon.svg') }}" class="mr-1" alt="like">
 					@else
@@ -22,13 +22,13 @@
 					<p>{{ $item->like->count() }} suka</p>
 				</button>
 			</form>
-			<button class="btn-share">
+			<button class="col btn-share text-center">
 				<img src="{{ asset('/assets/landing/icons/share_icon.svg') }}" class="mr-1" alt="share">
 				<p>Share</p>
 			</button>
-			<button class="btn-collect" id="btnCollect">
+			<button class="col btn-collect text-center" id="btnCollect">
 				<img src="{{ asset('/assets/landing/icons/collect_icon.svg') }}" alt="collect">
-				<p>Simpan ke Koleksi</p>
+				<p>Koleksi</p>
 			</button>
 		</div>
 	</div>
@@ -59,8 +59,8 @@
 				<img src="{{ asset('storage/users/user.jpg') }}" alt="user" width="80px">
 			</div>
 			<div class="bio">
-				<h4>Atika Mahmudah</h4>
-				<a href="" class="btn-porto">Portofolio</a>
+				<h4>{{ $item->contributor->user->name }}</h4>
+				<a href="{{ url('contributor/portofolio/' . $item->contributor->id) }}" class="btn-porto">Portofolio</a>
 			</div>
 		</div>
 	</div>

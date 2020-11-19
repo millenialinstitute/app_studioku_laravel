@@ -100,6 +100,7 @@
 <div class="row confirm-action">
 	<div>
 		<a style="display: inline-block;" href="{{ url('admin/payment/download/proof/' . $payment->id) }}" target="_blank" class="btn-download">Unduh Bukti</a>
+		<a style="display: inline-block;" href="{{ url('admin/payment/download/invoice/' . $payment->id) }}" target="_blank" class="btn-download">Cetak Invoice</a>
 	</div>
 	<div class="text-right">
 		<form action="{{ url('/admin/payment/confirm/' . $payment->id .'/reject' ) }}" method="post" style="display: inline-block;">

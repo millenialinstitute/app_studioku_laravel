@@ -9,6 +9,7 @@ use App\Collection;
 use App\ItemLike;
 use App\Category;
 use App\Blog;
+use App\Contributor;
 
 class LandingPageController extends Controller
 {
@@ -143,6 +144,29 @@ class LandingPageController extends Controller
                         'blogs' => $blogs,
                     ]);
     }
+
+
+
+    
+    
+    /**
+      * route: /contributor/portofolio/{id}
+      * method: get
+      * params: id
+      * description: 
+        * this method for display portoflio contributor
+      * return : @view
+    */
+    public function portofolio (Request $request , $id) 
+    {
+        $contributor = Contributor::find($id);
+
+        return view('portofolio' , [
+                            'auth' => Auth::check(),
+                            'contributor' => $contributor,
+                        ]);
+    } 
+      
         
         
         

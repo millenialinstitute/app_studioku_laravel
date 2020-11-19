@@ -591,3 +591,22 @@ footer {
     margin-bottom: 10px;
     text-indent  : 70px;
 }
+
+.card-contributor {
+    background: #e7edff;
+    margin: 15px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.card-contributor h4.text-blue {
+    color: #2c5edd;
+    font-size: 15px;
+    text-transform: lowercase;
+}
+
+.card-contributor h4.text-success {
+    color: #16dbcc;
+    font-size: 15px;
+    text-transform: lowercase;
+}
